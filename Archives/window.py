@@ -1,4 +1,6 @@
 from PySide2 import QtCore, QtGui, QtWidgets
+from PySide2.QtGui import *
+
 
 
 class Ui_MainWindow(object):
@@ -15,9 +17,11 @@ class Ui_MainWindow(object):
         self.frame_2 = QtWidgets.QFrame(self.centralwidget)
         self.frame_2.setMinimumSize(QtCore.QSize(1080, 50))
         self.frame_2.setMaximumSize(QtCore.QSize(1920, 50))
-        self.frame_2.setStyleSheet("QFrame{\n"
-"    background-color: black;\n"
-"}")
+        self.frame_2.setStyleSheet('''
+                QFrame{
+                        background-color: black;
+                }
+        ''')
         self.frame_2.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_2.setObjectName("frame_2")
@@ -48,11 +52,13 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.pushButton_2.setFont(font)
-        self.pushButton_2.setStyleSheet("QPushButton{\n"
-"    background-color: #ffffff;\n"
-"    border-radius: 4px;\n"
-"    color: #000000;\n"
-"}")
+        self.pushButton_2.setStyleSheet('''
+                QPushButton{
+                        background-color: #ffffff;
+                        border-radius: 4px;
+                        color: #000000;
+                }
+        ''')
         self.pushButton_2.setObjectName("pushButton_2")
         self.horizontalLayout.addWidget(self.pushButton_2)
         spacerItem1 = QtWidgets.QSpacerItem(10, 30, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
@@ -66,11 +72,13 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.pushButton.setFont(font)
-        self.pushButton.setStyleSheet("QPushButton{\n"
-"    background-color: #262D3D;\n"
-"    color: #ffffff;\n"
-"    border-radius: 4px;\n"
-"}")
+        self.pushButton.setStyleSheet('''
+                QPushButton{
+                        background-color: #262D3D;
+                        color: #ffffff;
+                        border-radius: 4px;
+                }
+        ''')
         self.pushButton.setObjectName("pushButton")
         self.horizontalLayout.addWidget(self.pushButton)
         self.verticalLayout.addWidget(self.frame_2)
@@ -94,11 +102,13 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.pushButton_3.setFont(font)
-        self.pushButton_3.setStyleSheet("QPushButton{\n"
-"    background-color: #262D3D;\n"
-"    color: #ffffff;\n"
-"    border-radius: 12px;\n"
-"}")
+        self.pushButton_3.setStyleSheet('''
+                QPushButton{
+                        background-color: #262D3D;
+                        color: #ffffff;
+                        border-radius: 12px;
+                }
+        ''')
         self.pushButton_3.setObjectName("pushButton_3")
         self.label_2 = QtWidgets.QLabel(self.frame)
         self.label_2.setGeometry(QtCore.QRect(100, 270, 500, 90))
@@ -110,10 +120,12 @@ class Ui_MainWindow(object):
         font.setBold(False)
         font.setWeight(50)
         self.label_2.setFont(font)
-        self.label_2.setStyleSheet("QLabel{\n"
-"    background: none; \n"
-"    color: white\n"
-"}")
+        self.label_2.setStyleSheet('''
+                QLabel{
+                        background: none;
+                        color: white;
+                }
+        ''')
         self.label_2.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
         self.label_2.setTextFormat(QtCore.Qt.TextFormat.PlainText)
         self.label_2.setScaledContents(False)
@@ -130,10 +142,12 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.label_3.setFont(font)
-        self.label_3.setStyleSheet("QLabel{\n"
-"    background: none; \n"
-"    color: white\n"
-"}")
+        self.label_3.setStyleSheet('''
+            QLabel{
+                background: none;
+                color: white;
+            }       
+        ''')
         self.label_3.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
         self.label_3.setTextFormat(QtCore.Qt.TextFormat.PlainText)
         self.label_3.setScaledContents(False)
@@ -157,19 +171,23 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "TrazPRO"))
+        MainWindow.setWindowIcon(QIcon('../Images/home_page/icon.png'))
+        # MainWindow.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.pushButton_2.setText(_translate("MainWindow", "Cadastre-se"))
         self.pushButton.setText(_translate("MainWindow", "Entrar"))
         self.pushButton_3.setText(_translate("MainWindow", "SAIBA MAIS"))
         self.label_2.setText(_translate("MainWindow", "Faça a cotação das suas encomendas para\n"
-"conferir todas as taxas e\n"
-"prazos de entrega"))
+                "conferir todas as taxas e\n"
+                "prazos de entrega"))
         self.label_3.setText(_translate("MainWindow", "ECONOMIZE TEMPO E DINHEIRO \n"
-"NA GESTÃO DE FRETES"))
+                "NA GESTÃO DE FRETES"))
+        self.menu_window_home()
 
 
 if __name__ == "__main__":
     import sys
+    import main
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()

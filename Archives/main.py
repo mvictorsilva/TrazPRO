@@ -17,7 +17,8 @@ class Window(QMainWindow):
                 background-color: black;
                 background-image: url(../Images/home_page/background_frame_one.png);
                 background-repeat: no-repeat; 
-                background-position: center;}
+                background-position: center;
+            }
         ''')
         
         self.first_window = QWidget(self)
@@ -31,8 +32,6 @@ class Window(QMainWindow):
 
     def menu_window_home(self):
         self.home_menu_window = QFrame(self)
-        self.home_menu_window.setMinimumSize(1080, 50)
-        self.home_menu_window.setMaximumSize(1920, 50)
         self.home_menu_window.setStyleSheet('''
             QFrame{
                 background-color: #000000;
@@ -63,13 +62,12 @@ class Window(QMainWindow):
             }
         ''')
 
+    
         self.layout.addWidget(self.title_text, 1, 0)
         self.layout.addWidget(self.apresentation_text, 2, 0)
 
     def buttons_home(self):
         self.register_home = QPushButton('Cadastre-se', self)
-        self.register_home.setMinimumSize(150, 30)
-        self.register_home.setMaximumSize(150, 30)
         self.register_home.setStyleSheet('''
             QPushButton{
                 background-color: #ffffff;
