@@ -182,7 +182,6 @@ class Ui_MainWindow(object):
                 "prazos de entrega"))
         self.label_3.setText(_translate("MainWindow", "ECONOMIZE TEMPO E DINHEIRO \n"
                 "NA GESTÃO DE FRETES"))
-        self.menu_window_home()
 
 
 if __name__ == "__main__":
