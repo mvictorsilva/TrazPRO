@@ -21,11 +21,13 @@ class RegisterFrame():
         self.register_menu_frame.setFrameShadow(QFrame.Shadow.Raised)
         self.register_menu_frame.setMinimumSize(1080, 50)
         self.register_menu_frame.setMaximumSize(1920, 50)
-        self.register_menu_frame.setStyleSheet('''
-            QFrame{
-                background-color: #000000;
-            }
-        ''')
+        self.register_menu_frame.setStyleSheet(
+            '''
+                QFrame{
+                    background-color: #000000;
+                }
+            '''
+        )
         self.layout.addWidget(self.register_menu_frame)
         self.register_menu_frame.show()
 
@@ -33,12 +35,14 @@ class RegisterFrame():
         self.register_frame = QFrame(self.first_window)
         self.register_frame.setFrameShape(QFrame.Shape.NoFrame)
         self.register_frame.setFrameShadow(QFrame.Shadow.Raised)
-        self.register_frame.setStyleSheet('''
-            QFrame{
-                background-image: url(../Images/login_page/background_login.png);
-                background-position: center center;
-            }
-        ''')
+        self.register_frame.setStyleSheet(
+            '''
+                QFrame{
+                    background-image: url(../Images/login_page/background_login.png);
+                    background-position: center center;
+                }
+            '''
+        )
         self.layout.addWidget(self.register_frame)
         self.register_frame.show()
 
@@ -46,7 +50,11 @@ class LoginFrame():
     def execute_login(self):
         self.closed_frames()
         self.menu_frame_login()
+        self.menu_label_register()
+        self.menu_buttons_register()
+
         self.main_frame_login()
+        self.main_frame_labels()
 
     def closed_frames(self):
         self.home_menu_frame.close()
@@ -54,31 +62,116 @@ class LoginFrame():
 
     def menu_frame_login(self):
         self.login_menu_frame = QFrame(self.first_window)
-        self.horizontal_layout = QHBoxLayout(self.login_menu_frame)
+        self.horizontal_layout_register = QHBoxLayout(self.login_menu_frame)
         self.login_menu_frame.setFrameShape(QFrame.Shape.NoFrame)
         self.login_menu_frame.setFrameShadow(QFrame.Shadow.Raised)
         self.login_menu_frame.setMinimumSize(1080, 50)
         self.login_menu_frame.setMaximumSize(1920, 50)
-        self.login_menu_frame.setStyleSheet('''
-            QFrame{
-                background-color: #000000;
-            }
-        ''')
+        self.login_menu_frame.setStyleSheet(
+            '''
+                QFrame{
+                    background-color: #000000;
+                }
+            '''
+        )
         self.layout.addWidget(self.login_menu_frame)
         self.login_menu_frame.show()
+
+    def menu_label_register(self):
+        self.logo_black = QLabel(self.login_menu_frame)
+        self.logo_black.setMinimumSize(200, 35)
+        self.logo_black.setMaximumSize(200, 35)
+        self.logo_black.setStyleSheet(
+            '''
+                QLabel{
+                    background: none;
+                    background-image: url(../Images/home_page/logo_white.png);
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+            '''
+        )
+        self.horizontal_layout_register.addWidget(self.logo_black)
+        self.logo_black.show()
+
+        self.spacer_widgets = QSpacerItem(473, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontal_layout_register.addItem(self.spacer_widgets)
+
+    def menu_buttons_register(self):
+        self.information = QPushButton('Sobre', self.login_menu_frame)
+        self.information.setMinimumSize(120, 30)
+        self.information.setMaximumSize(120, 30)
+        self.information.setStyleSheet(
+            '''
+                QPushButton{
+                    background-color: none;
+                    border-radius: 6px;
+                    color: #ffffff;
+                    font: 'Verdana';
+                    font-size: 18px;
+                }
+            '''
+        )
+        self.horizontal_layout_register.addWidget(self.information)
+        self.information.show()
+    
+        self.spacer_buttons = QSpacerItem(10, 30, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
+        self.horizontal_layout_register.addItem(self.spacer_buttons)
+
+        self.back_register = QPushButton('Cadastre-se', self.login_menu_frame)
+        self.back_register.setMinimumSize(170, 30)
+        self.back_register.setMaximumSize(170, 30)
+        self.back_register.setStyleSheet(
+            '''
+                QPushButton{
+                    background-color: #ffffff;
+                    border-radius: 6px;
+                    color: #000000;
+                    font: bold 'Verdana';
+                    font-size: 18px;
+                }
+                QPushButton:hover{
+                    background-color: #E6E6FA;
+                }
+                QPushButton:pressed{
+                    background-color: #C1CDCD;
+                }
+            '''
+        )
+        self.horizontal_layout_register.addWidget(self.back_register)
+        self.back_register.show()
+
 
     def main_frame_login(self):
         self.main_frame = QFrame(self.first_window)
         self.main_frame.setFrameShape(QFrame.Shape.NoFrame)
         self.main_frame.setFrameShadow(QFrame.Shadow.Raised)
-        self.main_frame.setStyleSheet('''
-            QFrame{
-                background-image: url(../Images/login_page/background_login.png);
-                background-position: center center;
-            }
-        ''')
+        self.main_frame.setStyleSheet(
+            '''
+                QFrame{
+                    background-image: url(../Images/login_page/background_login.png);
+                    background-position: center center;
+                }
+            '''
+        )
         self.layout.addWidget(self.main_frame)
         self.main_frame.show()
+
+    def main_frame_labels(self):
+        self.question = QLabel('COMO QUER ACESSAR?', self.main_frame)
+        self.question.setStyleSheet(
+            '''
+                QLabel{
+                    background: none;
+                    color: #ffffff;
+                    font: bold 'Helvetica';
+                    font-size: 25px;
+                }
+            '''
+        )
+        self.question.setGeometry(100, 50, 300, 50)
+        self.question.show()
+
 
 class FrameHome(LoginFrame, RegisterFrame):
     def execute_home(self):
@@ -96,28 +189,32 @@ class FrameHome(LoginFrame, RegisterFrame):
         self.home_menu_frame.setFrameShadow(QFrame.Shadow.Raised)
         self.home_menu_frame.setMinimumSize(1080, 50)
         self.home_menu_frame.setMaximumSize(1920, 50)
-        self.home_menu_frame.setStyleSheet('''
-            QFrame{
-                background-color: #000000;
-            }
-        ''')
+        self.home_menu_frame.setStyleSheet(
+            '''
+                QFrame{
+                    background-color: #000000;
+                }
+            '''
+        )
         self.layout.addWidget(self.home_menu_frame)
         self.home_menu_frame.show()
 
     def menu_label_home(self):
-        self.label = QLabel(self.home_menu_frame)
-        self.label.setMinimumSize(200, 35)
-        self.label.setMaximumSize(200, 35)
-        self.label.setStyleSheet('''
-            QLabel{
-                background-color: none;
-                background-image: url(../Images/home_page/logo_white.png);
-                background-repeat: no-repeat;
-                background-position: center;
-            }    
-        ''')
-        self.horizontal_layout.addWidget(self.label)
-        self.label.show()
+        self.logo_white = QLabel(self.home_menu_frame)
+        self.logo_white.setMinimumSize(200, 35)
+        self.logo_white.setMaximumSize(200, 35)
+        self.logo_white.setStyleSheet(
+            '''
+                QLabel{
+                    background-color: none;
+                    background-image: url(../Images/home_page/logo_white.png);
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }    
+            '''
+        )
+        self.horizontal_layout.addWidget(self.logo_white)
+        self.logo_white.show()
 
         self.spacer_widgets = QSpacerItem(473, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
         self.horizontal_layout.addItem(self.spacer_widgets)
@@ -126,21 +223,23 @@ class FrameHome(LoginFrame, RegisterFrame):
         self.register = QPushButton('Cadastre-se', self.home_menu_frame)
         self.register.setMinimumSize(170, 30)
         self.register.setMaximumSize(170, 30)
-        self.register.setStyleSheet('''
-            QPushButton{
-                background-color: #262D3D;
-                color: #ffffff;
-                border-radius: 6px;
-                font: bold 'Verdana';
-                font-size: 18px;
-            }
-            QPushButton:hover{
-                background-color: 	#363636;
-            }
-            QPushButton:pressed{
-                background-color: #4F4F4F;
-            }
-        ''')
+        self.register.setStyleSheet(
+            '''
+                QPushButton{
+                    background-color: #262D3D;
+                    color: #ffffff;
+                    border-radius: 6px;
+                    font: bold 'Verdana';
+                    font-size: 18px;
+                }
+                QPushButton:hover{
+                    background-color: 	#201D2D;
+                }
+                QPushButton:pressed{
+                    background-color: #4F4F4F;
+                }
+            '''
+        )
         self.horizontal_layout.addWidget(self.register)
         self.register.clicked.connect(self.execute_register)
         self.register.show()
@@ -151,21 +250,23 @@ class FrameHome(LoginFrame, RegisterFrame):
         self.login = QPushButton('Entrar', self.home_menu_frame)
         self.login.setMinimumSize(150, 30)
         self.login.setMaximumSize(150, 30)
-        self.login.setStyleSheet('''
-            QPushButton{
-                background-color: #ffffff;
-                color: #000000;
-                border-radius: 6px;
-                font: bold 'Verdana';
-                font-size: 18px;
-            }
-            QPushButton:hover{
-                background-color: #E6E6FA;
-            }
-            QPushButton:pressed{
-                background-color: #C1CDCD;
-            }
-        ''')
+        self.login.setStyleSheet(
+            '''
+                QPushButton{
+                    background-color: #ffffff;
+                    color: #000000;
+                    border-radius: 6px;
+                    font: bold 'Verdana';
+                    font-size: 18px;
+                }
+                QPushButton:hover{
+                    background-color: #E6E6FA;
+                }
+                QPushButton:pressed{
+                    background-color: #C1CDCD;
+                }
+            '''
+        )
         self.horizontal_layout.addWidget(self.login)
         self.login.clicked.connect(self.execute_login)
         self.login.show()
@@ -174,12 +275,14 @@ class FrameHome(LoginFrame, RegisterFrame):
         self.body_frame = QFrame(self.first_window)
         self.body_frame.setFrameShape(QFrame.Shape.NoFrame)
         self.body_frame.setFrameShadow(QFrame.Shadow.Raised)
-        self.body_frame.setStyleSheet('''
-            QFrame{
-                background-image: url(../Images/home_page/background_frame_one.png);
-                background-position: center center;
-            }
-        ''')
+        self.body_frame.setStyleSheet(
+            '''
+                QFrame{
+                    background-image: url(../Images/home_page/background_frame_one.png);
+                    background-position: center center;
+                }
+            '''
+        )
         self.layout.addWidget(self.body_frame)
         self.body_frame.show()
 
@@ -187,7 +290,7 @@ class FrameHome(LoginFrame, RegisterFrame):
         self.line.setGeometry(100, 250, 150, 2)
         self.line.setMinimumSize(150, 2)
         self.line.setMaximumSize(150, 2)
-        self.line.setStyleSheet("background: none;")
+        self.line.setStyleSheet('background: none;')
         self.line.setLineWidth(1)
         self.line.setFrameShape(QFrame.Shape.HLine)
         self.line.setFrameShadow(QFrame.Shadow.Sunken)
@@ -195,48 +298,54 @@ class FrameHome(LoginFrame, RegisterFrame):
 
     def information_labels_home(self):
         self.title_text = QLabel('ECONOMIZE TEMPO E DINHEIRO\nCOM GESTÃO DE FRETES', self.body_frame)
-        self.title_text.setStyleSheet('''
-            QLabel{
-                background: none;
-                color: #ffffff;
-                font: bold 'Helvetica';
-                font-size: 35px;
-            }
-        ''')
+        self.title_text.setStyleSheet(
+            '''
+                QLabel{
+                    background: none;
+                    color: #ffffff;
+                    font: bold 'Helvetica';
+                    font-size: 35px;
+                }
+            '''
+        )
         self.title_text.setGeometry(100, 140, 700, 100)
         self.title_text.show()
 
         self.apresentation_text = QLabel( 
             'Faça a cotação das suas encomendas para\nconferir todas as taxas e\nprazos de entrega',
             self.body_frame)
-        self.apresentation_text.setStyleSheet('''
-            QLabel{
-                background: none;
-                color: #ffffff;
-                font: 'Helvetica';
-                font-size: 25px;
-            }
-        ''')
+        self.apresentation_text.setStyleSheet(
+            '''
+                QLabel{
+                    background: none;
+                    color: #ffffff;
+                    font: 'Helvetica';
+                    font-size: 25px;
+                }
+            '''
+        )
         self.apresentation_text.setGeometry(100, 270, 500, 90)
         self.apresentation_text.show()
 
     def information_buttons_home(self):
         self.register_home = QPushButton('SAIBA MAIS', self.body_frame)
-        self.register_home.setStyleSheet('''
-            QPushButton{
-                background-color: #262D3D;
-                color: #ffffff;
-                border-radius: 12px;
-                font: bold 'Verdana';
-                font-size: 19px;
-            }
-            QPushButton:hover{
-                background-color: 	#363636;
-            }
-            QPushButton:pressed{
-                background-color: #4F4F4F;
-            }
-        ''')
+        self.register_home.setStyleSheet(
+            '''
+                QPushButton{
+                    background-color: #262D3D;
+                    color: #ffffff;
+                    border-radius: 12px;
+                    font: bold 'Verdana';
+                    font-size: 19px;
+                }
+                QPushButton:hover{
+                    background-color: #201D2D;
+                }
+                QPushButton:pressed{
+                    background-color: #4F4F4F;
+                }
+            '''
+        )
         self.register_home.setGeometry(180, 420, 225, 60)
         self.register_home.show()
         
@@ -252,11 +361,13 @@ class Window(QMainWindow, FrameHome):
         self.setWindowTitle('TrazPRO')
         self.setWindowIcon(QIcon('../Images/home_page/icon.png'))
 
-        self.setStyleSheet('''
-            QMainWindow{
-                background-color: black;
-            }
-        ''')
+        self.setStyleSheet(
+            '''
+                QMainWindow{
+                    background-color: black;
+                }
+            '''
+        )
         
         self.first_window = QWidget(self)
         self.setCentralWidget(self.first_window)
