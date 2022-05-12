@@ -46,6 +46,7 @@ class RegisterFrame():
         self.layout.addWidget(self.register_frame)
         self.register_frame.show()
 
+
 class LoginFrame():
     def execute_login(self):
         self.closed_frames()
@@ -110,7 +111,7 @@ class LoginFrame():
                     border-radius: 6px;
                     color: #ffffff;
                     font: 'Verdana';
-                    font-size: 18px;
+                    font-size: 17px;
                 }
             '''
         )
@@ -133,10 +134,10 @@ class LoginFrame():
                     font-size: 18px;
                 }
                 QPushButton:hover{
-                    background-color: #201D2D;
+                    background-color: #8B4500;
                 }
                 QPushButton:pressed{
-                    background-color: #4F4F4F;
+                    background-color: #EE7600;
                 }
             '''
         )
@@ -237,7 +238,7 @@ class LoginFrame():
         self.password_login.show()
 
     def main_frame_buttons(self):
-        self.remenber_user = QCheckBox('Lembrar usuário', self.main_frame)
+        self.remenber_user = QCheckBox('Mostrar caracteres', self.main_frame)
         self.remenber_user.setMinimumSize(300, 40)
         self.remenber_user.setMaximumSize(300, 40)
         self.remenber_user.setChecked(False)
@@ -264,6 +265,12 @@ class LoginFrame():
                     border-radius: 25px;
                     font: bold 'Verdana';
                     font-size: 20px;
+                }
+                QPushButton:hover{
+                    background-color: #8B4500;
+                }
+                QPushButton:pressed{
+                    background-color: #EE7600;
                 }
             '''
         )
@@ -304,6 +311,12 @@ class LoginFrame():
                     border-radius: 25px;
                     font: bold 'Verdana';
                     font-size: 20px;
+                }
+                QPushButton:hover{
+                    background-color: #E6E6FA;
+                }
+                QPushButton:pressed{
+                    background-color: #C1CDCD;
                 }
             '''
         )
@@ -374,10 +387,10 @@ class FrameHome(LoginFrame, RegisterFrame):
                     font-size: 18px;
                 }
                 QPushButton:hover{
-                    background-color: 	#201D2D;
+                    background-color: #8B4500;
                 }
                 QPushButton:pressed{
-                    background-color: #4F4F4F;
+                    background-color: #EE7600;
                 }
             '''
         )
@@ -480,10 +493,10 @@ class FrameHome(LoginFrame, RegisterFrame):
                     font-size: 19px;
                 }
                 QPushButton:hover{
-                    background-color: #201D2D;
+                    background-color: #8B4500;
                 }
                 QPushButton:pressed{
-                    background-color: #4F4F4F;
+                    background-color: #EE7600;
                 }
             '''
         )
@@ -501,7 +514,6 @@ class Window(QMainWindow, FrameHome):
         self.setMinimumSize(1080, 720)
         self.setWindowTitle('TrazPRO')
         self.setWindowIcon(QIcon('../Images/home_page/icon.png'))
-
         self.setStyleSheet(
             '''
                 QMainWindow{
