@@ -164,7 +164,7 @@ class LoginFrame():
 
     def main_frame_labels(self):
         self.vertical_spacer_item = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-        self.grid_layout_login.addItem(self.vertical_spacer_item)
+        self.grid_layout_login.addItem(self.vertical_spacer_item, 0, 0)
 
         self.question = QLabel('COMO QUER ACESSAR?', self.main_frame)
         self.question.setMinimumSize(360, 50)
@@ -179,11 +179,11 @@ class LoginFrame():
                 }
             '''
         )
-        self.grid_layout_login.addWidget(self.question, 0, 0, Qt.AlignCenter)
+        self.grid_layout_login.addWidget(self.question, 1, 0, Qt.AlignCenter)
         self.question.show()
 
-        self.spacer_title = QSpacerItem(10, 50, QSizePolicy.Fixed, QSizePolicy.Minimum)
-        self.grid_layout_login.addItem(self.spacer_title)
+        self.spacer_title = QSpacerItem(10, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+        self.grid_layout_login.addItem(self.spacer_title, 2, 0)
 
     def main_frame_entrys(self):
         self.email_login = QLineEdit(self.main_frame)
@@ -207,7 +207,7 @@ class LoginFrame():
                 }
             '''
         )
-        self.grid_layout_login.addWidget(self.email_login, 1, 0, Qt.AlignCenter)
+        self.grid_layout_login.addWidget(self.email_login, 3, 0, Qt.AlignCenter)
         self.email_login.show()
 
         self.password_login = QLineEdit(self.main_frame)
@@ -233,7 +233,7 @@ class LoginFrame():
                 }
             '''
         )
-        self.grid_layout_login.addWidget(self.password_login, 3, 0, Qt.AlignCenter)
+        self.grid_layout_login.addWidget(self.password_login, 4, 0, Qt.AlignCenter)
         self.password_login.show()
 
     def main_frame_buttons(self):
@@ -250,7 +250,7 @@ class LoginFrame():
                 }
             '''
         )
-        self.grid_layout_login.addWidget(self.remenber_user, 4, 0, Qt.AlignCenter)
+        self.grid_layout_login.addWidget(self.remenber_user, 5, 0, Qt.AlignCenter)
         self.remenber_user.show()
 
         self.login = QPushButton('Fazer login', self.remenber_user)
@@ -267,7 +267,7 @@ class LoginFrame():
                 }
             '''
         )
-        self.grid_layout_login.addWidget(self.login, 5, 0, Qt.AlignCenter)
+        self.grid_layout_login.addWidget(self.login, 6, 0, Qt.AlignCenter)
         self.login.show()
 
         self.forgot_password = QPushButton('Esqueceu a senha?', self.main_frame)
@@ -285,11 +285,11 @@ class LoginFrame():
                 }
             '''
         )
-        self.grid_layout_login.addWidget(self.forgot_password, 6, 0, Qt.AlignCenter)
+        self.grid_layout_login.addWidget(self.forgot_password, 7, 0, Qt.AlignCenter)
         self.forgot_password.show()
 
-        self.spacer_button = QSpacerItem(10, 50, QSizePolicy.Fixed, QSizePolicy.Minimum)
-        self.grid_layout_login.addItem(self.spacer_button)
+        self.spacer_button = QSpacerItem(10, 30, QSizePolicy.Fixed, QSizePolicy.Minimum)
+        self.grid_layout_login.addItem(self.spacer_button, 8, 0)
 
 
         self.login_google = QPushButton('  Conecte-se com o Google', self.main_frame)
@@ -307,11 +307,12 @@ class LoginFrame():
                 }
             '''
         )
-        self.grid_layout_login.addWidget(self.login_google, 7, 0, Qt.AlignHCenter)
+        self.grid_layout_login.addWidget(self.login_google, 9, 0, Qt.AlignHCenter)
         self.login_google.show()
 
         self.vertical_spacer_item2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-        self.grid_layout_login.addItem(self.vertical_spacer_item2)
+        self.grid_layout_login.addItem(self.vertical_spacer_item2, 10, 0)
+
 
 class FrameHome(LoginFrame, RegisterFrame):
     def execute_home(self):
