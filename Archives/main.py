@@ -163,6 +163,9 @@ class LoginFrame():
         self.main_frame.setLayout(self.grid_layout_login)
 
     def main_frame_labels(self):
+        self.vertical_spacer_item = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.grid_layout_login.addItem(self.vertical_spacer_item)
+
         self.question = QLabel('COMO QUER ACESSAR?', self.main_frame)
         self.question.setMinimumSize(360, 50)
         self.question.setMaximumSize(360, 50)
@@ -178,6 +181,9 @@ class LoginFrame():
         )
         self.grid_layout_login.addWidget(self.question, 0, 0, Qt.AlignCenter)
         self.question.show()
+
+        self.spacer_title = QSpacerItem(10, 50, QSizePolicy.Fixed, QSizePolicy.Minimum)
+        self.grid_layout_login.addItem(self.spacer_title)
 
     def main_frame_entrys(self):
         self.email_login = QLineEdit(self.main_frame)
@@ -282,6 +288,10 @@ class LoginFrame():
         self.grid_layout_login.addWidget(self.forgot_password, 6, 0, Qt.AlignCenter)
         self.forgot_password.show()
 
+        self.spacer_button = QSpacerItem(10, 50, QSizePolicy.Fixed, QSizePolicy.Minimum)
+        self.grid_layout_login.addItem(self.spacer_button)
+
+
         self.login_google = QPushButton('  Conecte-se com o Google', self.main_frame)
         self.login_google.setMinimumSize(350, 50)
         self.login_google.setMaximumSize(350, 50)
@@ -299,6 +309,9 @@ class LoginFrame():
         )
         self.grid_layout_login.addWidget(self.login_google, 7, 0, Qt.AlignHCenter)
         self.login_google.show()
+
+        self.vertical_spacer_item2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.grid_layout_login.addItem(self.vertical_spacer_item2)
 
 class FrameHome(LoginFrame, RegisterFrame):
     def execute_home(self):
@@ -343,7 +356,7 @@ class FrameHome(LoginFrame, RegisterFrame):
         self.horizontal_layout.addWidget(self.logo_white)
         self.logo_white.show()
 
-        self.spacer_widgets = QSpacerItem(473, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.spacer_widgets = QSpacerItem(473, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
         self.horizontal_layout.addItem(self.spacer_widgets)
 
     def menu_buttons_home(self):
