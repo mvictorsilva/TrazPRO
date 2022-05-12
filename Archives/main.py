@@ -50,11 +50,13 @@ class LoginFrame():
     def execute_login(self):
         self.closed_frames()
         self.menu_frame_login()
-        self.menu_label_register()
-        self.menu_buttons_register()
+        self.menu_label_login()
+        self.menu_buttons_login()
 
         self.main_frame_login()
         self.main_frame_labels()
+        self.main_frame_entrys()
+        self.main_frame_buttons()
 
     def closed_frames(self):
         self.home_menu_frame.close()
@@ -62,7 +64,7 @@ class LoginFrame():
 
     def menu_frame_login(self):
         self.login_menu_frame = QFrame(self.first_window)
-        self.horizontal_layout_register = QHBoxLayout(self.login_menu_frame)
+        self.horizontal_layout_login = QHBoxLayout(self.login_menu_frame)
         self.login_menu_frame.setFrameShape(QFrame.Shape.NoFrame)
         self.login_menu_frame.setFrameShadow(QFrame.Shadow.Raised)
         self.login_menu_frame.setMinimumSize(1080, 50)
@@ -77,7 +79,7 @@ class LoginFrame():
         self.layout.addWidget(self.login_menu_frame)
         self.login_menu_frame.show()
 
-    def menu_label_register(self):
+    def menu_label_login(self):
         self.logo_black = QLabel(self.login_menu_frame)
         self.logo_black.setMinimumSize(200, 35)
         self.logo_black.setMaximumSize(200, 35)
@@ -91,13 +93,13 @@ class LoginFrame():
                 }
             '''
         )
-        self.horizontal_layout_register.addWidget(self.logo_black)
+        self.horizontal_layout_login.addWidget(self.logo_black)
         self.logo_black.show()
 
         self.spacer_widgets = QSpacerItem(473, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-        self.horizontal_layout_register.addItem(self.spacer_widgets)
+        self.horizontal_layout_login.addItem(self.spacer_widgets)
 
-    def menu_buttons_register(self):
+    def menu_buttons_login(self):
         self.information = QPushButton('Sobre', self.login_menu_frame)
         self.information.setMinimumSize(120, 30)
         self.information.setMaximumSize(120, 30)
@@ -112,11 +114,11 @@ class LoginFrame():
                 }
             '''
         )
-        self.horizontal_layout_register.addWidget(self.information)
+        self.horizontal_layout_login.addWidget(self.information)
         self.information.show()
     
         self.spacer_buttons = QSpacerItem(10, 30, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
-        self.horizontal_layout_register.addItem(self.spacer_buttons)
+        self.horizontal_layout_login.addItem(self.spacer_buttons)
 
         self.back_register = QPushButton('Cadastre-se', self.login_menu_frame)
         self.back_register.setMinimumSize(170, 30)
@@ -124,21 +126,21 @@ class LoginFrame():
         self.back_register.setStyleSheet(
             '''
                 QPushButton{
-                    background-color: #ffffff;
+                    background-color: #CD6600;
                     border-radius: 6px;
-                    color: #000000;
+                    color: #ffffff;
                     font: bold 'Verdana';
                     font-size: 18px;
                 }
                 QPushButton:hover{
-                    background-color: #E6E6FA;
+                    background-color: #201D2D;
                 }
                 QPushButton:pressed{
-                    background-color: #C1CDCD;
+                    background-color: #4F4F4F;
                 }
             '''
         )
-        self.horizontal_layout_register.addWidget(self.back_register)
+        self.horizontal_layout_login.addWidget(self.back_register)
         self.back_register.show()
 
 
@@ -157,21 +159,146 @@ class LoginFrame():
         self.layout.addWidget(self.main_frame)
         self.main_frame.show()
 
+        self.grid_layout_login = QGridLayout()
+        self.main_frame.setLayout(self.grid_layout_login)
+
     def main_frame_labels(self):
         self.question = QLabel('COMO QUER ACESSAR?', self.main_frame)
+        self.question.setMinimumSize(360, 50)
+        self.question.setMaximumSize(360, 50)
         self.question.setStyleSheet(
             '''
                 QLabel{
                     background: none;
                     color: #ffffff;
                     font: bold 'Helvetica';
-                    font-size: 25px;
+                    font-size: 30px;
                 }
             '''
         )
-        self.question.setGeometry(100, 50, 300, 50)
+        self.grid_layout_login.addWidget(self.question, 0, 0, Qt.AlignCenter)
         self.question.show()
 
+    def main_frame_entrys(self):
+        self.email_login = QLineEdit(self.main_frame)
+        self.email_login.setMinimumSize(350, 50)
+        self.email_login.setMaximumSize(350, 50)
+        self.email_login.setPlaceholderText('E-mail')
+        self.email_login.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.email_login.setMaxLength(100)
+        self.email_login.setStyleSheet(
+            '''
+                QLineEdit{
+                    background-color: rgba(0, 0, 0, 0);
+                    color: #CFCFCF;
+                    border: 2px solid #CD6600;
+                    border-radius: 25px;
+                    font: 'Helvetica';
+                    font-size: 19px;
+                }
+                QLineEdit:pressed{
+                    color: #ffffff;
+                }
+            '''
+        )
+        self.grid_layout_login.addWidget(self.email_login, 1, 0, Qt.AlignCenter)
+        self.email_login.show()
+
+        self.password_login = QLineEdit(self.main_frame)
+        self.password_login.setMinimumSize(350, 50)
+        self.password_login.setMaximumSize(350, 50)
+        self.password_login.setPlaceholderText('Senha')
+        self.password_login.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.password_login.setEchoMode(QLineEdit.EchoMode.Password)
+        self.password_login.setMaxLength(8)
+        self.password_login.setStyleSheet(
+            '''
+                QLineEdit{
+                    background-color: rgba(0, 0, 0, 0);
+                    color: #CFCFCF;
+                    border: 2px solid #CD6600;
+                    border-radius: 25px;
+                    font: 'Helvetica';
+                    font-size: 19px;
+                }
+                QLineEdit:pressed{
+                    color: #ffffff;
+
+                }
+            '''
+        )
+        self.grid_layout_login.addWidget(self.password_login, 3, 0, Qt.AlignCenter)
+        self.password_login.show()
+
+    def main_frame_buttons(self):
+        self.remenber_user = QCheckBox('Lembrar usuário', self.main_frame)
+        self.remenber_user.setMinimumSize(300, 40)
+        self.remenber_user.setMaximumSize(300, 40)
+        self.remenber_user.setChecked(False)
+        self.remenber_user.setStyleSheet(
+            '''
+                QCheckBox{
+                    color: #ffffff;
+                    font: Helvetica;
+                    font-size: 15px;
+                }
+            '''
+        )
+        self.grid_layout_login.addWidget(self.remenber_user, 4, 0, Qt.AlignCenter)
+        self.remenber_user.show()
+
+        self.login = QPushButton('Fazer login', self.remenber_user)
+        self.login.setMinimumSize(350, 50)
+        self.login.setMaximumSize(350, 50)
+        self.login.setStyleSheet(
+            '''
+                QPushButton{
+                    background-color: #CD6600;
+                    color: #ffffff;
+                    border-radius: 25px;
+                    font: bold 'Verdana';
+                    font-size: 20px;
+                }
+            '''
+        )
+        self.grid_layout_login.addWidget(self.login, 5, 0, Qt.AlignCenter)
+        self.login.show()
+
+        self.forgot_password = QPushButton('Esqueceu a senha?', self.main_frame)
+        self.forgot_password.setMinimumSize(300, 40)
+        self.forgot_password.setMaximumSize(300, 40)
+        self.forgot_password.setStyleSheet(
+            '''
+                QPushButton{
+                    text-align: right;
+                    background: none;
+                    color: #ffffff;
+                    border-radius: 2px;
+                    font: Helvetica;
+                    font-size: 17px;
+                }
+            '''
+        )
+        self.grid_layout_login.addWidget(self.forgot_password, 6, 0, Qt.AlignCenter)
+        self.forgot_password.show()
+
+        self.login_google = QPushButton('  Conecte-se com o Google', self.main_frame)
+        self.login_google.setMinimumSize(350, 50)
+        self.login_google.setMaximumSize(350, 50)
+        self.login_google.setIcon(QIcon('../Images/login_page/google.png'))
+        self.login_google.setStyleSheet(
+            '''
+                QPushButton{
+                    background-color: #ffffff;
+                    color: #000000;
+                    border-radius: 25px;
+                    font: bold 'Verdana';
+                    font-size: 20px;
+                }
+            '''
+        )
+        self.grid_layout_login.addWidget(self.login_google, 7, 0, Qt.AlignHCenter)
+        self.login_google.show()
 
 class FrameHome(LoginFrame, RegisterFrame):
     def execute_home(self):
@@ -226,7 +353,7 @@ class FrameHome(LoginFrame, RegisterFrame):
         self.register.setStyleSheet(
             '''
                 QPushButton{
-                    background-color: #262D3D;
+                    background-color: #CD6600;
                     color: #ffffff;
                     border-radius: 6px;
                     font: bold 'Verdana';
@@ -332,7 +459,7 @@ class FrameHome(LoginFrame, RegisterFrame):
         self.register_home.setStyleSheet(
             '''
                 QPushButton{
-                    background-color: #262D3D;
+                    background-color: #CD6600;
                     color: #ffffff;
                     border-radius: 12px;
                     font: bold 'Verdana';
