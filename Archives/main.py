@@ -16,6 +16,11 @@ class RegisterFrame():
         self.frame_register_entrys()
         self.frame_register_buttons()
 
+    def login_register(self):
+        self.login_menu_frame.close()
+        self.main_frame.close()
+        self.execute_register()
+
     def closed_frames(self):
         self.home_menu_frame.close()
         self.body_frame.close()
@@ -99,6 +104,7 @@ class RegisterFrame():
             '''
         )
         self.horizontal_layout_register.addWidget(self.back_login)
+        self.back_login.clicked.connect(self.register_login)
         self.back_login.show()
 
 
@@ -317,6 +323,11 @@ class LoginFrame():
         self.main_frame_entrys()
         self.main_frame_buttons()
 
+    def register_login(self):
+        self.register_menu_frame.close()
+        self.register_frame.close()
+        self.execute_login()
+
     def closed_frames(self):
         self.home_menu_frame.close()
         self.body_frame.close()
@@ -400,6 +411,7 @@ class LoginFrame():
             '''
         )
         self.horizontal_layout_login.addWidget(self.back_register)
+        self.back_register.clicked.connect(self.login_register)
         self.back_register.show()
 
 
