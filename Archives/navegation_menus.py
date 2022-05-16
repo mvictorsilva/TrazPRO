@@ -2,8 +2,10 @@ from PySide2.QtGui import *
 from PySide2.QtCore import *
 from PySide2.QtWidgets import *
 
+from main_frames import Quotation, Deadline, Order, Localization, User, Notification, Settings
 
-class FramesNavegationBar():
+
+class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Notification, Settings):
     def execute_navegation_bar(self):
         self.home_menu_frame.deleteLater()
         self.body_frame.deleteLater()
@@ -11,7 +13,7 @@ class FramesNavegationBar():
         self.label_navegation_menu()
         self.buttons_navegation_menu()
 
-        self.frames_navegation_menu()
+        self.sub_frames_navegation_menu()
         self.buttons_frames_navegation()
 
         self.main_frame()
@@ -111,7 +113,7 @@ class FramesNavegationBar():
         self.spacer_buttons = QSpacerItem(50, 20, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
         self.layout_menu_navegation.addItem(self.spacer_buttons)
 
-    def frames_navegation_menu(self):
+    def sub_frames_navegation_menu(self):
         self.frame_shipping = QFrame(self.first_window)
         self.layout_shipping = QHBoxLayout(self.frame_shipping)
         self.frame_shipping.setFrameShape(QFrame.Shape.NoFrame)
@@ -197,6 +199,7 @@ class FramesNavegationBar():
         self.quotation.setIconSize(QSize(50, 50))
         self.quotation.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         self.quotation.setStyleSheet(self.button_style)
+        self.quotation.clicked.connect(self.frame_quotation)
         self.layout_shipping.addWidget(self.quotation)
         self.quotation.show()
 
@@ -208,10 +211,11 @@ class FramesNavegationBar():
         self.deadline.setIconSize(QSize(50, 50))
         self.deadline.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         self.deadline.setStyleSheet(self.button_style)
+        self.deadline.clicked.connect(self.frame_deadline)
         self.layout_shipping.addWidget(self.deadline)
         self.deadline.show()
 
-        self.order = QToolButton(self.frame_shipping)
+        self.order = QToolButton(self.frame_packeges)
         self.order.setText('Pedidos salvos')
         self.order.setMinimumSize(120, 80)
         self.order.setMaximumSize(120, 80)
@@ -219,10 +223,11 @@ class FramesNavegationBar():
         self.order.setIconSize(QSize(50, 50))
         self.order.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         self.order.setStyleSheet(self.button_style)
+        self.order.clicked.connect(self.frame_order)
         self.layout_packeges.addWidget(self.order)
         self.order.show()
 
-        self.localization = QToolButton(self.frame_shipping)
+        self.localization = QToolButton(self.frame_screening)
         self.localization.setText('Rastrear encomenda')
         self.localization.setMinimumSize(170, 80)
         self.localization.setMaximumSize(170, 80)
@@ -230,10 +235,11 @@ class FramesNavegationBar():
         self.localization.setIconSize(QSize(50, 50))
         self.localization.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         self.localization.setStyleSheet(self.button_style)
+        self.localization.clicked.connect(self.frame_localization)
         self.layout_screening.addWidget(self.localization)
         self.localization.show()
 
-        self.user = QToolButton(self.frame_shipping)
+        self.user = QToolButton(self.frame_options)
         self.user.setText('Conta')
         self.user.setMinimumSize(100, 80)
         self.user.setMaximumSize(100, 80)
@@ -241,10 +247,11 @@ class FramesNavegationBar():
         self.user.setIconSize(QSize(50, 50))
         self.user.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         self.user.setStyleSheet(self.button_style)
+        self.user.clicked.connect(self.frame_user)
         self.layout_options.addWidget(self.user)
         self.user.show()
 
-        self.notification = QToolButton(self.frame_shipping)
+        self.notification = QToolButton(self.frame_options)
         self.notification.setText('Notificações')
         self.notification.setMinimumSize(100, 80)
         self.notification.setMaximumSize(100, 80)
@@ -252,10 +259,11 @@ class FramesNavegationBar():
         self.notification.setIconSize(QSize(50, 50))
         self.notification.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         self.notification.setStyleSheet(self.button_style)
+        self.notification.clicked.connect(self.frame_notification)
         self.layout_options.addWidget(self.notification)
         self.notification.show()
 
-        self.settings = QToolButton(self.frame_shipping)
+        self.settings = QToolButton(self.frame_options)
         self.settings.setText('Sistema')
         self.settings.setMinimumSize(100, 80)
         self.settings.setMaximumSize(100, 80)
@@ -263,6 +271,7 @@ class FramesNavegationBar():
         self.settings.setIconSize(QSize(50, 50))
         self.settings.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         self.settings.setStyleSheet(self.button_style)
+        self.settings.clicked.connect(self.frame_settings)
         self.layout_options.addWidget(self.settings)
         self.settings.show()
 
