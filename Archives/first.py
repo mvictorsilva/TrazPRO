@@ -2,6 +2,7 @@ import sys
 from PySide2.QtGui import *
 from PySide2.QtCore import *
 from PySide2.QtWidgets import *
+from requests import delete
 
 class FrameHome():
     def execute_home(self):
@@ -176,20 +177,7 @@ class FrameHome():
             '''
         )
         self.register_home.setGeometry(180, 420, 225, 60)
-        self.register_home.installEventFilter(self)
         self.register_home.show()
-
-    def eventFilter(self, object, event):
-        print('jaco')
-        if event.type() == QEvent.MouseButtonPress:
-            print("You pressed the button")
-            return True
-
-        elif event.type() == QEvent.HoverMove:
-            print("C'mon! CLick-meeee!!!")
-            return True
-
-        return False
         
         
 
@@ -217,7 +205,7 @@ class Window(QMainWindow, FrameHome):
         self.first_window.setLayout(self.layout)
         self.layout.setContentsMargins(0, 0, 0, 0)
         self.layout.setSpacing(0)
-
+        
 
 if __name__ == '__main__':
     mainwindow = QApplication(sys.argv)
