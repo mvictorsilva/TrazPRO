@@ -3,8 +3,11 @@ from PySide2.QtGui import *
 from PySide2.QtCore import *
 from PySide2.QtWidgets import *
 
+
 class FramesNavegationBar():
     def execute_navegation_bar(self):
+        self.home_menu_frame.deleteLater()
+        self.body_frame.deleteLater()
         self.navegation_menu()
         self.label_navegation_menu()
         self.buttons_navegation_menu()
@@ -285,60 +288,3 @@ class FramesNavegationBar():
 
         self.grid_layout_login = QGridLayout()
         self.frame.setLayout(self.grid_layout_login)
-
-
-class Window(QMainWindow, FramesNavegationBar):
-    def __init__(self):
-        super(Window, self).__init__()
-        self.definitions_window()
-        self.execute_navegation_bar()
-
-    def eventFilter(self, source, event):
-        if source == self.shipping_menu and event.type() == QEvent.Type.HoverMove:
-            self.frame_packeges.hide()
-            self.frame_screening.hide()
-            self.frame_options.hide()
-            self.frame_shipping.show()
-        elif source == self.packages_menu and event.type() == QEvent.Type.HoverMove:
-            self.frame_packeges.hide()
-            self.frame_screening.hide()
-            self.frame_shipping.hide()
-            self.frame_packeges.show()
-        elif source == self.screening_menu and event.type() == QEvent.Type.HoverMove:
-            self.frame_shipping.hide()
-            self.frame_packeges.hide()
-            self.frame_options.hide()
-            self.frame_screening.show()
-        elif source == self.options_menu and event.type() == QEvent.Type.HoverMove:
-            self.frame_shipping.hide()
-            self.frame_packeges.hide()
-            self.frame_screening.hide()
-            self.frame_options.show()
-
-        return super().eventFilter(source, event)
-
-    def definitions_window(self):
-        self.resize(1080, 720)
-        self.setWindowTitle('TrazPRO')
-        self.setWindowIcon(QIcon('../Images/home_page/icon.png'))
-        self.setStyleSheet(
-            '''
-                QMainWindow{
-                    background-color: black;
-                }
-            '''
-        )
-        
-        self.first_window = QWidget(self)
-        self.setCentralWidget(self.first_window)
-        self.layout = QGridLayout()
-        self.first_window.setLayout(self.layout)
-        self.layout.setContentsMargins(0, 0, 0, 0)
-        self.layout.setSpacing(0)
-        
-
-if __name__ == '__main__':
-    mainwindow = QApplication(sys.argv)
-    window = Window()
-    window.show()
-    sys.exit(mainwindow.exec_())
