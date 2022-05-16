@@ -1,194 +1,166 @@
-import sys
-from PySide2.QtGui import *
-from PySide2.QtCore import *
-from PySide2.QtWidgets import *
-from requests import delete
 
-class FrameHome():
-    def execute_home(self):
-        self.menu_frame_home()
-        self.menu_label_home()
-        self.menu_buttons_home()
-        self.informations_frame()
-        self.information_labels_home()
-        self.information_buttons_home()
 
-    def menu_frame_home(self):
-        self.home_menu_frame = QFrame(self.first_window)
-        self.horizontal_layout = QHBoxLayout(self.home_menu_frame)
-        self.home_menu_frame.setFrameShape(QFrame.Shape.NoFrame)
-        self.home_menu_frame.setFrameShadow(QFrame.Shadow.Raised)
-        self.home_menu_frame.setMinimumSize(1080, 50)
-        self.home_menu_frame.setMaximumSize(1920, 50)
-        self.home_menu_frame.setStyleSheet(
-            '''
-                QFrame{
-                    background-color: #000000;
-                }
-            '''
-        )
-        self.layout.addWidget(self.home_menu_frame)
-        self.home_menu_frame.show()
+class FramesNavegationBar():
+    def execute_navegation_bar(self):
+        self.navegation_menu()
+        self.label_navegation_menu()
+        self.buttons_navegation_menu()
 
-    def menu_label_home(self):
-        self.logo_white = QLabel(self.home_menu_frame)
-        self.logo_white.setMinimumSize(200, 35)
-        self.logo_white.setMaximumSize(200, 35)
-        self.logo_white.setStyleSheet(
+        self.main_frame()
+
+    def navegation_menu(self):
+        self.menu_bar = QFrame(self.first_window)
+        self.layout_menu_navegation = QHBoxLayout(self.menu_bar)
+        self.menu_bar.setFrameShape(QFrame.Shape.NoFrame)
+        self.menu_bar.setFrameShadow(QFrame.Shadow.Raised)
+        self.menu_bar.setMinimumHeight(50)
+        self.menu_bar.setMaximumHeight(50)
+        self.menu_bar.setStyleSheet('''
+            QFrame{
+                background-color: #CD6600;
+            }
+        ''')
+        self.layout.addWidget(self.menu_bar, 0, 0)
+        self.menu_bar.show()
+    
+    def label_navegation_menu(self):
+        self.logo_black = QLabel(self.menu_bar)
+        self.logo_black.setMinimumSize(150, 35)
+        self.logo_black.setMaximumSize(150, 35)
+        self.logo_black.setStyleSheet(
             '''
                 QLabel{
-                    background-color: none;
-                    background-image: url(../Images/home_page/logo_white.png);
+                    background: none;
+                    background-image: url(../Images/navegation_bar/logo_black.png);
                     background-repeat: no-repeat;
                     background-position: center;
-                }    
-            '''
-        )
-        self.horizontal_layout.addWidget(self.logo_white)
-        self.logo_white.show()
-
-        self.spacer_widgets = QSpacerItem(473, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-        self.horizontal_layout.addItem(self.spacer_widgets)
-
-    def menu_buttons_home(self):
-        self.register = QPushButton('Cadastre-se', self.home_menu_frame)
-        self.register.setMinimumSize(170, 30)
-        self.register.setMaximumSize(170, 30)
-        self.register.setStyleSheet(
-            '''
-                QPushButton{
-                    background-color: #CD6600;
-                    color: #ffffff;
-                    border-radius: 6px;
-                    font: bold 'Verdana';
-                    font-size: 18px;
-                }
-                QPushButton:hover{
-                    background-color: #8B4500;
-                }
-                QPushButton:pressed{
-                    background-color: #EE7600;
                 }
             '''
         )
-        self.horizontal_layout.addWidget(self.register)
-        self.register.show()
+        self.layout_menu_navegation.addWidget(self.logo_black)
+        self.logo_black.show()
 
-        self.spacer_buttons = QSpacerItem(10, 30, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
-        self.horizontal_layout.addItem(self.spacer_buttons)
+        self.spacer_widgets = QSpacerItem(350, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.layout_menu_navegation.addItem(self.spacer_widgets)
 
-        self.login = QPushButton('Entrar', self.home_menu_frame)
-        self.login.setMinimumSize(150, 30)
-        self.login.setMaximumSize(150, 30)
-        self.login.setStyleSheet(
-            '''
-                QPushButton{
-                    background-color: #ffffff;
-                    color: #000000;
-                    border-radius: 6px;
-                    font: bold 'Verdana';
-                    font-size: 18px;
-                }
-                QPushButton:hover{
-                    background-color: #E6E6FA;
-                }
-                QPushButton:pressed{
-                    background-color: #C1CDCD;
-                }
-            '''
-        )
-        self.horizontal_layout.addWidget(self.login)
-        self.login.show()
+    def buttons_navegation_menu(self):
 
+        self.futur_button_bar = '''
+            QPushButton{
+                background-color: none;
+                border-radius: 15px;
+                color: #ffffff;
+                font: bold 'Helvetica';
+                font-size: 17px;
+            }
+            QPushButton:hover{
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+        '''
 
-    def informations_frame(self):
-        self.body_frame = QFrame(self.first_window)
-        self.body_frame.setFrameShape(QFrame.Shape.NoFrame)
-        self.body_frame.setFrameShadow(QFrame.Shadow.Raised)
-        self.body_frame.setStyleSheet(
+        self.style_button_bar = '''
+            QPushButton{
+                background-color: none;
+                border-radius: 15px;
+                color: #ffffff;
+                font: bold 'Helvetica';
+                font-size: 17px;
+            }
+            QPushButton:hover{
+                background-color: #ffffff;
+                color: #CD6600
+            }
+        '''
+
+        self.shipping_menu = QPushButton('Envio', self.menu_bar)
+        self.shipping_menu.setMinimumSize(100, 30)
+        self.shipping_menu.setMaximumSize(100, 30)
+        self.shipping_menu.installEventFilter(self)
+        self.shipping_menu.setStyleSheet(self.style_button_bar)
+        self.layout_menu_navegation.addWidget(self.shipping_menu)
+        self.shipping_menu.show()
+
+        self.packages_menu = QPushButton('Meus pacotes', self.menu_bar)
+        self.packages_menu.setMinimumSize(170, 30)
+        self.packages_menu.setMaximumSize(170, 30)
+        self.packages_menu.installEventFilter(self)
+        self.packages_menu.setStyleSheet(self.style_button_bar)
+        self.layout_menu_navegation.addWidget(self.packages_menu)
+        self.packages_menu.show()
+
+        self.screening_menu = QPushButton('Rastrar', self.menu_bar)
+        self.screening_menu.setMinimumSize(100, 30)
+        self.screening_menu.setMaximumSize(100, 30)
+        self.screening_menu.installEventFilter(self)
+        self.screening_menu.setStyleSheet(self.style_button_bar)
+        self.layout_menu_navegation.addWidget(self.screening_menu)
+        self.screening_menu.show()
+
+        self.options_menu = QPushButton('Opções', self.menu_bar)
+        self.options_menu.setMinimumSize(100 ,30)
+        self.options_menu.setMaximumSize(100, 30)
+        self.options_menu.installEventFilter(self)
+        self.options_menu.setStyleSheet(self.style_button_bar)
+        self.layout_menu_navegation.addWidget(self.options_menu)
+        self.options_menu.show()
+
+        self.spacer_buttons = QSpacerItem(50, 20, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
+        self.layout_menu_navegation.addItem(self.spacer_buttons)
+
+        # self.shipping_frame()
+        # self.frame_shipping.hide()
+
+    def eventFilter(self, source, event):
+        if source == self.shipping_menu and event.type() == QEvent.Type.HoverMove:
+            print('ok')
+        elif source == self.packages_menu and event.type() == QEvent.Type.HoverMove:
+            print('ok2')
+        elif source == self.screening_menu and event.type() == QEvent.Type.HoverMove:
+            print('ok3')
+        elif source == self.options_menu and event.type() == QEvent.Type.HoverMove:
+            print('ok4')
+
+        return super().eventFilter(source, event)
+
+    def shipping_frame(self):
+        self.frame_shipping = QFrame(self.first_window)
+        self.frame_shipping.setFrameShape(QFrame.Shape.NoFrame)
+        self.frame_shipping.setFrameShadow(QFrame.Shadow.Raised)
+        self.frame_shipping.setStyleSheet(
             '''
                 QFrame{
-                    background-image: url(../Images/home_page/background_frame_one.png);
-                    background-position: center center;
+                    background-color: #808080;
                 }
             '''
         )
-        self.layout.addWidget(self.body_frame)
-        self.body_frame.show()
+        self.layout.addWidget(self.frame_shipping, 1, 0)
 
-        self.line = QFrame(self.body_frame)
-        self.line.setGeometry(100, 250, 150, 2)
-        self.line.setMinimumSize(150, 2)
-        self.line.setMaximumSize(150, 2)
-        self.line.setStyleSheet('background: none;')
-        self.line.setLineWidth(1)
-        self.line.setFrameShape(QFrame.Shape.HLine)
-        self.line.setFrameShadow(QFrame.Shadow.Sunken)
-        self.line.show()
-
-    def information_labels_home(self):
-        self.title_text = QLabel('ECONOMIZE TEMPO E DINHEIRO\nCOM GESTÃO DE FRETES', self.body_frame)
-        self.title_text.setStyleSheet(
+    def main_frame(self):
+        self.frame = QFrame(self.first_window)
+        self.frame.setFrameShape(QFrame.Shape.NoFrame)
+        self.frame.setFrameShadow(QFrame.Shadow.Raised)
+        self.frame.setStyleSheet(
             '''
-                QLabel{
-                    background: none;
-                    color: #ffffff;
-                    font: bold 'Helvetica';
-                    font-size: 35px;
+                QFrame{
+                    background-color: #ffffff;
                 }
             '''
         )
-        self.title_text.setGeometry(100, 140, 700, 100)
-        self.title_text.show()
+        self.layout.addWidget(self.frame, 2, 0)
+        self.frame.show()
 
-        self.apresentation_text = QLabel( 
-            'Faça a cotação das suas encomendas para\nconferir todas as taxas e\nprazos de entrega',
-            self.body_frame)
-        self.apresentation_text.setStyleSheet(
-            '''
-                QLabel{
-                    background: none;
-                    color: #ffffff;
-                    font: 'Helvetica';
-                    font-size: 25px;
-                }
-            '''
-        )
-        self.apresentation_text.setGeometry(100, 270, 500, 90)
-        self.apresentation_text.show()
+        self.grid_layout_login = QGridLayout()
+        self.frame.setLayout(self.grid_layout_login)
 
-    def information_buttons_home(self):
-        self.register_home = QPushButton('SAIBA MAIS', self.body_frame)
-        self.register_home.setStyleSheet(
-            '''
-                QPushButton{
-                    background-color: #CD6600;
-                    color: #ffffff;
-                    border-radius: 12px;
-                    font: bold 'Verdana';
-                    font-size: 19px;
-                }
-                QPushButton:hover{
-                    background-color: #8B4500;
-                }
-                QPushButton:pressed{
-                    background-color: #EE7600;
-                }
-            '''
-        )
-        self.register_home.setGeometry(180, 420, 225, 60)
-        self.register_home.show()
-        
-        
 
-class Window(QMainWindow, FrameHome):
+class Window(QMainWindow, FramesNavegationBar):
     def __init__(self):
         super(Window, self).__init__()
         self.definitions_window()
-        self.execute_home()
+
 
     def definitions_window(self):
-        self.setMinimumSize(1080, 720)
+        self.resize(1080, 720)
         self.setWindowTitle('TrazPRO')
         self.setWindowIcon(QIcon('../Images/home_page/icon.png'))
         self.setStyleSheet(
@@ -207,8 +179,8 @@ class Window(QMainWindow, FrameHome):
         self.layout.setSpacing(0)
         
 
-if __name__ == '__main__':
-    mainwindow = QApplication(sys.argv)
-    window = Window()
-    window.show()
-    sys.exit(mainwindow.exec_())
+# if __name__ == '__main__':
+#     mainwindow = QApplication(sys.argv)
+#     window = Window()
+#     window.show()
+#     sys.exit(mainwindow.exec_())

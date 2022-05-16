@@ -114,11 +114,6 @@ class MyApp(QWidget):
 
         return super().eventFilter(source, event)
 
-    def hover_teste(self, evente, source):
-        self.frame_2.hide()
-        self.frame_4.hide()
-        self.frame_5.hide()
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv) 
