@@ -1,4 +1,3 @@
-import sys
 from PySide2.QtGui import *
 from PySide2.QtCore import *
 from PySide2.QtWidgets import *
@@ -87,7 +86,6 @@ class FramesNavegationBar():
         self.shipping_menu.installEventFilter(self)
         self.shipping_menu.setStyleSheet(self.style_button_bar)
         self.layout_menu_navegation.addWidget(self.shipping_menu)
-        self.shipping_menu.show()
 
         self.packages_menu = QPushButton('Meus pacotes', self.menu_bar)
         self.packages_menu.setMinimumSize(170, 30)
@@ -95,7 +93,6 @@ class FramesNavegationBar():
         self.packages_menu.installEventFilter(self)
         self.packages_menu.setStyleSheet(self.style_button_bar)
         self.layout_menu_navegation.addWidget(self.packages_menu)
-        self.packages_menu.show()
 
         self.screening_menu = QPushButton('Rastrar', self.menu_bar)
         self.screening_menu.setMinimumSize(100, 30)
@@ -103,7 +100,6 @@ class FramesNavegationBar():
         self.screening_menu.installEventFilter(self)
         self.screening_menu.setStyleSheet(self.style_button_bar)
         self.layout_menu_navegation.addWidget(self.screening_menu)
-        self.screening_menu.show()
 
         self.options_menu = QPushButton('Opções', self.menu_bar)
         self.options_menu.setMinimumSize(100 ,30)
@@ -111,7 +107,6 @@ class FramesNavegationBar():
         self.options_menu.installEventFilter(self)
         self.options_menu.setStyleSheet(self.style_button_bar)
         self.layout_menu_navegation.addWidget(self.options_menu)
-        self.options_menu.show()
 
         self.spacer_buttons = QSpacerItem(50, 20, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
         self.layout_menu_navegation.addItem(self.spacer_buttons)
