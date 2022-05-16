@@ -1,10 +1,16 @@
-
+import sys
+from PySide2.QtGui import *
+from PySide2.QtCore import *
+from PySide2.QtWidgets import *
 
 class FramesNavegationBar():
     def execute_navegation_bar(self):
         self.navegation_menu()
         self.label_navegation_menu()
         self.buttons_navegation_menu()
+
+        self.frames_navegation_menu()
+        self.buttons_frames_navegation()
 
         self.main_frame()
 
@@ -107,33 +113,161 @@ class FramesNavegationBar():
         self.spacer_buttons = QSpacerItem(50, 20, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
         self.layout_menu_navegation.addItem(self.spacer_buttons)
 
-        # self.shipping_frame()
-        # self.frame_shipping.hide()
-
-    def eventFilter(self, source, event):
-        if source == self.shipping_menu and event.type() == QEvent.Type.HoverMove:
-            print('ok')
-        elif source == self.packages_menu and event.type() == QEvent.Type.HoverMove:
-            print('ok2')
-        elif source == self.screening_menu and event.type() == QEvent.Type.HoverMove:
-            print('ok3')
-        elif source == self.options_menu and event.type() == QEvent.Type.HoverMove:
-            print('ok4')
-
-        return super().eventFilter(source, event)
-
-    def shipping_frame(self):
+    def frames_navegation_menu(self):
         self.frame_shipping = QFrame(self.first_window)
+        self.layout_shipping = QHBoxLayout(self.frame_shipping)
         self.frame_shipping.setFrameShape(QFrame.Shape.NoFrame)
         self.frame_shipping.setFrameShadow(QFrame.Shadow.Raised)
+        self.frame_shipping.setMinimumHeight(100)
+        self.frame_shipping.setMaximumHeight(100)
         self.frame_shipping.setStyleSheet(
             '''
                 QFrame{
-                    background-color: #808080;
+                    background-color: 	#F7F7F7;
                 }
             '''
         )
         self.layout.addWidget(self.frame_shipping, 1, 0)
+        self.frame_shipping.hide()
+
+        self.frame_packeges = QFrame(self.first_window)
+        self.layout_packeges = QHBoxLayout(self.frame_packeges)
+        self.frame_packeges.setFrameShape(QFrame.Shape.NoFrame)
+        self.frame_packeges.setFrameShadow(QFrame.Shadow.Raised)
+        self.frame_packeges.setMinimumHeight(100)
+        self.frame_packeges.setMaximumHeight(100)
+        self.frame_packeges.setStyleSheet(
+            '''
+                QFrame{
+                    background-color: #F7F7F7;
+                }
+            '''
+        )
+        self.layout.addWidget(self.frame_packeges, 1, 0)
+        self.frame_packeges.hide()
+
+        self.frame_screening = QFrame(self.first_window)
+        self.layout_screening = QHBoxLayout(self.frame_screening)
+        self.frame_screening.setFrameShape(QFrame.Shape.NoFrame)
+        self.frame_screening.setFrameShadow(QFrame.Shadow.Raised)
+        self.frame_screening.setMinimumHeight(100)
+        self.frame_screening.setMaximumHeight(100)
+        self.frame_screening.setStyleSheet(
+            '''
+                QFrame{
+                    background-color: #F7F7F7;
+                }
+            '''
+        )
+        self.layout.addWidget(self.frame_screening, 1, 0)
+        self.frame_screening.hide()
+
+        self.frame_options = QFrame(self.first_window)
+        self.layout_options = QHBoxLayout(self.frame_options)
+        self.frame_options.setFrameShape(QFrame.Shape.NoFrame)
+        self.frame_options.setFrameShadow(QFrame.Shadow.Raised)
+        self.frame_options.setMinimumHeight(100)
+        self.frame_options.setMaximumHeight(100)
+        self.frame_options.setStyleSheet(
+            '''
+                QFrame{
+                    background-color: #F7F7F7;
+                }
+            '''
+        )
+        self.layout.addWidget(self.frame_options, 1, 0)
+        self.frame_options.hide()
+
+    def buttons_frames_navegation(self):
+        self.button_style = '''
+            QToolButton{
+                background-color: none;
+                border-radius: 4px;
+                font: Helvetica;
+                font-size: 17px;
+            }
+            QToolButton:hover{
+                background-color: rgba(255, 255, 255, 0.5);
+            }
+        '''
+
+        self.quotation = QToolButton(self.frame_shipping)
+        self.quotation.setText('Cotação')
+        self.quotation.setMinimumSize(100, 80)
+        self.quotation.setMaximumSize(100, 80)
+        self.quotation.setIcon(QIcon('../Images/navegation_frame/quotation.png'))
+        self.quotation.setIconSize(QSize(50, 50))
+        self.quotation.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
+        self.quotation.setStyleSheet(self.button_style)
+        self.layout_shipping.addWidget(self.quotation)
+        self.quotation.show()
+
+        self.deadline = QToolButton(self.frame_shipping)
+        self.deadline.setText('Prazos de Entrega')
+        self.deadline.setMinimumSize(150, 80)
+        self.deadline.setMaximumSize(150, 80)
+        self.deadline.setIcon(QIcon('../Images/navegation_frame/deadline.png'))
+        self.deadline.setIconSize(QSize(50, 50))
+        self.deadline.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
+        self.deadline.setStyleSheet(self.button_style)
+        self.layout_shipping.addWidget(self.deadline)
+        self.deadline.show()
+
+        self.order = QToolButton(self.frame_shipping)
+        self.order.setText('Pedidos salvos')
+        self.order.setMinimumSize(120, 80)
+        self.order.setMaximumSize(120, 80)
+        self.order.setIcon(QIcon('../Images/navegation_frame/order.png'))
+        self.order.setIconSize(QSize(50, 50))
+        self.order.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
+        self.order.setStyleSheet(self.button_style)
+        self.layout_packeges.addWidget(self.order)
+        self.order.show()
+
+        self.localization = QToolButton(self.frame_shipping)
+        self.localization.setText('Rastrear encomenda')
+        self.localization.setMinimumSize(170, 80)
+        self.localization.setMaximumSize(170, 80)
+        self.localization.setIcon(QIcon('../Images/navegation_frame/localization.png'))
+        self.localization.setIconSize(QSize(50, 50))
+        self.localization.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
+        self.localization.setStyleSheet(self.button_style)
+        self.layout_screening.addWidget(self.localization)
+        self.localization.show()
+
+        self.user = QToolButton(self.frame_shipping)
+        self.user.setText('Conta')
+        self.user.setMinimumSize(100, 80)
+        self.user.setMaximumSize(100, 80)
+        self.user.setIcon(QIcon('../Images/navegation_frame/user.png'))
+        self.user.setIconSize(QSize(50, 50))
+        self.user.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
+        self.user.setStyleSheet(self.button_style)
+        self.layout_options.addWidget(self.user)
+        self.user.show()
+
+        self.notification = QToolButton(self.frame_shipping)
+        self.notification.setText('Notificações')
+        self.notification.setMinimumSize(100, 80)
+        self.notification.setMaximumSize(100, 80)
+        self.notification.setIcon(QIcon('../Images/navegation_frame/notification.png'))
+        self.notification.setIconSize(QSize(50, 50))
+        self.notification.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
+        self.notification.setStyleSheet(self.button_style)
+        self.layout_options.addWidget(self.notification)
+        self.notification.show()
+
+        self.settings = QToolButton(self.frame_shipping)
+        self.settings.setText('Sistema')
+        self.settings.setMinimumSize(100, 80)
+        self.settings.setMaximumSize(100, 80)
+        self.settings.setIcon(QIcon('../Images/navegation_frame/settings.png'))
+        self.settings.setIconSize(QSize(50, 50))
+        self.settings.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
+        self.settings.setStyleSheet(self.button_style)
+        self.layout_options.addWidget(self.settings)
+        self.settings.show()
+
 
     def main_frame(self):
         self.frame = QFrame(self.first_window)
@@ -157,7 +291,31 @@ class Window(QMainWindow, FramesNavegationBar):
     def __init__(self):
         super(Window, self).__init__()
         self.definitions_window()
+        self.execute_navegation_bar()
 
+    def eventFilter(self, source, event):
+        if source == self.shipping_menu and event.type() == QEvent.Type.HoverMove:
+            self.frame_packeges.hide()
+            self.frame_screening.hide()
+            self.frame_options.hide()
+            self.frame_shipping.show()
+        elif source == self.packages_menu and event.type() == QEvent.Type.HoverMove:
+            self.frame_packeges.hide()
+            self.frame_screening.hide()
+            self.frame_shipping.hide()
+            self.frame_packeges.show()
+        elif source == self.screening_menu and event.type() == QEvent.Type.HoverMove:
+            self.frame_shipping.hide()
+            self.frame_packeges.hide()
+            self.frame_options.hide()
+            self.frame_screening.show()
+        elif source == self.options_menu and event.type() == QEvent.Type.HoverMove:
+            self.frame_shipping.hide()
+            self.frame_packeges.hide()
+            self.frame_screening.hide()
+            self.frame_options.show()
+
+        return super().eventFilter(source, event)
 
     def definitions_window(self):
         self.resize(1080, 720)
@@ -179,8 +337,8 @@ class Window(QMainWindow, FramesNavegationBar):
         self.layout.setSpacing(0)
         
 
-# if __name__ == '__main__':
-#     mainwindow = QApplication(sys.argv)
-#     window = Window()
-#     window.show()
-#     sys.exit(mainwindow.exec_())
+if __name__ == '__main__':
+    mainwindow = QApplication(sys.argv)
+    window = Window()
+    window.show()
+    sys.exit(mainwindow.exec_())

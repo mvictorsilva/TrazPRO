@@ -5,6 +5,8 @@ from PySide2.QtWidgets import *
 
 class FramesNavegationBar():
     def execute_navegation_bar(self):
+        self.home_menu_frame.deleteLater()
+        self.body_frame.deleteLater()
         self.navegation_menu()
         self.label_navegation_menu()
         self.buttons_navegation_menu()
@@ -112,18 +114,6 @@ class FramesNavegationBar():
 
         # self.shipping_frame()
         # self.frame_shipping.hide()
-
-    def eventFilter(self, source, event):
-        if source == self.shipping_menu and event.type() == QEvent.Type.HoverMove:
-            print('ok')
-        elif source == self.packages_menu and event.type() == QEvent.Type.HoverMove:
-            print('ok2')
-        elif source == self.screening_menu and event.type() == QEvent.Type.HoverMove:
-            print('ok3')
-        elif source == self.options_menu and event.type() == QEvent.Type.HoverMove:
-            print('ok4')
-
-        return super().eventFilter(source, event)
 
     def shipping_frame(self):
         self.frame_shipping = QFrame(self.first_window)
@@ -964,7 +954,19 @@ class Window(QMainWindow, FrameHome):
     def __init__(self):
         super(Window, self).__init__()
         self.definitions_window()
-        self.execute_home()
+        self.execute_home(),
+
+    def eventFilter(self, source, event):
+        if source == self.shipping_menu and event.type() == QEvent.Type.HoverMove:
+            print('ok')
+        elif source == self.packages_menu and event.type() == QEvent.Type.HoverMove:
+            print('ok2')
+        elif source == self.screening_menu and event.type() == QEvent.Type.HoverMove:
+            print('ok3')
+        elif source == self.options_menu and event.type() == QEvent.Type.HoverMove:
+            print('ok4')
+
+        return super().eventFilter(source, event)
 
     def definitions_window(self):
         self.setMinimumSize(1080, 720)

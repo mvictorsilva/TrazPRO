@@ -46,6 +46,7 @@ class MyApp(QWidget):
             }
             QPushButton:hover{
                 background-color: #1C1C1C;
+                color: #ffffff;
                 border-radius: 2px;
                 border-bottom: 4px solid blueviolet;
                 
@@ -84,6 +85,7 @@ class MyApp(QWidget):
             }
             QPushButton:hover{
                 background-color: #1C1C1C;
+                color: #ffffff;
                 border-radius: 2px;
                 border-bottom: 4px solid blueviolet;
                 
