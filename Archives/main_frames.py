@@ -61,6 +61,7 @@ class Quotation(Clossed):
         self.radio_buttons()
         self.buttons_quotation()
         self.combo_box_quotation()
+        self.space_widgets_quotation()
         self.position_grid()
 
     def labels_quotation(self):
@@ -74,8 +75,8 @@ class Quotation(Clossed):
         '''
 
         self.title_frame = QLabel('Cotação de envio de encomendas', self.quotation_frame)
-        self.title_frame.setMinimumSize(500, 50)
-        self.title_frame.setMaximumSize(500, 50)
+        self.title_frame.setMinimumSize(420, 50)
+        self.title_frame.setMaximumSize(420, 50)
         self.title_frame.setStyleSheet(
             '''
                 QLabel{
@@ -106,39 +107,21 @@ class Quotation(Clossed):
         self.order_value.setStyleSheet(self.font_style_subtitle)
         self.order_value.show()
 
-        self.rs = QLabel('R$', self.quotation_frame)
-        self.rs.setMinimumSize(30, 50)
-        self.rs.setMaximumSize(30, 50)
-        self.rs.setStyleSheet(self.font_style_subtitle)
-        self.rs.show()
-
         self.service = QLabel('Serviço', self.quotation_frame)
         self.service.setMinimumSize(210, 50)
         self.service.setMaximumSize(210, 50)
         self.service.setStyleSheet(self.font_style_subtitle)
         self.service.show()
 
-        # self.order_format = QLabel('Formato da encomenda', self.quotation_frame)
-        # self.order_format.setMinimumSize(210, 50)
-        # self.order_format.setMaximumSize(210, 50)
-        # self.order_format.setStyleSheet(self.font_style_subtitle)
-        # self.order_format.show()
-
         self.order_weight = QLabel('Peso', self.quotation_frame)
         self.order_weight.setMinimumSize(210, 50)
         self.order_weight.setMaximumSize(210, 50)
         self.order_weight.setStyleSheet(self.font_style_subtitle)
         self.order_weight.show()
-
-        self.kg = QLabel('Kg', self.quotation_frame)
-        self.kg.setMinimumSize(30, 50)
-        self.kg.setMaximumSize(30, 50)
-        self.kg.setStyleSheet(self.font_style_subtitle)
-        self.kg.show()
-
+        
         self.subtitle_specifications = QLabel('Especificações da embalagem', self.quotation_frame)
-        self.subtitle_specifications.setMinimumSize(500, 50)
-        self.subtitle_specifications.setMaximumSize(500, 50)
+        self.subtitle_specifications.setMinimumSize(300, 40)
+        self.subtitle_specifications.setMaximumSize(300, 40)
         self.subtitle_specifications.setStyleSheet(
             '''
                 QLabel{
@@ -199,18 +182,6 @@ class Quotation(Clossed):
         self.cm_iv.setStyleSheet(self.font_style_subtitle)
         self.cm_iv.show()
 
-        # self.question_ownhand = QLabel('Mão própria:', self.quotation_frame)
-        # self.question_ownhand.setMinimumSize(210, 50)
-        # self.question_ownhand.setMaximumSize(210, 50)
-        # self.question_ownhand.setStyleSheet(self.font_style_subtitle)
-        # self.question_ownhand.show()
-
-        # self.question_receivement = QLabel('Aviso de recebimento', self.quotation_frame)
-        # self.question_receivement.setMinimumSize(210, 50)
-        # self.question_receivement.setMaximumSize(210, 50)
-        # self.question_receivement.setStyleSheet(self.font_style_subtitle)
-        # self.question_receivement.show()
-
     def entrys_quotation(self):
         self.entrys_style = '''
             QLineEdit{
@@ -266,7 +237,7 @@ class Quotation(Clossed):
         self.order_weight_get = QLineEdit(self.quotation_frame)
         self.order_weight_get.setMinimumSize(200, 40)
         self.order_weight_get.setMaximumSize(200, 40)
-        self.order_weight_get.setPlaceholderText('9,9')
+        self.order_weight_get.setPlaceholderText('Kg')
         self.order_weight_get.setMaxLength(8)
         self.order_weight_get.setStyleSheet(self.entrys_style)
         self.order_weight_get.show()
@@ -315,32 +286,34 @@ class Quotation(Clossed):
         '''
 
         self.group_box_i = QGroupBox('Formato de encomenda', self.quotation_frame)
+        self.group_box_i.setMinimumSize(300, 100)
+        self.group_box_i.setMaximumSize(300, 100)
         self.group_box_i.setStyleSheet('font-size: 20px; font: Helvetica Neue Leve;')
         self.hboxi = QHBoxLayout(self.group_box_i)
 
         self.package_format_radio = QRadioButton(self.quotation_frame)
-        self.package_format_radio.setMinimumSize(100, 60)
-        self.package_format_radio.setMaximumSize(100, 60)
+        self.package_format_radio.setMinimumSize(100, 50)
+        self.package_format_radio.setMaximumSize(100, 50)
         self.package_format_radio.setIcon(QIcon('../Images/main_frames/quotation/package.png'))
-        self.package_format_radio.setIconSize(QSize(60, 60))
+        self.package_format_radio.setIconSize(QSize(50, 50))
         self.package_format_radio.setStyleSheet(self.radio_button_style)
         self.hboxi.addWidget(self.package_format_radio)
         self.package_format_radio.show()
 
         self.cylinder_format_radio = QRadioButton(self.quotation_frame)
-        self.cylinder_format_radio.setMinimumSize(100, 60)
-        self.cylinder_format_radio.setMaximumSize(100, 60)
+        self.cylinder_format_radio.setMinimumSize(100, 50)
+        self.cylinder_format_radio.setMaximumSize(100, 50)
         self.cylinder_format_radio.setIcon(QIcon('../Images/main_frames/quotation/cylinder.png'))
-        self.cylinder_format_radio.setIconSize(QSize(60, 60))
+        self.cylinder_format_radio.setIconSize(QSize(50, 50))
         self.cylinder_format_radio.setStyleSheet(self.radio_button_style)
         self.hboxi.addWidget(self.cylinder_format_radio)
         self.cylinder_format_radio.show()
 
         self.letter_format_radio = QRadioButton(self.quotation_frame)
-        self.letter_format_radio.setMinimumSize(100, 60)
-        self.letter_format_radio.setMaximumSize(100, 60)
+        self.letter_format_radio.setMinimumSize(100, 50)
+        self.letter_format_radio.setMaximumSize(100, 50)
         self.letter_format_radio.setIcon(QIcon('../Images/main_frames/quotation/letter.png'))
-        self.letter_format_radio.setIconSize(QSize(60, 60))
+        self.letter_format_radio.setIconSize(QSize(50, 50))
         self.letter_format_radio.setStyleSheet(self.radio_button_style)
         self.hboxi.addWidget(self.letter_format_radio)
         self.letter_format_radio.show()
@@ -364,6 +337,8 @@ class Quotation(Clossed):
         '''
 
         self.group_box_ii = QGroupBox('Mão própria', self.quotation_frame)
+        self.group_box_ii.setMinimumSize(220, 80)
+        self.group_box_ii.setMaximumSize(220, 80)
         self.group_box_ii.setStyleSheet('font-size: 20px; font: Helvetica Neue Leve;')
         self.hboxii = QHBoxLayout(self.group_box_ii)
 
@@ -382,6 +357,8 @@ class Quotation(Clossed):
         self.no_radio_button.show()
 
         self.group_box_iii = QGroupBox('Aviso de recebimento', self.quotation_frame)
+        self.group_box_iii.setMinimumSize(220, 80)
+        self.group_box_iii.setMaximumSize(220, 80)
         self.group_box_iii.setStyleSheet('font-size: 20px; font: Helvetica Neue Leve;')
         self.hboxiii = QHBoxLayout(self.group_box_iii)
 
@@ -471,55 +448,61 @@ class Quotation(Clossed):
         )
         self.service_box.show()
 
+    def space_widgets_quotation(self):
+        self.spacer_widgets_top = QSpacerItem(30, 30, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.spacer_widgets_left = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.spacer_title = QSpacerItem(10, 30, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
+        self.spacer_subtitle = QSpacerItem(30, 30, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.spacer_subtitle_ii = QSpacerItem(70, 70, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
+
+        self.spacer_widgets_right = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.spacer_widgets_botton = QSpacerItem(30, 30, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
     def position_grid(self):
+        ####################        S P A C E R       ####################
+        self.grid_layout_quotation.addItem(self.spacer_widgets_top, 0, 6)
+        self.grid_layout_quotation.addItem(self.spacer_widgets_left, 0, 0, 1, 1)
+        self.grid_layout_quotation.addItem(self.spacer_title, 2, 6)
+        self.grid_layout_quotation.addItem(self.spacer_subtitle, 7, 6)
+        self.grid_layout_quotation.addItem(self.spacer_widgets_right, 0, 7, 1, 1)
+        self.grid_layout_quotation.addItem(self.spacer_widgets_botton, 16, 6)
+
         ####################        L A B E L S       ####################
-        self.grid_layout_quotation.addWidget(self.title_frame, 0, 0, Qt.AlignCenter)
-        self.grid_layout_quotation.addWidget(self.cep_source)
-        self.grid_layout_quotation.addWidget(self.cep_destiny)
-        self.grid_layout_quotation.addWidget(self.order_value)
-        self.grid_layout_quotation.addWidget(self.rs)
-        self.grid_layout_quotation.addWidget(self.service)
-        # self.grid_layout_quotation.addWidget(self.order_format)
-        self.grid_layout_quotation.addWidget(self.order_weight)
-        self.grid_layout_quotation.addWidget(self.kg)
-        self.grid_layout_quotation.addWidget(self.subtitle_specifications)
-        self.grid_layout_quotation.addWidget(self.lenght)
-        self.grid_layout_quotation.addWidget(self.cm_i)
-        self.grid_layout_quotation.addWidget(self.height)
-        self.grid_layout_quotation.addWidget(self.cm_ii)
-        self.grid_layout_quotation.addWidget(self.width)
-        self.grid_layout_quotation.addWidget(self.cm_iii)
-        self.grid_layout_quotation.addWidget(self.diameter)
-        self.grid_layout_quotation.addWidget(self.cm_iv)
-        # self.grid_layout_quotation.addWidget(self.question_ownhand)
-        # self.grid_layout_quotation.addWidget(self.question_receivement)
-
+        self.grid_layout_quotation.addWidget(self.title_frame, 1, 1, 1, 6, Qt.AlignCenter)
+        self.grid_layout_quotation.addWidget(self.cep_source, 3, 2, Qt.AlignLeft)
+        self.grid_layout_quotation.addWidget(self.cep_destiny, 5, 2, Qt.AlignLeft)
+        self.grid_layout_quotation.addWidget(self.order_value, 3, 4, Qt.AlignCenter)
+        self.grid_layout_quotation.addWidget(self.service, 5, 4, Qt.AlignCenter)
+        self.grid_layout_quotation.addWidget(self.order_weight, 5, 5, Qt.AlignLeft)
+        self.grid_layout_quotation.addWidget(self.subtitle_specifications, 5, 1, 8, 6, Qt.AlignCenter)
+        self.grid_layout_quotation.addWidget(self.lenght, 10, 2, Qt.AlignRight)
+        self.grid_layout_quotation.addWidget(self.cm_i, 10, 4, Qt.AlignLeft)
+        self.grid_layout_quotation.addWidget(self.height, 11, 2, Qt.AlignRight)
+        self.grid_layout_quotation.addWidget(self.cm_ii, 11, 4, Qt.AlignLeft)
+        self.grid_layout_quotation.addWidget(self.width, 12, 2, Qt.AlignRight)
+        self.grid_layout_quotation.addWidget(self.cm_iii, 12, 4, Qt.AlignLeft)
+        self.grid_layout_quotation.addWidget(self.diameter, 13, 2, Qt.AlignRight)
+        self.grid_layout_quotation.addWidget(self.cm_iv, 13, 4, Qt.AlignLeft)
         ####################       E N T R Y S       ####################
-    
-        self.grid_layout_quotation.addWidget(self.cep_source_get)
-        self.grid_layout_quotation.addWidget(self.cep_destiny_get)
-        self.grid_layout_quotation.addWidget(self.order_value_get)
-        self.grid_layout_quotation.addWidget(self.order_weight_get)
-        self.grid_layout_quotation.addWidget(self.lenght_get)
-        self.grid_layout_quotation.addWidget(self.height_get)
-        self.grid_layout_quotation.addWidget(self.width_get)
-        self.grid_layout_quotation.addWidget(self.diameter_get)
-
+        self.grid_layout_quotation.addWidget(self.cep_source_get, 4, 2, Qt.AlignLeft)
+        self.grid_layout_quotation.addWidget(self.cep_destiny_get, 6, 2, Qt.AlignLeft)
+        self.grid_layout_quotation.addWidget(self.order_value_get, 4, 4, Qt.AlignCenter)
+        self.grid_layout_quotation.addWidget(self.order_weight_get, 6, 5, Qt.AlignLeft)
+        self.grid_layout_quotation.addWidget(self.lenght_get, 10, 3, Qt.AlignLeft)
+        self.grid_layout_quotation.addWidget(self.height_get, 11, 3, Qt.AlignLeft)
+        self.grid_layout_quotation.addWidget(self.width_get, 12, 3, Qt.AlignRight)
+        self.grid_layout_quotation.addWidget(self.diameter_get, 13, 3, Qt.AlignLeft)
         #################### R A D I O  B U T T O N S ####################
-
-        self.grid_layout_quotation.addWidget(self.group_box_i)
-        self.grid_layout_quotation.addWidget(self.group_box_ii)
-        self.grid_layout_quotation.addWidget(self.group_box_iii)
-
+        self.grid_layout_quotation.addWidget(self.group_box_i, 2, 5, 4, 6, Qt.AlignLeft)
+        self.grid_layout_quotation.addWidget(self.group_box_ii, 6, 5, 11, 6, Qt.AlignLeft)
+        self.grid_layout_quotation.addWidget(self.group_box_iii, 11, 5, 13, 6, Qt.AlignLeft)
         ####################       B U T T O N S      ####################
-        
-        self.grid_layout_quotation.addWidget(self.question_i)
-        self.grid_layout_quotation.addWidget(self.question_ii)
-        self.grid_layout_quotation.addWidget(self.calculate)
-
-        ####################      C O M B O  B O X     ####################
-
-        self.grid_layout_quotation.addWidget(self.service_box)
+        self.grid_layout_quotation.addWidget(self.question_i, 4, 3, Qt.AlignLeft)
+        self.grid_layout_quotation.addWidget(self.question_ii, 6, 3, Qt.AlignLeft)
+        self.grid_layout_quotation.addWidget(self.calculate, 15, 1, 15, 6, Qt.AlignCenter)
+        ###################      C O M B O  B O X     ####################
+        self.grid_layout_quotation.addWidget(self.service_box, 6, 4, Qt.AlignCenter)
 
 class Deadline(Clossed):
     def frame_deadline(self):
