@@ -4,7 +4,6 @@ from PySide2.QtWidgets import *
 
 from initial_frames import FrameHome
 
-
 class Window(QMainWindow, FrameHome):
     def __init__(self):
         super(Window, self).__init__()
