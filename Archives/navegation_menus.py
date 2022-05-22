@@ -15,8 +15,7 @@ class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Notifi
 
         self.sub_frames_navegation_menu()
         self.buttons_frames_navegation()
-
-        self.main_frame()
+        self.frame_quotation()
 
     def navegation_menu(self):
         self.menu_bar = QFrame(self.first_window)
@@ -274,21 +273,3 @@ class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Notifi
         self.settings.clicked.connect(self.frame_settings)
         self.layout_options.addWidget(self.settings)
         self.settings.show()
-
-
-    def main_frame(self):
-        self.frame = QFrame(self.first_window)
-        self.frame.setFrameShape(QFrame.Shape.NoFrame)
-        self.frame.setFrameShadow(QFrame.Shadow.Raised)
-        self.frame.setStyleSheet(
-            '''
-                QFrame{
-                    background-color: #ffffff;
-                }
-            '''
-        )
-        self.layout.addWidget(self.frame, 2, 0)
-        self.frame.show()
-
-        self.grid_layout_login = QGridLayout()
-        self.frame.setLayout(self.grid_layout_login)
