@@ -295,7 +295,7 @@ class Quotation(Clossed):
         self.package_format_radio.setMinimumSize(100, 50)
         self.package_format_radio.setMaximumSize(100, 50)
         self.package_format_radio.setIcon(QIcon('../Images/main_frames/quotation/package.png'))
-        self.package_format_radio.setIconSize(QSize(50, 50))
+        self.package_format_radio.setIconSize(QSize(40, 40))
         self.package_format_radio.setStyleSheet(self.radio_button_style)
         self.hboxi.addWidget(self.package_format_radio)
         self.package_format_radio.show()
@@ -304,7 +304,7 @@ class Quotation(Clossed):
         self.cylinder_format_radio.setMinimumSize(100, 50)
         self.cylinder_format_radio.setMaximumSize(100, 50)
         self.cylinder_format_radio.setIcon(QIcon('../Images/main_frames/quotation/cylinder.png'))
-        self.cylinder_format_radio.setIconSize(QSize(50, 50))
+        self.cylinder_format_radio.setIconSize(QSize(40, 40))
         self.cylinder_format_radio.setStyleSheet(self.radio_button_style)
         self.hboxi.addWidget(self.cylinder_format_radio)
         self.cylinder_format_radio.show()
@@ -313,7 +313,7 @@ class Quotation(Clossed):
         self.letter_format_radio.setMinimumSize(100, 50)
         self.letter_format_radio.setMaximumSize(100, 50)
         self.letter_format_radio.setIcon(QIcon('../Images/main_frames/quotation/letter.png'))
-        self.letter_format_radio.setIconSize(QSize(50, 50))
+        self.letter_format_radio.setIconSize(QSize(40, 40))
         self.letter_format_radio.setStyleSheet(self.radio_button_style)
         self.hboxi.addWidget(self.letter_format_radio)
         self.letter_format_radio.show()
@@ -450,7 +450,7 @@ class Quotation(Clossed):
 
     def space_widgets_quotation(self):
         self.spacer_widgets_top = QSpacerItem(30, 30, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-        self.spacer_widgets_left = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.spacer_widgets_left = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.spacer_title = QSpacerItem(10, 30, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
         self.spacer_subtitle = QSpacerItem(30, 30, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
@@ -462,10 +462,10 @@ class Quotation(Clossed):
     def position_grid(self):
         ####################        S P A C E R       ####################
         self.grid_layout_quotation.addItem(self.spacer_widgets_top, 0, 6)
-        self.grid_layout_quotation.addItem(self.spacer_widgets_left, 0, 0, 1, 1)
+        self.grid_layout_quotation.addItem(self.spacer_widgets_left, 2, 0, 1, 1)
         self.grid_layout_quotation.addItem(self.spacer_title, 2, 6)
         self.grid_layout_quotation.addItem(self.spacer_subtitle, 7, 6)
-        self.grid_layout_quotation.addItem(self.spacer_widgets_right, 0, 7, 1, 1)
+        self.grid_layout_quotation.addItem(self.spacer_widgets_right, 4, 7, 1, 1)
         self.grid_layout_quotation.addItem(self.spacer_widgets_botton, 16, 6)
 
         ####################        L A B E L S       ####################
