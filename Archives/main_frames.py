@@ -277,11 +277,11 @@ class Quotation(Clossed):
                 height: 30px;
             }
             QRadioButton:indicator:unchecked{
-                image: url('../Images/main_frames/quotation/unchecked.png');
+                image: url('Images/main_frames/quotation/unchecked.png');
 
             }
             QRadioButton:indicator:checked{
-                image: url('../Images/main_frames/quotation/checked.png');
+                image: url('Images/main_frames/quotation/checked.png');
             }
         '''
 
@@ -294,7 +294,7 @@ class Quotation(Clossed):
         self.package_format_radio = QRadioButton(self.quotation_frame)
         self.package_format_radio.setMinimumSize(100, 50)
         self.package_format_radio.setMaximumSize(100, 50)
-        self.package_format_radio.setIcon(QIcon('../Images/main_frames/quotation/package.png'))
+        self.package_format_radio.setIcon(QIcon('Images/main_frames/quotation/package.png'))
         self.package_format_radio.setIconSize(QSize(40, 40))
         self.package_format_radio.setStyleSheet(self.radio_button_style)
         self.hboxi.addWidget(self.package_format_radio)
@@ -303,7 +303,7 @@ class Quotation(Clossed):
         self.cylinder_format_radio = QRadioButton(self.quotation_frame)
         self.cylinder_format_radio.setMinimumSize(100, 50)
         self.cylinder_format_radio.setMaximumSize(100, 50)
-        self.cylinder_format_radio.setIcon(QIcon('../Images/main_frames/quotation/cylinder.png'))
+        self.cylinder_format_radio.setIcon(QIcon('Images/main_frames/quotation/cylinder.png'))
         self.cylinder_format_radio.setIconSize(QSize(40, 40))
         self.cylinder_format_radio.setStyleSheet(self.radio_button_style)
         self.hboxi.addWidget(self.cylinder_format_radio)
@@ -312,7 +312,7 @@ class Quotation(Clossed):
         self.letter_format_radio = QRadioButton(self.quotation_frame)
         self.letter_format_radio.setMinimumSize(100, 50)
         self.letter_format_radio.setMaximumSize(100, 50)
-        self.letter_format_radio.setIcon(QIcon('../Images/main_frames/quotation/letter.png'))
+        self.letter_format_radio.setIcon(QIcon('Images/main_frames/quotation/letter.png'))
         self.letter_format_radio.setIconSize(QSize(40, 40))
         self.letter_format_radio.setStyleSheet(self.radio_button_style)
         self.hboxi.addWidget(self.letter_format_radio)
@@ -328,11 +328,11 @@ class Quotation(Clossed):
                 height: 30px;
             }
             QRadioButton:indicator:unchecked{
-                image: url('../Images/main_frames/quotation/unchecked.png');
+                image: url('Images/main_frames/quotation/unchecked.png');
 
             }
             QRadioButton:indicator:checked{
-                image: url('../Images/main_frames/quotation/checked.png');
+                image: url('Images/main_frames/quotation/checked.png');
             }
         '''
 
@@ -390,7 +390,7 @@ class Quotation(Clossed):
         self.question_i = QToolButton(self.quotation_frame)
         self.question_i.setMinimumSize(30, 30)
         self.question_i.setMinimumSize(30, 30)
-        self.question_i.setIcon(QIcon('../Images/main_frames/quotation/question.png'))
+        self.question_i.setIcon(QIcon('Images/main_frames/quotation/question.png'))
         self.question_i.setIconSize(QSize(30, 30))
         self.question_i.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
         self.question_i.setStyleSheet(self.question_style_button)
@@ -399,7 +399,7 @@ class Quotation(Clossed):
         self.question_ii = QToolButton(self.quotation_frame)
         self.question_ii.setMinimumSize(30, 30)
         self.question_ii.setMinimumSize(30, 30)
-        self.question_ii.setIcon(QIcon('../Images/main_frames/quotation/question.png'))
+        self.question_ii.setIcon(QIcon('Images/main_frames/quotation/question.png'))
         self.question_ii.setIconSize(QSize(30, 30))
         self.question_ii.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
         self.question_ii.setStyleSheet(self.question_style_button)
@@ -452,30 +452,29 @@ class Quotation(Clossed):
         self.spacer_widgets_top = QSpacerItem(30, 30, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
         self.spacer_widgets_left = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.spacer_title = QSpacerItem(10, 30, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
-        self.spacer_subtitle = QSpacerItem(30, 30, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-        self.spacer_subtitle_ii = QSpacerItem(70, 70, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
+        # self.spacer_title = QSpacerItem(10, 30, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
+        # self.spacer_subtitle = QSpacerItem(30, 30, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        # self.spacer_subtitle_ii = QSpacerItem(70, 70, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
 
-        self.spacer_widgets_right = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.spacer_widgets_right = QSpacerItem(20, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
         self.spacer_widgets_botton = QSpacerItem(30, 30, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
     def position_grid(self):
         ####################        S P A C E R       ####################
-        self.grid_layout_quotation.addItem(self.spacer_widgets_top, 0, 6)
-        self.grid_layout_quotation.addItem(self.spacer_widgets_left, 2, 0, 1, 1)
-        self.grid_layout_quotation.addItem(self.spacer_title, 2, 6)
-        self.grid_layout_quotation.addItem(self.spacer_subtitle, 7, 6)
-        self.grid_layout_quotation.addItem(self.spacer_widgets_right, 4, 7, 1, 1)
-        self.grid_layout_quotation.addItem(self.spacer_widgets_botton, 16, 6)
-
+        self.grid_layout_quotation.addItem(self.spacer_widgets_top, 0, 5)
+        self.grid_layout_quotation.addItem(self.spacer_widgets_left, 0, 0, 1, 1)
+        # self.grid_layout_quotation.addItem(self.spacer_title, 2, 5)
+        # self.grid_layout_quotation.addItem(self.spacer_subtitle, 7, 5)
+        self.grid_layout_quotation.addItem(self.spacer_widgets_right, 0, 6, 1, 1)
+        self.grid_layout_quotation.addItem(self.spacer_widgets_botton, 16, 5)
         ####################        L A B E L S       ####################
-        self.grid_layout_quotation.addWidget(self.title_frame, 1, 1, 1, 6, Qt.AlignCenter)
+        self.grid_layout_quotation.addWidget(self.title_frame, 1, 1, 1, 5, Qt.AlignCenter)
         self.grid_layout_quotation.addWidget(self.cep_source, 3, 2, Qt.AlignLeft)
         self.grid_layout_quotation.addWidget(self.cep_destiny, 5, 2, Qt.AlignLeft)
         self.grid_layout_quotation.addWidget(self.order_value, 3, 4, Qt.AlignCenter)
         self.grid_layout_quotation.addWidget(self.service, 5, 4, Qt.AlignCenter)
         self.grid_layout_quotation.addWidget(self.order_weight, 5, 5, Qt.AlignLeft)
-        self.grid_layout_quotation.addWidget(self.subtitle_specifications, 5, 1, 8, 6, Qt.AlignCenter)
+        self.grid_layout_quotation.addWidget(self.subtitle_specifications, 5, 1, 8, 5, Qt.AlignCenter)
         self.grid_layout_quotation.addWidget(self.lenght, 10, 2, Qt.AlignRight)
         self.grid_layout_quotation.addWidget(self.cm_i, 10, 4, Qt.AlignLeft)
         self.grid_layout_quotation.addWidget(self.height, 11, 2, Qt.AlignRight)
@@ -494,13 +493,13 @@ class Quotation(Clossed):
         self.grid_layout_quotation.addWidget(self.width_get, 12, 3, Qt.AlignRight)
         self.grid_layout_quotation.addWidget(self.diameter_get, 13, 3, Qt.AlignLeft)
         #################### R A D I O  B U T T O N S ####################
-        self.grid_layout_quotation.addWidget(self.group_box_i, 2, 5, 4, 6, Qt.AlignLeft)
-        self.grid_layout_quotation.addWidget(self.group_box_ii, 6, 5, 11, 6, Qt.AlignLeft)
-        self.grid_layout_quotation.addWidget(self.group_box_iii, 11, 5, 13, 6, Qt.AlignLeft)
-        ####################       B U T T O N S      ####################
-        self.grid_layout_quotation.addWidget(self.question_i, 4, 3, Qt.AlignLeft)
+        self.grid_layout_quotation.addWidget(self.group_box_i, 3, 5, 0, 0, Qt.AlignLeft)
+        self.grid_layout_quotation.addWidget(self.group_box_ii, 10, 5, 11, 0, Qt.AlignLeft)
+        self.grid_layout_quotation.addWidget(self.group_box_iii, 12, 5, 13, 0, Qt.AlignLeft)
+        ####################       B U T T O N S      ###################
+        self.grid_layout_quotation.addWidget(self.question_i, 4, 3,Qt.AlignLeft)
         self.grid_layout_quotation.addWidget(self.question_ii, 6, 3, Qt.AlignLeft)
-        self.grid_layout_quotation.addWidget(self.calculate, 15, 1, 15, 6, Qt.AlignCenter)
+        self.grid_layout_quotation.addWidget(self.calculate, 15, 1, 15, 5, Qt.AlignCenter)
         ###################      C O M B O  B O X     ####################
         self.grid_layout_quotation.addWidget(self.service_box, 6, 4, Qt.AlignCenter)
 

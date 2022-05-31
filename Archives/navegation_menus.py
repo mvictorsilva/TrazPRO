@@ -40,7 +40,7 @@ class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Notifi
             '''
                 QLabel{
                     background: none;
-                    background-image: url(../Images/navegation_bar/logo_black.png);
+                    background-image: url(Images/navegation_bar/logo_black.png);
                     background-repeat: no-repeat;
                     background-position: center;
                 }
@@ -194,7 +194,7 @@ class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Notifi
         self.quotation.setText('Cotação')
         self.quotation.setMinimumSize(100, 80)
         self.quotation.setMaximumSize(100, 80)
-        self.quotation.setIcon(QIcon('../Images/navegation_frame/quotation.png'))
+        self.quotation.setIcon(QIcon('Images/navegation_frame/quotation.png'))
         self.quotation.setIconSize(QSize(50, 50))
         self.quotation.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         self.quotation.setStyleSheet(self.button_style)
@@ -206,7 +206,7 @@ class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Notifi
         self.deadline.setText('Prazos de Entrega')
         self.deadline.setMinimumSize(150, 80)
         self.deadline.setMaximumSize(150, 80)
-        self.deadline.setIcon(QIcon('../Images/navegation_frame/deadline.png'))
+        self.deadline.setIcon(QIcon('Images/navegation_frame/deadline.png'))
         self.deadline.setIconSize(QSize(50, 50))
         self.deadline.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         self.deadline.setStyleSheet(self.button_style)
@@ -218,7 +218,7 @@ class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Notifi
         self.order.setText('Pedidos salvos')
         self.order.setMinimumSize(120, 80)
         self.order.setMaximumSize(120, 80)
-        self.order.setIcon(QIcon('../Images/navegation_frame/order.png'))
+        self.order.setIcon(QIcon('Images/navegation_frame/order.png'))
         self.order.setIconSize(QSize(50, 50))
         self.order.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         self.order.setStyleSheet(self.button_style)
@@ -230,7 +230,7 @@ class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Notifi
         self.localization.setText('Rastrear encomenda')
         self.localization.setMinimumSize(170, 80)
         self.localization.setMaximumSize(170, 80)
-        self.localization.setIcon(QIcon('../Images/navegation_frame/localization.png'))
+        self.localization.setIcon(QIcon('Images/navegation_frame/localization.png'))
         self.localization.setIconSize(QSize(50, 50))
         self.localization.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         self.localization.setStyleSheet(self.button_style)
@@ -242,7 +242,7 @@ class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Notifi
         self.user.setText('Conta')
         self.user.setMinimumSize(100, 80)
         self.user.setMaximumSize(100, 80)
-        self.user.setIcon(QIcon('../Images/navegation_frame/user.png'))
+        self.user.setIcon(QIcon('Images/navegation_frame/user.png'))
         self.user.setIconSize(QSize(50, 50))
         self.user.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         self.user.setStyleSheet(self.button_style)
@@ -254,7 +254,7 @@ class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Notifi
         self.notification.setText('Notificações')
         self.notification.setMinimumSize(100, 80)
         self.notification.setMaximumSize(100, 80)
-        self.notification.setIcon(QIcon('../Images/navegation_frame/notification.png'))
+        self.notification.setIcon(QIcon('Images/navegation_frame/notification.png'))
         self.notification.setIconSize(QSize(50, 50))
         self.notification.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         self.notification.setStyleSheet(self.button_style)
@@ -266,7 +266,7 @@ class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Notifi
         self.settings.setText('Sistema')
         self.settings.setMinimumSize(100, 80)
         self.settings.setMaximumSize(100, 80)
-        self.settings.setIcon(QIcon('../Images/navegation_frame/settings.png'))
+        self.settings.setIcon(QIcon('Images/navegation_frame/settings.png'))
         self.settings.setIconSize(QSize(50, 50))
         self.settings.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         self.settings.setStyleSheet(self.button_style)

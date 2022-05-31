@@ -58,7 +58,7 @@ class RegisterFrame():
             '''
                 QLabel{
                     background: none;
-                    background-image: url(../Images/register_page/logo_white.png);
+                    background-image: url(Images/register_page/logo_white.png);
                     background-repeat: no-repeat;
                     background-position: center;
                 }
@@ -123,7 +123,7 @@ class RegisterFrame():
         self.register_frame.setStyleSheet(
             '''
                 QFrame{
-                    background-image: url(../Images/login_page/background_login.png);
+                    background-image: url(Images/login_page/background_login.png);
                     background-position: center center;
                 }
             '''
@@ -294,7 +294,7 @@ class RegisterFrame():
         self.register_google = QPushButton('  Cadastre-se com o Google', self.register_frame)
         self.register_google.setMinimumSize(350, 50)
         self.register_google.setMaximumSize(350, 50)
-        self.register_google.setIcon(QIcon('../Images/login_page/google.png'))
+        self.register_google.setIcon(QIcon('Images/login_page/google.png'))
         self.register_google.setStyleSheet(
             '''
                 QPushButton{
@@ -372,7 +372,7 @@ class LoginFrame():
             '''
                 QLabel{
                     background: none;
-                    background-image: url(../Images/login_page/logo_white.png);
+                    background-image: url(Images/login_page/logo_white.png);
                     background-repeat: no-repeat;
                     background-position: center;
                 }
@@ -437,7 +437,7 @@ class LoginFrame():
         self.main_frame.setStyleSheet(
             '''
                 QFrame{
-                    background-image: url(../Images/login_page/background_login.png);
+                    background-image: url(Images/login_page/background_login.png);
                     background-position: center center;
                 }
             '''
@@ -605,7 +605,7 @@ class LoginFrame():
         self.login_google = QPushButton('  Conecte-se com o Google', self.main_frame)
         self.login_google.setMinimumSize(350, 50)
         self.login_google.setMaximumSize(350, 50)
-        self.login_google.setIcon(QIcon('../Images/login_page/google.png'))
+        self.login_google.setIcon(QIcon('Images/login_page/google.png'))
         self.login_google.setStyleSheet(
             '''
                 QPushButton{
@@ -664,7 +664,7 @@ class FrameHome(LoginFrame, RegisterFrame, FramesNavegationBar):
             '''
                 QLabel{
                     background-color: none;
-                    background-image: url(../Images/home_page/logo_white.png);
+                    background-image: url(Images/home_page/logo_white.png);
                     background-repeat: no-repeat;
                     background-position: center;
                 }    
@@ -736,7 +736,7 @@ class FrameHome(LoginFrame, RegisterFrame, FramesNavegationBar):
         self.body_frame.setStyleSheet(
             '''
                 QFrame{
-                    background-image: url(../Images/home_page/background_frame_one.png);
+                    background-image: url(Images/home_page/background_frame_one.png);
                     background-position: center center;
                 }
             '''
