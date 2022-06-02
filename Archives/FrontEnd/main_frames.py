@@ -58,7 +58,7 @@ class Quotation(Clossed):
         self.radio_buttons()
         self.buttons_quotation()
         self.combo_box_quotation()
-        self.position_grid()
+        self.position_widgets_quotation()
 
 
     def labels_quotation(self):
@@ -453,7 +453,7 @@ class Quotation(Clossed):
         self.service_box.show()
 
 
-    def position_grid(self):
+    def position_widgets_quotation(self):
         ####################        L A B E L S       ####################
         self.title_frame.setGeometry(330, 10, 420, 50)
         self.cep_source.setGeometry(150, 80, 210, 50)
@@ -508,6 +508,157 @@ class Deadline(Clossed):
         self.layout.addWidget(self.deadline_frame, 2, 0)
         self.deadline_frame.show()
 
+        self.positions_widgets_deadline()
+        
+    
+    def labels_deadline(self):
+        self.font_style_subtitle = '''
+            QLabel{
+                background: none;
+                color: #000000;
+                font: Helvetica Neue Leve;
+                font-size: 20px;
+            }
+        '''
+
+        self.title_frame = QLabel('Cálculo de prazos de entrega', self.deadline_frame)
+        self.title_frame.setMinimumSize(420, 50)
+        self.title_frame.setMaximumSize(420, 50)
+        self.title_frame.setStyleSheet(
+            '''
+                QLabel{
+                    background: none;
+                    color: #000000;
+                    font: bold 'Helvetica Neue Leve';
+                    font-size: 25px;
+                }
+            '''
+        )
+        self.title_frame.show()
+
+        self.cep_source = QLabel('CEP de origem', self.deadline_frame)
+        self.cep_source.setMinimumSize(210, 50)
+        self.cep_source.setMaximumSize(210, 50)
+        self.cep_source.setStyleSheet(self.font_style_subtitle)
+        self.cep_source.show()
+
+        self.cep_destiny = QLabel('CEP de destino', self.deadline_frame)
+        self.cep_destiny.setMinimumSize(210, 50)
+        self.cep_destiny.setMaximumSize(210, 50)
+        self.cep_destiny.setStyleSheet(self.font_style_subtitle)
+        self.cep_destiny.show()
+
+        self.post_date = QLabel('Data de postagem', self.deadline_frame)
+        self.post_date.setMinimumSize(210, 50)
+        self.post_date.setMaximumSize(210, 50)
+        self.post_date.setStyleSheet(self.font_style_subtitle)
+        self.post_date.show()
+
+
+    def entrys_deadline(self):
+        self.entrys_style = '''
+            QLineEdit{
+                background-color: rgba(0, 0, 0, 0);
+                color: #707070;
+                border: 2px solid #cd6600;
+                border-radius: 10px;
+                font: 'Helvetica';
+                font-size: 18px;
+            }
+            QLineEdit:pressed{
+                color: #000000;
+            }
+        '''
+
+        self.cep_source_get = QLineEdit(self.deadline_frame)
+        self.cep_source_get.setMinimumSize(200, 40)
+        self.cep_source_get.setMaximumSize(200, 40)
+        self.cep_source_get.setPlaceholderText('Ex: 00000000')
+        self.cep_source_get.setMaxLength(8)
+        self.cep_source_get.setStyleSheet(self.entrys_style)
+        self.cep_source_get.show()
+
+        self.cep_destiny_get = QLineEdit(self.deadline_frame)
+        self.cep_destiny_get.setMinimumSize(200, 40)
+        self.cep_destiny_get.setMaximumSize(200, 40)
+        self.cep_destiny_get.setPlaceholderText('Ex: 00000000')
+        self.cep_destiny_get.setMaxLength(8)
+        self.cep_destiny_get.setStyleSheet(self.entrys_style)
+        self.cep_destiny_get.show()
+
+        self.post_date_get = QLineEdit(self.deadline_frame)
+        self.post_date_get.setMinimumSize(200, 40)
+        self.post_date_get.setMaximumSize(200, 40)
+        self.post_date_get.setPlaceholderText('          /          /          ')
+        self.post_date_get.setMaxLength(8)
+        self.post_date_get.setStyleSheet(self.entrys_style)
+        self.post_date_get.show()
+
+
+    def buttons_deadline(self):
+        self.question_style_button = '''
+            QToolButton{
+                background-color: none;
+                border-radius: 4px
+            }
+            QToolButton:hover{
+                background-color: rgba(255, 255, 255, 0.5);
+            }
+        '''
+        
+        self.question_i = QToolButton(self.deadline_frame)
+        self.question_i.setMinimumSize(30, 30)
+        self.question_i.setMinimumSize(30, 30)
+        self.question_i.setIcon(QIcon('Images/main_frames/quotation/question.png'))
+        self.question_i.setIconSize(QSize(30, 30))
+        self.question_i.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
+        self.question_i.setStyleSheet(self.question_style_button)
+        self.question_i.show()
+
+        self.calculate = QPushButton('CALCULAR', self.deadline_frame)
+        self.calculate.setMinimumSize(150, 50)
+        self.calculate.setMaximumSize(150, 50)
+        self.calculate.setStyleSheet(
+            '''
+                QPushButton{
+                    background-color: #cd6600;
+                    color: #ffffff;
+                    border-radius: 14px;
+                    font: bold 'Verdana';
+                    font-size: 19px;
+                }
+                QPushButton:hover{
+                    background-color: #8B4500;
+                }
+                QPushButton:pressed{
+                    background-color: #EE7600;
+                }
+            '''
+        )
+        self.calculate.show()
+
+
+    def positions_widgets_deadline(self):
+        self.labels_deadline()
+        self.entrys_deadline()
+        self.buttons_deadline()
+
+        ####################  L A B E L S  ####################
+        self.title_frame.setGeometry(360, 150, 420, 50)
+        self.cep_source.setGeometry(270, 220, 210, 50)
+        self.cep_destiny.setGeometry(685, 220, 210, 50)
+        self.post_date.setGeometry(458, 350, 210, 50)
+
+        ####################  E N T R Y S  ####################
+        self.cep_source_get.setGeometry(240, 270, 200, 40)
+        self.cep_destiny_get.setGeometry(655, 270, 200, 40)
+        self.post_date_get.setGeometry(443, 400, 200, 40)
+
+        #################### B U T T O N S ####################
+        self.question_i.setGeometry(643, 400, 40, 40)
+        self.calculate.setGeometry(465, 500, 150, 50)
+
+        
 
 class Order(Clossed):
     def frame_order(self):

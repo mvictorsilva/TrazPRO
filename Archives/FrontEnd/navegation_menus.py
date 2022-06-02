@@ -95,7 +95,7 @@ class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Notifi
         self.packages_menu.setStyleSheet(self.style_button_bar)
         self.layout_menu_navegation.addWidget(self.packages_menu)
 
-        self.screening_menu = QPushButton('Rastrar', self.menu_bar)
+        self.screening_menu = QPushButton('Rastrear', self.menu_bar)
         self.screening_menu.setMinimumSize(100, 30)
         self.screening_menu.setMaximumSize(100, 30)
         self.screening_menu.installEventFilter(self)
