@@ -816,6 +816,7 @@ class Order(Clossed):
                 }
             '''
         )
+        self.new_order.clicked.connect(self.frame_new_order)
         self.new_order.show()
 
 
@@ -864,6 +865,160 @@ class Order(Clossed):
         self.table_order.setGeometry(10, 80, 1061, 480)
 
 
+
+    def frame_new_order(self):
+        self.add = QFrame(self.order_frame)
+        self.add.setStyleSheet(
+            '''
+                QFrame{
+                    background-color: #f8f8f8;
+                    border: 2px solid;
+                    border-color; #808080;
+                    border-radius: 20px;
+                }
+            '''
+        )
+        self.add.show()
+
+        self.positions_widgets_add()
+
+
+    def labels_add(self):
+        self.style_subtitles = '''
+            QLabel{
+                background: none;
+                color: #000000;
+                font: Helvetica Neue Leve;
+                font-size: 20px;
+            }
+        '''
+
+        self.title = QLabel('Adicionar pacote', self.add)
+        self.title.setStyleSheet(
+            '''
+                QLabel{
+                    background: none;
+                    color: #000000;
+                    font: bold 'Helvetica Neue Leve';
+                    font-size: 25px;
+                }
+            '''
+        )
+        self.title.show()
+
+        self.description = QLabel('Descrição:', self.add)
+        self.description.setStyleSheet(self.style_subtitles)
+        self.description.show()
+
+        self.amount = QLabel('Quantidade:', self.add)
+        self.amount.setStyleSheet(self.style_subtitles)
+        self.amount.show()
+
+        self.weight = QLabel('Peso:', self.add)
+        self.weight.setStyleSheet(self.style_subtitles)
+        self.weight.show()
+
+        self.arrival_date = QLabel('Chegada:', self.add)
+        self.arrival_date.setStyleSheet(self.style_subtitles)
+        self.arrival_date.show()
+
+        self.category = QLabel('Categoria:', self.add)
+        self.category.setStyleSheet(self.style_subtitles)
+        self.category.show()
+
+        self.unitary = QLabel('Valor unitário:', self.add)
+        self.unitary.setStyleSheet(self.style_subtitles)
+        self.unitary.show()
+
+
+    def entrys_add(self):
+        self.style_entrys = '''
+            QLineEdit{
+                background-color: rgba(0, 0, 0, 0);
+                color: #707070;
+                border: 2px solid #cd6600;
+                border-radius: 10px;
+                font: 'Helvetica';
+                font-size: 18px;
+            }
+            QLineEdit:pressed{
+                color: #000000;
+            }
+        '''
+        
+        self.description_get = QLineEdit(self.add)
+        self.description_get.setStyleSheet(self.style_entrys)
+        self.description_get.show()
+
+        self.amount_get = QLineEdit(self.add)
+        self.amount_get.setStyleSheet(self.style_entrys)
+        self.amount_get.show()
+
+        self.weight_get = QLineEdit(self.add)
+        self.weight_get.setStyleSheet(self.style_entrys)
+        self.weight_get.show()
+
+        self.arrival_date_get = QLineEdit(self.add)
+        self.arrival_date_get.setStyleSheet(self.style_entrys)
+        self.arrival_date_get.show()
+
+        self.category_get = QLineEdit(self.add)
+        self.category_get.setStyleSheet(self.style_entrys)
+        self.category_get.show()
+
+        self.unitary_get = QLineEdit(self.add)
+        self.unitary_get.setStyleSheet(self.style_entrys)
+        self.unitary_get.show()
+
+
+    def button_add(self):
+        self.add_button = QPushButton('ADICIONAR', self.add)
+        self.add_button.setStyleSheet(
+            '''
+                QPushButton{
+                    background-color: #cd6600;
+                    color: #ffffff;
+                    border-radius: 14px;
+                    font: bold 'Verdana';
+                    font-size: 19px;
+                }
+                QPushButton:hover{
+                    background-color: #8B4500;
+                }
+                QPushButton:pressed{
+                    background-color: #EE7600;
+                }
+            '''
+        )
+        self.add_button.show()
+
+
+    def positions_widgets_add(self):
+        self.labels_add()
+        self.entrys_add()
+        self.button_add()
+
+        #################### L A B E L S ####################
+        self.title.setGeometry()
+        self.description.setGeometry()
+        self.amount.setGeometry()
+        self.weight.setGeometry()
+        self.arrival_date.setGeometry()
+        self.category.setGeometry()
+        self.unitary.setGeometry()
+
+        #################### E N T R Y S ####################
+        self.description_get.setGeometry()
+        self.amount_get.setGeometry()
+        self.weight_get.setGeometry()
+        self.arrival_date_get.setGeometry()
+        self.category_get.setGeometry()
+        self.unitary_get.setGeometry()
+
+        #################### B U T T O N ####################
+        self.add_button.setGeometry()
+
+
 class Localization(Clossed):
     def frame_localization(self):
         self.closed_main_frames()
@@ -874,12 +1029,106 @@ class Localization(Clossed):
         self.localization_frame.setStyleSheet(
             '''
                 QFrame{
-                    background-color: black;
+                    background-color: #ffffff;
                 }
             '''
         )
         self.layout.addWidget(self.localization_frame, 2, 0)
         self.localization_frame.show()
+
+        self.position_widgets_localization()
+
+    
+    def labels_localization(self):
+        self.title_track = QLabel('Deseja aconpanhar sua encomenda?', self.localization_frame)
+        self.title_track.setStyleSheet(
+            '''
+                QLabel{
+                    background: none;
+                    color: #000000;
+                    font: bold 'Helvetica Neue Leve';
+                    font-size: 25px;
+                }
+            '''
+        )
+        self.title_track.show()
+
+        self.subtitle_question = QLabel('Digite seu código de rastramento', self.localization_frame)
+        self.subtitle_question.setStyleSheet(
+            '''
+                QLabel{
+                    background: none;
+                    color: #000000;
+                    font: Helvetica Neue Leve;
+                    font-size: 20px;
+                }
+            '''
+        )
+        self.subtitle_question.show()
+
+
+    def entrys_localization(self):
+        self.tracking_code = QLineEdit(self.localization_frame)
+        self.tracking_code.setPlaceholderText('AA12345678BR')
+        self.tracking_code.setStyleSheet(
+            '''
+                QLineEdit{
+                    background-color: rgba(0, 0, 0, 0);
+                    color: #707070;
+                    border: 2px solid #cd6600;
+                    border-radius: 10px;
+                    font: 'Helvetica';
+                    font-size: 18px;
+                }
+                QLineEdit:pressed{
+                    color: #000000;
+                }
+            '''
+        )
+        self.tracking_code.show()
+
+
+    def results_localization(self):
+        self.background = QFrame(self.localization_frame)
+        self.background.setStyleSheet(
+            '''
+                QFrame{
+                    background-color: #f8f8f8;
+                    border-radius: 20px;
+                }
+            '''
+        )
+        self.background.show()
+
+        self.subtitle_result = QLabel('RESULTADO', self.background)
+        self.subtitle_result.setStyleSheet(
+            '''
+                QLabel{
+                    background: none;
+                    color: #000000;
+                    font: Helvetica Neue Leve;
+                    font-size: 20px;
+                }
+            '''
+        )
+        self.subtitle_result.show()
+
+
+    def position_widgets_localization(self):
+        self.labels_localization()
+        self.entrys_localization()
+        self.results_localization()
+
+        ####################  L A B E L S  ####################
+        self.title_track.setGeometry(310, 20, 460, 50)
+        self.subtitle_question.setGeometry(380, 100, 400, 50)
+
+        ####################  E N T R Y S  ####################
+        self.tracking_code.setGeometry(360, 160, 340, 40)
+
+        #################### R E S U L T S ####################
+        self.background.setGeometry(50, 240, 980, 400)
+        self.subtitle_result.setGeometry(430, 20, 120, 40)
 
 
 class User(Clossed):
@@ -892,12 +1141,100 @@ class User(Clossed):
         self.user_frame.setStyleSheet(
             '''
                 QFrame{
-                    background-color: white;
+                    background-color: #ffffff;
                 }
             '''
         )
         self.layout.addWidget(self.user_frame, 2, 0)
         self.user_frame.show()
+
+        self.position_widgets_user()
+
+    
+    def labels_user(self):
+        self.style_informations = '''
+            QLabel{
+                background: none;
+                color: #000000;
+                font: bold 'Helvetica Neue Leve';
+                font-size: 20px;
+            }
+        '''
+
+        self.title_information_user = QLabel('Informações da conta', self.user_frame)
+        self.title_information_user.setStyleSheet(
+            '''
+                QLabel{
+                    background: none;
+                    color: #000000;
+                    font: bold 'Helvetica Neue Leve';
+                    font-size: 30px;
+                }
+            '''
+        )
+        self.title_information_user.show()
+
+        self.name = QLabel('Nome:', self.user_frame)
+        self.name.setStyleSheet(self.style_informations)
+        self.name.show()
+
+        self.date = QLabel('Data de nascimento:', self.user_frame)
+        self.date.setStyleSheet(self.style_informations)
+        self.date.show()
+
+        self.id = QLabel('Identificador:', self.user_frame)
+        self.id.setStyleSheet(self.style_informations)
+        self.id.show()
+
+        self.phone = QLabel('Telefone celular:', self.user_frame)
+        self.phone.setStyleSheet(self.style_informations)
+        self.phone.show()
+
+        self.email = QLabel('E-mail para login:', self.user_frame)
+        self.email.setStyleSheet(self.style_informations)
+        self.email.show()
+        
+        self.office = QLabel('Cargo:', self.user_frame)
+        self.office.setStyleSheet(self.style_informations)
+        self.office.show()
+
+        self.admission = QLabel('Admissão:', self.user_frame)
+        self.admission.setStyleSheet(self.style_informations)
+        self.admission.show()
+
+
+    def image_perfil(self):
+        self.image = QLabel(self.user_frame)
+        self.image.setStyleSheet(
+            '''
+                QLabel{
+                    background-image: url('Images/main_frames/user/profile.png');
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    border: 4px solid #cd6600;
+                    border-radius: 100px;
+                }
+            '''
+        )
+        self.image.show()
+
+
+    def position_widgets_user(self):
+        self.labels_user()
+        self.image_perfil()
+
+        #################### L A B E L S ####################
+        self.title_information_user.setGeometry(370, 20, 350, 40)
+        self.name.setGeometry(520, 130, 200, 40)
+        self.date.setGeometry(520, 200, 210, 40)
+        self.id.setGeometry(520, 270, 200, 40)
+        self.phone.setGeometry(300, 360, 200, 40)
+        self.email.setGeometry(300, 430, 200, 40)
+        self.office.setGeometry(300, 500, 200, 40)
+        self.admission.setGeometry(300, 570, 200, 40)
+
+        ####################   I M A G E   ####################
+        self.image.setGeometry(250, 115, 200, 200)
 
 
 class Notification(Clossed):
@@ -928,9 +1265,68 @@ class Settings(Clossed):
         self.settings_frame.setStyleSheet(
             '''
                 QFrame{
-                    background-color: yellow;
+                    background-color: #ffffff;
                 }
             '''
         )
         self.layout.addWidget(self.settings_frame, 2, 0)
         self.settings_frame.show()
+
+        self.labels_system()
+
+
+    def labels_system(self):
+        self.title_name = QLabel('TrazPRO', self.settings_frame)
+        self.title_name.setStyleSheet(
+            '''
+                QLabel{
+                    background: none;
+                    color: #000000;
+                    font: bold 'Helvetica Neue Leve';
+                    font-size: 30px
+                }
+            '''
+        )
+        self.title_name.setGeometry(470, 170, 200, 50)
+        self.title_name.show()
+
+        self.logo = QLabel(self.settings_frame)
+        self.logo.setStyleSheet(
+            '''
+                QLabel{
+                    background-image: url('Images/main_frames/system/logo.png');
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                }
+            '''
+        )
+        self.logo.setGeometry(460, 250, 150, 150)
+        self.logo.show()
+
+        self.version = QLabel('Versão Beta', self.settings_frame)
+        self.version.setStyleSheet(
+            '''
+                QLabel{
+                    background: none;
+                    color: #000000;
+                    font: Helvetica Neue Leve;
+                    font-size: 20px;
+                }
+            '''
+        )
+        self.version.setGeometry(480, 430, 150, 50)
+        self.version.show()
+
+        self.creator = QLabel('Create by MVictor', self.settings_frame)
+        self.creator.setStyleSheet(
+            '''
+                QLabel{
+                    background: none;
+                    color: #808080;
+                    font: Helvetica Neue Leve;
+                    font-size: 20px;
+                }
+            '''
+        )
+        self.creator.setGeometry(880, 610, 200, 50)
+        self.creator.show()
