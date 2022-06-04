@@ -1,6 +1,3 @@
-from ctypes import alignment
-from logging.config import listen
-from re import S
 from PySide2.QtGui import *
 from PySide2.QtCore import *
 from PySide2.QtWidgets import *
@@ -865,7 +862,6 @@ class Order(Clossed):
         self.table_order.setGeometry(10, 80, 1061, 480)
 
 
-
     def frame_new_order(self):
         self.add = QFrame(self.order_frame)
         self.add.setStyleSheet(
@@ -1273,22 +1269,143 @@ class User(Clossed):
         self.image.setGeometry(250, 115, 200, 200)
 
 
-class Notification(Clossed):
-    def frame_notification(self):
+class Employee(Clossed):
+    def frame_employee(self):
         self.closed_main_frames()
         self.frame_options.hide()
-        self.notification_frame = QFrame(self.first_window)
-        self.notification_frame.setFrameShape(QFrame.Shape.NoFrame)
-        self.notification_frame.setFrameShadow(QFrame.Shadow.Raised)
-        self.notification_frame.setStyleSheet(
+        self.employee_frame = QFrame(self.first_window)
+        self.employee_frame.setFrameShape(QFrame.Shape.NoFrame)
+        self.employee_frame.setFrameShadow(QFrame.Shadow.Raised)
+        self.employee_frame.setStyleSheet(
             '''
                 QFrame{
-                    background-color: brow;
+                    background-color: #ffffff;
                 }
             '''
         )
-        self.layout.addWidget(self.notification_frame, 2, 0)
-        self.notification_frame.show()
+        self.layout.addWidget(self.employee_frame, 2, 0)
+        self.employee_frame.show()
+
+        self.positions_widgets_emplyee()
+
+
+    def labels_employee(self):
+        self.title_frame = QLabel('Funcionários', self.employee_frame)
+        self.title_frame.setStyleSheet(
+            '''
+                QLabel{
+                    background: none;
+                    color: #000000;
+                    font: bold 'Helvetica Neue Leve';
+                    font-size: 25px;
+                }
+            '''
+        )
+        self.title_frame.show()
+
+        self.logo_title = QLabel(self.employee_frame)
+        self.image_logo_title = QPixmap('Images/main_frames/empoyee/empoyee.png')
+        self.logo_title.setStyleSheet(
+            '''
+                QLabel{
+                    background: none;
+                }
+            '''
+        )
+        self.logo_title.setPixmap(self.image_logo_title)
+        self.logo_title.show()
+
+
+    def buttons_and_entrys_employee(self):
+        self.style_buttons = '''
+            QPushButton{
+                background-color: #cd6600;
+                color: #ffffff;
+                border-radius: 14px;
+                font: bold 'Verdana';
+                font-size: 19px;
+            }
+            QPushButton:hover{
+                background-color: #8B4500;
+            }
+            QPushButton:pressed{
+                background-color: #EE7600;
+            }
+        '''
+
+        self.search = QLineEdit(self.employee_frame)
+        self.search.setPlaceholderText('Buscar                    🔍')
+        self.search.setStyleSheet(
+            '''
+                QLineEdit{
+                    background-color: rgba(0, 0, 0, 0);
+                    color: #707070;
+                    border: 2px solid #cd6600;
+                    border-radius: 10px;
+                    font: 'Helvetica';
+                    font-size: 18px;
+                }
+                QLineEdit:pressed{
+                    color: #000000;
+                }
+            '''
+        )
+        self.search.show()
+
+        self.new = QPushButton('Novo', self.employee_frame)
+        self.new.setStyleSheet(self.style_buttons)
+        self.new.show()
+
+        self.delete = QPushButton('Deletar', self.employee_frame)
+        self.delete.setStyleSheet(self.style_buttons)
+        self.delete.show()
+
+        self.edit = QPushButton('Editar', self.employee_frame)
+        self.edit.setStyleSheet(self.style_buttons)
+        self.edit.show()
+
+
+    def table_employee(self):
+        self.employee_table = QTableWidget(self.employee_frame)
+        self.employee_table.setRowCount(1)
+        self.employee_table.setColumnCount(7)
+        self.employee_table.verticalHeader().setDefaultSectionSize(50)
+        self.employee_table.horizontalHeader().setDefaultSectionSize(130)
+
+        self.titles = ['ID', 'NOME', 'DATA DE\nNASCIMENTO', 'CARGO', 'E-MAIL', 'TELEFONE', 'ADMISSÃO']
+        self.employee_table.setHorizontalHeaderLabels(list(self.titles))
+
+        self.employee_table.setStyleSheet(
+            '''
+                QTableWidget{
+                    border: 1px solid #cd6600;
+                    border-radius: 10px;
+                    selection-background-color: #cd6600;
+                }
+            '''
+        )
+        self.employee_table.show()
+
+
+    def positions_widgets_emplyee(self):
+        self.labels_employee()
+        self.buttons_and_entrys_employee()
+        self.table_employee()
+
+        ####################      L A B E L S     ####################
+        self.title_frame.setGeometry(150, 20, 400, 50)
+        self.logo_title.setGeometry(80, 20, 50, 50)
+
+        ####################  BUTTONS AND ENTRYS  ####################
+        self.search.setGeometry(790, 25, 210, 40)
+        self.new.setGeometry(190, 600, 200, 40)
+        self.delete.setGeometry(440, 600, 200, 40)
+        self.edit.setGeometry(690, 600, 200, 40)
+
+        ####################      T A B L E       ####################
+        self.employee_table.setGeometry(70, 80, 931, 470)
+
+
 
 
 class Settings(Clossed):

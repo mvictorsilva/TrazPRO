@@ -2,10 +2,10 @@ from PySide2.QtGui import *
 from PySide2.QtCore import *
 from PySide2.QtWidgets import *
 
-from main_frames import Quotation, Deadline, Order, Localization, User, Notification, Settings
+from main_frames import Quotation, Deadline, Order, Localization, User, Employee, Settings
 
 
-class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Notification, Settings):
+class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Employee, Settings):
     def execute_navegation_bar(self):
         self.home_menu_frame.deleteLater()
         self.body_frame.deleteLater()
@@ -251,14 +251,14 @@ class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Notifi
         self.user.show()
 
         self.notification = QToolButton(self.frame_options)
-        self.notification.setText('Notificações')
+        self.notification.setText('Funcionários')
         self.notification.setMinimumSize(100, 80)
         self.notification.setMaximumSize(100, 80)
-        self.notification.setIcon(QIcon('Images/navegation_frame/notification.png'))
+        self.notification.setIcon(QIcon('Images/navegation_frame/employee.png'))
         self.notification.setIconSize(QSize(50, 50))
         self.notification.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         self.notification.setStyleSheet(self.button_style)
-        self.notification.clicked.connect(self.frame_notification)
+        self.notification.clicked.connect(self.frame_employee)
         self.layout_options.addWidget(self.notification)
         self.notification.show()
 
