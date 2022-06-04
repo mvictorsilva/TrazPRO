@@ -562,7 +562,7 @@ class Deadline(Clossed):
         self.title_cep.setStyleSheet(self.font_style_title)
         self.title_cep.show()
 
-        self.cep = QLabel('CEP', self.deadline_frame)
+        self.cep = QLabel('Digite o CEP:', self.deadline_frame)
         self.cep.setStyleSheet(self.font_style_subtitle)
         self.cep.show()
 
@@ -682,7 +682,7 @@ class Deadline(Clossed):
         self.cep_destiny.setGeometry(865, 220, 210, 50)
         self.post_date.setGeometry(638, 350, 210, 50)
         self.title_cep.setGeometry(100, 150, 200, 50)
-        self.cep.setGeometry(150, 250, 100, 30)
+        self.cep.setGeometry(80, 255, 150, 30)
         self.line.setGeometry(350, 130, 2, 470)
 
         ####################  E N T R Y S  ####################
@@ -695,7 +695,7 @@ class Deadline(Clossed):
         self.question_i.setGeometry(823, 400, 40, 40)
         self.calculate.setGeometry(645, 500, 150, 50)
         self.cep_search.setGeometry(105, 400, 100, 30)
-      
+
 
 class Order(Clossed):
     def frame_order(self):
@@ -873,11 +873,12 @@ class Order(Clossed):
                 QFrame{
                     background-color: #f8f8f8;
                     border: 2px solid;
-                    border-color; #808080;
+                    border-color: #808080;
                     border-radius: 20px;
                 }
             '''
         )
+        self.add.setGeometry(130, 90, 800, 500)
         self.add.show()
 
         self.positions_widgets_add()
@@ -886,6 +887,7 @@ class Order(Clossed):
     def labels_add(self):
         self.style_subtitles = '''
             QLabel{
+                border: none;
                 background: none;
                 color: #000000;
                 font: Helvetica Neue Leve;
@@ -897,6 +899,7 @@ class Order(Clossed):
         self.title.setStyleSheet(
             '''
                 QLabel{
+                    border: none;
                     background: none;
                     color: #000000;
                     font: bold 'Helvetica Neue Leve';
@@ -992,6 +995,34 @@ class Order(Clossed):
         )
         self.add_button.show()
 
+        self.question_style_button = '''
+            QToolButton{
+                background-color: none;
+                border-radius: 4px
+            }
+            QToolButton:hover{
+                background-color: rgba(255, 255, 255, 0.5);
+            }
+        '''
+        
+        self.close = QToolButton(self.add)
+        self.close.setIcon(QIcon('Images/main_frames/order/close.png'))
+        self.close.setIconSize(QSize(20, 20))
+        self.close.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
+        self.close.setStyleSheet(
+            '''
+                QToolButton{
+                    background-color: none;
+                    border-radius: 4px
+                }
+                QToolButton:hover{
+                    background-color: rgba(255, 255, 255, 0.5);
+                }
+            '''
+        )
+        self.close.clicked.connect(lambda: self.add.deleteLater())
+        self.close.show()
+
 
     def positions_widgets_add(self):
         self.labels_add()
@@ -999,24 +1030,25 @@ class Order(Clossed):
         self.button_add()
 
         #################### L A B E L S ####################
-        self.title.setGeometry()
-        self.description.setGeometry()
-        self.amount.setGeometry()
-        self.weight.setGeometry()
-        self.arrival_date.setGeometry()
-        self.category.setGeometry()
-        self.unitary.setGeometry()
+        self.title.setGeometry(300, 30, 350, 40)
+        self.description.setGeometry(80, 100, 150, 40)
+        self.amount.setGeometry(300, 100, 150, 40)
+        self.weight.setGeometry(520, 100, 150, 40)
+        self.arrival_date.setGeometry(80, 230, 150, 40)
+        self.category.setGeometry(300, 230, 200, 40)
+        self.unitary.setGeometry(520, 230, 200, 40)
 
         #################### E N T R Y S ####################
-        self.description_get.setGeometry()
-        self.amount_get.setGeometry()
-        self.weight_get.setGeometry()
-        self.arrival_date_get.setGeometry()
-        self.category_get.setGeometry()
-        self.unitary_get.setGeometry()
+        self.description_get.setGeometry(80, 150, 200, 40)
+        self.amount_get.setGeometry(300, 150, 200, 40)
+        self.weight_get.setGeometry(520, 150, 200, 40)
+        self.arrival_date_get.setGeometry(80, 280, 200, 40)
+        self.category_get.setGeometry(300, 280, 200, 40)
+        self.unitary_get.setGeometry(520, 280, 200, 40)
 
         #################### B U T T O N ####################
-        self.add_button.setGeometry()
+        self.add_button.setGeometry(310, 400, 180, 40)
+        self.close.setGeometry(750, 20, 30, 30)
 
 
 class Localization(Clossed):
@@ -1044,6 +1076,7 @@ class Localization(Clossed):
         self.title_track.setStyleSheet(
             '''
                 QLabel{
+                    border: none;
                     background: none;
                     color: #000000;
                     font: bold 'Helvetica Neue Leve';
@@ -1057,6 +1090,7 @@ class Localization(Clossed):
         self.subtitle_question.setStyleSheet(
             '''
                 QLabel{
+                    border: none;
                     background: none;
                     color: #000000;
                     font: Helvetica Neue Leve;
@@ -1094,6 +1128,7 @@ class Localization(Clossed):
             '''
                 QFrame{
                     background-color: #f8f8f8;
+                    border: 2px solid #909090;
                     border-radius: 20px;
                 }
             '''
@@ -1104,6 +1139,7 @@ class Localization(Clossed):
         self.subtitle_result.setStyleSheet(
             '''
                 QLabel{
+                    border: none;
                     background: none;
                     color: #000000;
                     font: Helvetica Neue Leve;

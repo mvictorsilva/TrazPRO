@@ -163,24 +163,6 @@ class RegisterFrame():
         self.spacer_title = QSpacerItem(10, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
         self.grid_layout_register.addItem(self.spacer_title, 2, 0)
 
-        self.option = QLabel('Ou', self.register_frame)
-        self.option.setMaximumSize(350, 50)
-        self.option.setStyleSheet(
-            '''
-                QLabel{
-                    background: none;
-                    color: #ffffff;
-                    font: bold 'Helvetica';
-                    font-size: 18px;
-                }
-            '''
-        )
-        self.grid_layout_register.addWidget(self.option, 9, 0, Qt.AlignCenter)
-        self.option.show()
-
-        self.spacer_button = QSpacerItem(10, 30, QSizePolicy.Fixed, QSizePolicy.Minimum)
-        self.grid_layout_register.addItem(self.spacer_button, 11, 0)
-
 
     def frame_register_entrys(self):
         self.name = QLineEdit(self.register_frame)
@@ -296,35 +278,32 @@ class RegisterFrame():
         self.grid_layout_register.addWidget(self.register_user, 7, 0, Qt.AlignCenter)
         self.register_user.show()
 
-        self.spacer_button = QSpacerItem(10, 30, QSizePolicy.Fixed, QSizePolicy.Minimum)
-        self.grid_layout_register.addItem(self.spacer_button, 8, 0)
-
-        self.register_google = QPushButton('  Cadastre-se com o Google', self.register_frame)
-        self.register_google.setMinimumSize(350, 50)
-        self.register_google.setMaximumSize(350, 50)
-        self.register_google.setIcon(QIcon('Images/login_page/google.png'))
-        self.register_google.setStyleSheet(
-            '''
-                QPushButton{
-                    background-color: #ffffff;
-                    color: #000000;
-                    border-radius: 25px;
-                    font: bold 'Verdana';
-                    font-size: 20px;
-                }
-                QPushButton:hover{
-                    background-color: #E6E6FA;
-                }
-                QPushButton:pressed{
-                    background-color: #C1CDCD;
-                }
-            '''
-        )
-        self.grid_layout_register.addWidget(self.register_google, 12, 0, Qt.AlignHCenter)
-        self.register_google.show()
+        # self.register_google = QPushButton('  Cadastre-se com o Google', self.register_frame)
+        # self.register_google.setMinimumSize(350, 50)
+        # self.register_google.setMaximumSize(350, 50)
+        # self.register_google.setIcon(QIcon('Images/login_page/google.png'))
+        # self.register_google.setStyleSheet(
+        #     '''
+        #         QPushButton{
+        #             background-color: #ffffff;
+        #             color: #000000;
+        #             border-radius: 25px;
+        #             font: bold 'Verdana';
+        #             font-size: 20px;
+        #         }
+        #         QPushButton:hover{
+        #             background-color: #E6E6FA;
+        #         }
+        #         QPushButton:pressed{
+        #             background-color: #C1CDCD;
+        #         }
+        #     '''
+        # )
+        # self.grid_layout_register.addWidget(self.register_google, 12, 0, Qt.AlignHCenter)
+        # self.register_google.show()
 
         self.vertical_spacer_item2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-        self.grid_layout_register.addItem(self.vertical_spacer_item2, 13, 0)
+        self.grid_layout_register.addItem(self.vertical_spacer_item2, 8, 0)
 
 
 class LoginFrame():
@@ -537,24 +516,6 @@ class LoginFrame():
         self.grid_layout_login.addWidget(self.password_login, 4, 0, Qt.AlignCenter)
         self.password_login.show()
 
-        self.option_login = QLabel('Ou', self.main_frame)
-        self.option_login.setMaximumSize(350, 50)
-        self.option_login.setStyleSheet(
-            '''
-                QLabel{
-                    background: none;
-                    color: #ffffff;
-                    font: bold 'Helvetica';
-                    font-size: 18px;
-                }
-            '''
-        )
-        self.grid_layout_login.addWidget(self.option_login, 9, 0, Qt.AlignCenter)
-        self.option_login.show()
-
-        self.spacer_button = QSpacerItem(10, 15, QSizePolicy.Fixed, QSizePolicy.Minimum)
-        self.grid_layout_login.addItem(self.spacer_button, 10, 0)
-
 
     def main_frame_buttons(self):
         self.remenber_user = QCheckBox('Mostrar caracteres', self.main_frame)
@@ -614,36 +575,8 @@ class LoginFrame():
         self.grid_layout_login.addWidget(self.forgot_password, 7, 0, Qt.AlignCenter)
         self.forgot_password.show()
 
-        self.spacer_button = QSpacerItem(10, 15, QSizePolicy.Fixed, QSizePolicy.Minimum)
-        self.grid_layout_login.addItem(self.spacer_button, 8, 0)
-
-
-        self.login_google = QPushButton('  Conecte-se com o Google', self.main_frame)
-        self.login_google.setMinimumSize(350, 50)
-        self.login_google.setMaximumSize(350, 50)
-        self.login_google.setIcon(QIcon('Images/login_page/google.png'))
-        self.login_google.setStyleSheet(
-            '''
-                QPushButton{
-                    background-color: #ffffff;
-                    color: #000000;
-                    border-radius: 25px;
-                    font: bold 'Verdana';
-                    font-size: 20px;
-                }
-                QPushButton:hover{
-                    background-color: #E6E6FA;
-                }
-                QPushButton:pressed{
-                    background-color: #C1CDCD;
-                }
-            '''
-        )
-        self.grid_layout_login.addWidget(self.login_google, 11, 0, Qt.AlignHCenter)
-        self.login_google.show()
-
         self.vertical_spacer_item2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-        self.grid_layout_login.addItem(self.vertical_spacer_item2, 12, 0)
+        self.grid_layout_login.addItem(self.vertical_spacer_item2, 8, 0)
 
 
 class FrameHome(LoginFrame, RegisterFrame, FramesNavegationBar):
