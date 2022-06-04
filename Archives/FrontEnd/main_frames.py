@@ -1,3 +1,6 @@
+from ctypes import alignment
+from logging.config import listen
+from re import S
 from PySide2.QtGui import *
 from PySide2.QtCore import *
 from PySide2.QtWidgets import *
@@ -53,11 +56,6 @@ class Quotation(Clossed):
         self.layout.addWidget(self.quotation_frame, 2, 0)
         self.quotation_frame.show()
 
-        self.labels_quotation()
-        self.entrys_quotation()
-        self.radio_buttons()
-        self.buttons_quotation()
-        self.combo_box_quotation()
         self.position_widgets_quotation()
 
 
@@ -454,6 +452,12 @@ class Quotation(Clossed):
 
 
     def position_widgets_quotation(self):
+        self.labels_quotation()
+        self.entrys_quotation()
+        self.radio_buttons()
+        self.buttons_quotation()
+        self.combo_box_quotation()
+
         ####################        L A B E L S       ####################
         self.title_frame.setGeometry(330, 10, 420, 50)
         self.cep_source.setGeometry(150, 80, 210, 50)
@@ -512,6 +516,15 @@ class Deadline(Clossed):
         
     
     def labels_deadline(self):
+        self.font_style_title = '''
+            QLabel{
+                background: none;
+                color: #000000;
+                font: bold 'Helvetica Neue Leve';
+                font-size: 25px;
+            }
+        '''
+
         self.font_style_subtitle = '''
             QLabel{
                 background: none;
@@ -524,16 +537,7 @@ class Deadline(Clossed):
         self.title_frame = QLabel('Cálculo de prazos de entrega', self.deadline_frame)
         self.title_frame.setMinimumSize(420, 50)
         self.title_frame.setMaximumSize(420, 50)
-        self.title_frame.setStyleSheet(
-            '''
-                QLabel{
-                    background: none;
-                    color: #000000;
-                    font: bold 'Helvetica Neue Leve';
-                    font-size: 25px;
-                }
-            '''
-        )
+        self.title_frame.setStyleSheet(self.font_style_title)
         self.title_frame.show()
 
         self.cep_source = QLabel('CEP de origem', self.deadline_frame)
@@ -553,6 +557,21 @@ class Deadline(Clossed):
         self.post_date.setMaximumSize(210, 50)
         self.post_date.setStyleSheet(self.font_style_subtitle)
         self.post_date.show()
+
+        self.title_cep = QLabel('Buscar CEP', self.deadline_frame)
+        self.title_cep.setStyleSheet(self.font_style_title)
+        self.title_cep.show()
+
+        self.cep = QLabel('CEP', self.deadline_frame)
+        self.cep.setStyleSheet(self.font_style_subtitle)
+        self.cep.show()
+
+        self.line = QFrame(self.deadline_frame)
+        self.line.setStyleSheet('background: none; background-color: #cd6600;')
+        self.line.setLineWidth(2)
+        self.line.setFrameShape(QFrame.Shape.VLine)
+        self.line.setFrameShadow(QFrame.Shadow.Sunken)
+        self.line.show()
 
 
     def entrys_deadline(self):
@@ -594,6 +613,14 @@ class Deadline(Clossed):
         self.post_date_get.setStyleSheet(self.entrys_style)
         self.post_date_get.show()
 
+        self.cep_get = QLineEdit(self.deadline_frame)
+        self.cep_get.setMinimumSize(200, 40)
+        self.cep_get.setMaximumSize(200, 40)
+        self.cep_get.setPlaceholderText('Ex: 00000000')
+        self.cep_get.setMaxLength(8)
+        self.cep_get.setStyleSheet(self.entrys_style)
+        self.cep_get.show()
+
 
     def buttons_deadline(self):
         self.question_style_button = '''
@@ -605,11 +632,27 @@ class Deadline(Clossed):
                 background-color: rgba(255, 255, 255, 0.5);
             }
         '''
+
+        self.style_buttons = '''
+            QPushButton{
+                background-color: #cd6600;
+                color: #ffffff;
+                border-radius: 14px;
+                font: bold 'Verdana';
+                font-size: 19px;
+            }
+            QPushButton:hover{
+                background-color: #8B4500;
+            }
+            QPushButton:pressed{
+                background-color: #EE7600;
+            }
+        '''
         
         self.question_i = QToolButton(self.deadline_frame)
         self.question_i.setMinimumSize(30, 30)
         self.question_i.setMinimumSize(30, 30)
-        self.question_i.setIcon(QIcon('Images/main_frames/quotation/question.png'))
+        self.question_i.setIcon(QIcon('Images/main_frames/deadline/question.png'))
         self.question_i.setIconSize(QSize(30, 30))
         self.question_i.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
         self.question_i.setStyleSheet(self.question_style_button)
@@ -618,7 +661,145 @@ class Deadline(Clossed):
         self.calculate = QPushButton('CALCULAR', self.deadline_frame)
         self.calculate.setMinimumSize(150, 50)
         self.calculate.setMaximumSize(150, 50)
-        self.calculate.setStyleSheet(
+        self.calculate.setStyleSheet(self.style_buttons)
+        self.calculate.show()
+
+        self.cep_search = QPushButton('BUSCAR', self.deadline_frame)
+        self.cep_search.setMinimumSize(150, 50)
+        self.cep_search.setMaximumSize(150, 50)
+        self.cep_search.setStyleSheet(self.style_buttons)
+        self.cep_search.show()
+
+
+    def positions_widgets_deadline(self):
+        self.labels_deadline()
+        self.entrys_deadline()
+        self.buttons_deadline()
+
+        ####################  L A B E L S  ####################
+        self.title_frame.setGeometry(540, 150, 420, 50)
+        self.cep_source.setGeometry(450, 220, 210, 50)
+        self.cep_destiny.setGeometry(865, 220, 210, 50)
+        self.post_date.setGeometry(638, 350, 210, 50)
+        self.title_cep.setGeometry(100, 150, 200, 50)
+        self.cep.setGeometry(150, 250, 100, 30)
+        self.line.setGeometry(350, 130, 2, 470)
+
+        ####################  E N T R Y S  ####################
+        self.cep_source_get.setGeometry(420, 270, 200, 40)
+        self.cep_destiny_get.setGeometry(835, 270, 200, 40)
+        self.post_date_get.setGeometry(623, 400, 200, 40)
+        self.cep_get.setGeometry(80, 300, 100, 30)
+
+        #################### B U T T O N S ####################
+        self.question_i.setGeometry(823, 400, 40, 40)
+        self.calculate.setGeometry(645, 500, 150, 50)
+        self.cep_search.setGeometry(105, 400, 100, 30)
+      
+
+class Order(Clossed):
+    def frame_order(self):
+        self.closed_main_frames()
+        self.frame_packeges.hide()
+        self.order_frame = QFrame(self.first_window)
+        self.order_frame.setFrameShape(QFrame.Shape.NoFrame)
+        self.order_frame.setFrameShadow(QFrame.Shadow.Raised)
+        self.order_frame.setStyleSheet(
+            '''
+                QFrame{
+                    background-color: #ffffff;
+                }
+            '''
+        )
+        self.layout.addWidget(self.order_frame, 2, 0)
+        self.order_frame.show()
+
+        self.positions_widgets_order()
+
+    
+    def labels_order(self):
+        self.style_results = (
+            '''
+                QLabel{
+                    background: none;
+                    color: #000000;
+                    font: Helvetica Neue Leve;
+                    font-size: 20px;
+                }
+            '''
+        )
+
+        self.title = QLabel('Encomendas em estoque', self.order_frame)
+        self.title.setStyleSheet(
+            '''
+                QLabel{
+                    background: none;
+                    color: #202020;
+                    font: bold 'Helvetica Neue Leve';
+                    font-size: 25px;
+                }
+            '''
+        )
+        self.title.show()
+
+        self.logo_title = QLabel(self.order_frame)
+        self.image_logo_title = QPixmap('Images/main_frames/order/logo_title.png')
+        self.logo_title.setStyleSheet(
+            '''
+                QLabel{
+                    background: none;
+                }
+            '''
+        )
+        self.logo_title.setPixmap(self.image_logo_title)
+        self.logo_title.show()
+
+        self.background = QFrame(self.order_frame)
+        self.background.setStyleSheet(
+            '''
+                QFrame{
+                    background-color: #f7f7f7;
+                    border-radius: 10px;
+                }
+            '''
+        )
+        self.background.show()
+
+        self.quantity_products = QLabel('Quantidade de produtos no estoque:', self.background)
+        self.quantity_products.setStyleSheet(self.style_results)
+        self.quantity_products.show()
+
+        self.stock_value = QLabel('Valor em estoque:', self.background)
+        self.stock_value.setStyleSheet(self.style_results)
+        self.stock_value.show()
+
+
+    def entrys_order(self):
+        self.search = QLineEdit(self.order_frame)
+        self.search.setPlaceholderText('Buscar                    🔍')
+        self.search.setStyleSheet(
+            '''
+                QLineEdit{
+                    background-color: rgba(0, 0, 0, 0);
+                    color: #707070;
+                    border: 2px solid #cd6600;
+                    border-radius: 10px;
+                    font: 'Helvetica';
+                    font-size: 18px;
+                }
+                QLineEdit:pressed{
+                    color: #000000;
+                }
+            '''
+        )
+        self.search.show()
+
+
+    def buttons_order(self):
+        self.new_order = QPushButton(' Novo', self.order_frame)
+        self.new_order.setIcon(QIcon('Images/main_frames/order/new.png'))
+        self.new_order.setIconSize(QSize(18, 18))
+        self.new_order.setStyleSheet(
             '''
                 QPushButton{
                     background-color: #cd6600;
@@ -635,47 +816,52 @@ class Deadline(Clossed):
                 }
             '''
         )
-        self.calculate.show()
+        self.new_order.show()
 
 
-    def positions_widgets_deadline(self):
-        self.labels_deadline()
-        self.entrys_deadline()
-        self.buttons_deadline()
+    def tables_order(self):
+        self.table_order = QTableWidget(self.order_frame)
+        self.table_order.setRowCount(1)
+        self.table_order.setColumnCount(8)
+        self.table_order.verticalHeader().setDefaultSectionSize(50)
+        self.table_order.horizontalHeader().setDefaultSectionSize(130)
 
-        ####################  L A B E L S  ####################
-        self.title_frame.setGeometry(360, 150, 420, 50)
-        self.cep_source.setGeometry(270, 220, 210, 50)
-        self.cep_destiny.setGeometry(685, 220, 210, 50)
-        self.post_date.setGeometry(458, 350, 210, 50)
+        self.titles = ['ID', 'QUANTIDADE', 'DESCRIÇÃO', 'PESO EM KG', 'VALOR UNITÁRIO', 'DATA DE CHEGADA', 'CATEGORIA', 'TOTAL']
+        self.table_order.setHorizontalHeaderLabels(list(self.titles))
 
-        ####################  E N T R Y S  ####################
-        self.cep_source_get.setGeometry(240, 270, 200, 40)
-        self.cep_destiny_get.setGeometry(655, 270, 200, 40)
-        self.post_date_get.setGeometry(443, 400, 200, 40)
-
-        #################### B U T T O N S ####################
-        self.question_i.setGeometry(643, 400, 40, 40)
-        self.calculate.setGeometry(465, 500, 150, 50)
-
-        
-
-class Order(Clossed):
-    def frame_order(self):
-        self.closed_main_frames()
-        self.frame_packeges.hide()
-        self.order_frame = QFrame(self.first_window)
-        self.order_frame.setFrameShape(QFrame.Shape.NoFrame)
-        self.order_frame.setFrameShadow(QFrame.Shadow.Raised)
-        self.order_frame.setStyleSheet(
+        self.table_order.setStyleSheet(
             '''
-                QFrame{
-                    background-color: green;
+                QTableWidget{
+                    border: 1px solid #cd6600;
+                    border-radius: 10px;
+                    selection-background-color: #cd6600;
                 }
             '''
         )
-        self.layout.addWidget(self.order_frame, 2, 0)
-        self.order_frame.show()
+        self.table_order.show()
+
+
+    def positions_widgets_order(self):
+        self.labels_order()
+        self.entrys_order()
+        self.buttons_order()
+        self.tables_order()
+
+        ####################  L A B E L S  ####################
+        self.title.setGeometry(100, 20, 360, 50)
+        self.logo_title.setGeometry(40, 20, 50, 50)
+        self.background.setGeometry(10, 570, 1060, 90)
+        self.quantity_products.setGeometry(30, 30, 350, 30)
+        self.stock_value.setGeometry(650, 30, 200, 30)
+
+        ####################  E N T R Y S  ####################
+        self.search.setGeometry(700, 25, 210, 40)
+
+        #################### B U T T O N S ####################
+        self.new_order.setGeometry(930, 25, 130, 40)
+        
+        ####################   T A B L E   #################### 
+        self.table_order.setGeometry(10, 80, 1061, 480)
 
 
 class Localization(Clossed):

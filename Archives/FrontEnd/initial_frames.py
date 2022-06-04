@@ -17,6 +17,7 @@ class RegisterFrame():
         self.frame_register_entrys()
         self.frame_register_buttons()
 
+
     def login_register(self):
         self.login_menu_frame.deleteLater()
         self.main_frame.deleteLater()
@@ -29,9 +30,11 @@ class RegisterFrame():
         self.frame_register_entrys()
         self.frame_register_buttons()
 
+
     def closed_frames(self):
         self.home_menu_frame.deleteLater()
         self.body_frame.deleteLater()
+
 
     def menu_frame_register(self):
         self.register_menu_frame = QFrame(self.first_window)
@@ -49,6 +52,7 @@ class RegisterFrame():
         )
         self.layout.addWidget(self.register_menu_frame)
         self.register_menu_frame.show()
+
 
     def menu_label_register(self):
         self.logo = QLabel(self.register_menu_frame)
@@ -69,6 +73,7 @@ class RegisterFrame():
 
         self.spacer_widgets = QSpacerItem(473, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
         self.horizontal_layout_register.addItem(self.spacer_widgets)
+
 
     def menu_buttons_register(self):
         self.information = QPushButton('Sobre', self.register_menu_frame)
@@ -134,6 +139,7 @@ class RegisterFrame():
         self.grid_layout_register = QGridLayout()
         self.register_frame.setLayout(self.grid_layout_register)
 
+
     def frame_register_labels(self):
         self.vertical_spacer_item = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
         self.grid_layout_register.addItem(self.vertical_spacer_item, 0, 0)
@@ -174,6 +180,7 @@ class RegisterFrame():
 
         self.spacer_button = QSpacerItem(10, 30, QSizePolicy.Fixed, QSizePolicy.Minimum)
         self.grid_layout_register.addItem(self.spacer_button, 11, 0)
+
 
     def frame_register_entrys(self):
         self.name = QLineEdit(self.register_frame)
@@ -247,6 +254,7 @@ class RegisterFrame():
         )
         self.grid_layout_register.addWidget(self.password_register, 5, 0, Qt.AlignCenter)
         self.password_register.show()
+
 
     def frame_register_buttons(self):
         self.confirm_terms = QCheckBox('Concordo com os termos de uso', self.register_frame)
@@ -331,6 +339,7 @@ class LoginFrame():
         self.main_frame_entrys()
         self.main_frame_buttons()
 
+
     def register_login(self):
         self.register_menu_frame.deleteLater()
         self.register_frame.deleteLater()
@@ -343,9 +352,11 @@ class LoginFrame():
         self.main_frame_entrys()
         self.main_frame_buttons()
 
+
     def closed_frames(self):
         self.home_menu_frame.deleteLater()
         self.body_frame.deleteLater()
+
 
     def menu_frame_login(self):
         self.login_menu_frame = QFrame(self.first_window)
@@ -363,6 +374,7 @@ class LoginFrame():
         )
         self.layout.addWidget(self.login_menu_frame)
         self.login_menu_frame.show()
+
 
     def menu_label_login(self):
         self.logo_white = QLabel(self.login_menu_frame)
@@ -383,6 +395,7 @@ class LoginFrame():
 
         self.spacer_widgets = QSpacerItem(473, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
         self.horizontal_layout_login.addItem(self.spacer_widgets)
+
 
     def menu_buttons_login(self):
         self.information = QPushButton('Sobre', self.login_menu_frame)
@@ -448,6 +461,7 @@ class LoginFrame():
         self.grid_layout_login = QGridLayout()
         self.main_frame.setLayout(self.grid_layout_login)
 
+
     def main_frame_labels(self):
         self.vertical_spacer_item = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
         self.grid_layout_login.addItem(self.vertical_spacer_item, 0, 0)
@@ -470,6 +484,7 @@ class LoginFrame():
 
         self.spacer_title = QSpacerItem(10, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
         self.grid_layout_login.addItem(self.spacer_title, 2, 0)
+
 
     def main_frame_entrys(self):
         self.email_login = QLineEdit(self.main_frame)
@@ -539,6 +554,7 @@ class LoginFrame():
 
         self.spacer_button = QSpacerItem(10, 15, QSizePolicy.Fixed, QSizePolicy.Minimum)
         self.grid_layout_login.addItem(self.spacer_button, 10, 0)
+
 
     def main_frame_buttons(self):
         self.remenber_user = QCheckBox('Mostrar caracteres', self.main_frame)
@@ -639,6 +655,7 @@ class FrameHome(LoginFrame, RegisterFrame, FramesNavegationBar):
         self.information_labels_home()
         self.information_buttons_home()
 
+
     def menu_frame_home(self):
         self.home_menu_frame = QFrame(self.first_window)
         self.horizontal_layout = QHBoxLayout(self.home_menu_frame)
@@ -655,6 +672,7 @@ class FrameHome(LoginFrame, RegisterFrame, FramesNavegationBar):
         )
         self.layout.addWidget(self.home_menu_frame)
         self.home_menu_frame.show()
+
 
     def menu_label_home(self):
         self.logo_white = QLabel(self.home_menu_frame)
@@ -675,6 +693,7 @@ class FrameHome(LoginFrame, RegisterFrame, FramesNavegationBar):
 
         self.spacer_widgets = QSpacerItem(473, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
         self.horizontal_layout.addItem(self.spacer_widgets)
+
 
     def menu_buttons_home(self):
         self.register = QPushButton('Cadastre-se', self.home_menu_frame)
@@ -754,6 +773,7 @@ class FrameHome(LoginFrame, RegisterFrame, FramesNavegationBar):
         self.line.setFrameShadow(QFrame.Shadow.Sunken)
         self.line.show()
 
+
     def information_labels_home(self):
         self.title_text = QLabel('ECONOMIZE TEMPO E DINHEIRO\nCOM GESTÃO DE FRETES', self.body_frame)
         self.title_text.setStyleSheet(
@@ -784,6 +804,7 @@ class FrameHome(LoginFrame, RegisterFrame, FramesNavegationBar):
         )
         self.apresentation_text.setGeometry(100, 270, 500, 90)
         self.apresentation_text.show()
+
 
     def information_buttons_home(self):
         self.register_home = QPushButton('SAIBA MAIS', self.body_frame)
