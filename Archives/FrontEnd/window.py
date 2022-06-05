@@ -4,11 +4,13 @@ from PySide2.QtWidgets import *
 
 from initial_frames import FrameHome
 
+
 class Window(QMainWindow, FrameHome):
     def __init__(self):
         super(Window, self).__init__()
         self.definitions_window()
         self.execute_home()
+
 
     def eventFilter(self, source, event):
         if source == self.shipping_menu and event.type() == QEvent.Type.HoverMove:
@@ -33,6 +35,7 @@ class Window(QMainWindow, FrameHome):
             self.frame_options.show()
 
         return super().eventFilter(source, event)
+
 
     def definitions_window(self):
         self.setMinimumSize(1080, 720)

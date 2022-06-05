@@ -1406,8 +1406,6 @@ class Employee(Clossed):
         self.employee_table.setGeometry(70, 80, 931, 470)
 
 
-
-
 class Settings(Clossed):
     def frame_settings(self):
         self.closed_main_frames()
