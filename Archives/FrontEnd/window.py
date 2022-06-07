@@ -11,7 +11,6 @@ class Window(QMainWindow, FrameHome):
         self.definitions_window()
         self.execute_home()
 
-
     def eventFilter(self, source, event):
         if source == self.shipping_menu and event.type() == QEvent.Type.HoverMove:
             self.frame_packeges.hide()
@@ -35,7 +34,6 @@ class Window(QMainWindow, FrameHome):
             self.frame_options.show()
 
         return super().eventFilter(source, event)
-
 
     def definitions_window(self):
         self.setMinimumSize(1080, 720)

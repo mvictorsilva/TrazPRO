@@ -814,23 +814,23 @@ class Deadline(Clossed, CalculateDeadline):
         self.cep_search.setGeometry(155, 400, 100, 30)
 
     def error_frameii(self):
-        self.frame_error = QFrame(self.deadline_frame)
-        self.frame_error.setMaximumSize(QSize(450, 35))
-        self.frame_error.setStyleSheet('''
+        self.frame_errorii = QFrame(self.deadline_frame)
+        self.frame_errorii.setMaximumSize(QSize(450, 35))
+        self.frame_errorii.setStyleSheet('''
             QFrame{
                 background-color: #cd6600; 
                 border-radius: 5px;
             }
         ''')
-        self.frame_error.setFrameShape(QFrame.StyledPanel)
-        self.frame_error.setFrameShadow(QFrame.Raised)
-        self.frame_error.setGeometry(330, 15, 450, 40)
-        self.frame_error.show()
+        self.frame_errorii.setFrameShape(QFrame.StyledPanel)
+        self.frame_errorii.setFrameShadow(QFrame.Raised)
+        self.frame_errorii.setGeometry(330, 15, 450, 40)
+        self.frame_errorii.show()
 
-        self.horizontalLayout_3 = QHBoxLayout(self.frame_error)
+        self.horizontalLayout_3 = QHBoxLayout(self.frame_errorii)
         self.horizontalLayout_3.setContentsMargins(10, 3, 10, 3)
 
-        self.label_error = QLabel('Dados incorretos', self.frame_error)
+        self.label_error = QLabel('Dados incorretos', self.frame_errorii)
         self.label_error.setStyleSheet('''
             QLabel{
                 color: #ffffff; 
@@ -842,7 +842,7 @@ class Deadline(Clossed, CalculateDeadline):
 
         self.horizontalLayout_3.addWidget(self.label_error)
 
-        self.pushButton_close_popup = QPushButton(self.frame_error)
+        self.pushButton_close_popup = QPushButton(self.frame_errorii)
         self.pushButton_close_popup.setMaximumSize(QSize(20, 20))
         self.pushButton_close_popup.setStyleSheet('''
             QPushButton{
@@ -853,7 +853,7 @@ class Deadline(Clossed, CalculateDeadline):
                 background-color: #363636;
             }
         ''')
-        self.pushButton_close_popup.clicked.connect(lambda: self.frame_error.deleteLater())
+        self.pushButton_close_popup.clicked.connect(lambda: self.frame_errorii.deleteLater())
         self.horizontalLayout_3.addWidget(self.pushButton_close_popup)
 
     def result_frameii(self):
@@ -952,7 +952,7 @@ class Deadline(Clossed, CalculateDeadline):
         self.result.show()
         self.result.setGeometry(235, 275, 610, 120)
 
-        self.text_title = QLabel('Cotação', self.result)
+        self.text_title = QLabel('Prazos', self.result)
         self.text_title.setStyleSheet('''
             QLabel{
                 border: none;
@@ -1363,7 +1363,6 @@ class Localization(Clossed, TrackBack):
 
         self.position_widgets_localization()
 
-    
     def labels_localization(self):
         self.title_track = QLabel('Deseja aconpanhar sua encomenda?', self.localization_frame)
         self.title_track.setStyleSheet(
@@ -1392,7 +1391,6 @@ class Localization(Clossed, TrackBack):
             '''
         )
         self.subtitle_question.show()
-
 
     def entrys_localization(self):
         self.tracking_code = QLineEdit(self.localization_frame)
@@ -1465,7 +1463,6 @@ class Localization(Clossed, TrackBack):
         )
         self.subtitle_result.show()
 
-
     def position_widgets_localization(self):
         self.labels_localization()
         self.entrys_localization()
@@ -1506,7 +1503,6 @@ class User(Clossed):
 
         self.position_widgets_user()
 
-    
     def labels_user(self):
         self.style_informations = '''
             QLabel{
@@ -1558,7 +1554,6 @@ class User(Clossed):
         self.admission.setStyleSheet(self.style_informations)
         self.admission.show()
 
-
     def image_perfil(self):
         self.image = QLabel(self.user_frame)
         self.image.setStyleSheet(
@@ -1573,7 +1568,6 @@ class User(Clossed):
             '''
         )
         self.image.show()
-
 
     def position_widgets_user(self):
         self.labels_user()
@@ -1612,7 +1606,6 @@ class Employee(Clossed):
 
         self.positions_widgets_emplyee()
 
-
     def labels_employee(self):
         self.title_frame = QLabel('Funcionários', self.employee_frame)
         self.title_frame.setStyleSheet(
@@ -1638,7 +1631,6 @@ class Employee(Clossed):
         )
         self.logo_title.setPixmap(self.image_logo_title)
         self.logo_title.show()
-
 
     def buttons_and_entrys_employee(self):
         self.style_buttons = '''
@@ -1688,7 +1680,6 @@ class Employee(Clossed):
         self.edit.setStyleSheet(self.style_buttons)
         self.edit.show()
 
-
     def table_employee(self):
         self.employee_table = QTableWidget(self.employee_frame)
         self.employee_table.setRowCount(1)
@@ -1709,7 +1700,6 @@ class Employee(Clossed):
             '''
         )
         self.employee_table.show()
-
 
     def positions_widgets_emplyee(self):
         self.labels_employee()
@@ -1748,7 +1738,6 @@ class Settings(Clossed):
         self.settings_frame.show()
 
         self.labels_system()
-
 
     def labels_system(self):
         self.title_name = QLabel('TrazPRO', self.settings_frame)

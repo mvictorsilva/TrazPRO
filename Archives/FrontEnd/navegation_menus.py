@@ -17,7 +17,6 @@ class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Employ
         self.buttons_frames_navegation()
         self.frame_quotation()
 
-
     def navegation_menu(self):
         self.menu_bar = QFrame(self.first_window)
         self.layout_menu_navegation = QHBoxLayout(self.menu_bar)
@@ -33,7 +32,6 @@ class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Employ
         self.layout.addWidget(self.menu_bar, 0, 0)
         self.menu_bar.show()
     
-
     def label_navegation_menu(self):
         self.logo_black = QLabel(self.menu_bar)
         self.logo_black.setMinimumSize(150, 35)
@@ -53,7 +51,6 @@ class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Employ
 
         self.spacer_widgets = QSpacerItem(350, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
         self.layout_menu_navegation.addItem(self.spacer_widgets)
-
 
     def buttons_navegation_menu(self):
 
@@ -114,7 +111,6 @@ class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Employ
 
         self.spacer_buttons = QSpacerItem(50, 20, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
         self.layout_menu_navegation.addItem(self.spacer_buttons)
-
 
     def sub_frames_navegation_menu(self):
         self.frame_shipping = QFrame(self.first_window)
@@ -180,7 +176,6 @@ class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Employ
         )
         self.layout.addWidget(self.frame_options, 1, 0)
         self.frame_options.hide()
-
 
     def buttons_frames_navegation(self):
         self.button_style = '''

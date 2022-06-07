@@ -1,5 +1,5 @@
 import requests
-import json
+
 
 url = "https://api.linketrack.com/track/json?" \
       "user=teste&token=1abcd00b2731640e886fb41a8a9671ad1434c599dbaa0a0de9a5aa619f29a83f&" \
@@ -8,9 +8,14 @@ url = "https://api.linketrack.com/track/json?" \
 payload = {}
 headers = {}
 
-response = requests.request("GET", url, headers=headers, data=payload)
+request = requests.request("GET", url, headers=headers, data=payload)
+request = request.json()
 
-res = response.text.encode('utf8')
+# print(request['eventos'][2])
 
-print(type(res))
-print(res)
+reques = request['eventos']
+
+for r in reques:
+#     print(r)
+    for i in r.values():
+        print(i)
