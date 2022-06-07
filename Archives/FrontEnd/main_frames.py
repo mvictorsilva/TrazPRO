@@ -2,8 +2,12 @@ from PySide2.QtGui import *
 from PySide2.QtCore import *
 from PySide2.QtWidgets import *
 
+from BackEnd.quotation import CalculateValue
+from BackEnd.deadline import CalculateDeadline
+from BackEnd.track_back import TrackBack
 
-class Clossed():
+
+class Clossed:
     def closed_main_frames(self):
         try:
             self.quotation_frame.deleteLater()
@@ -35,7 +39,7 @@ class Clossed():
             pass
 
 
-class Quotation(Clossed):
+class Quotation(Clossed, CalculateValue):
     def frame_quotation(self):
         self.closed_main_frames()
         
@@ -54,7 +58,6 @@ class Quotation(Clossed):
         self.quotation_frame.show()
 
         self.position_widgets_quotation()
-
 
     def labels_quotation(self):
         self.font_style_subtitle = '''
@@ -93,7 +96,7 @@ class Quotation(Clossed):
         self.cep_destiny.setStyleSheet(self.font_style_subtitle)
         self.cep_destiny.show()
 
-        self.order_value = QLabel('Valor da encomenda', self.quotation_frame)
+        self.order_value = QLabel('Valor declarado', self.quotation_frame)
         self.order_value.setMinimumSize(210, 50)
         self.order_value.setMaximumSize(210, 50)
         self.order_value.setStyleSheet(self.font_style_subtitle)
@@ -173,7 +176,6 @@ class Quotation(Clossed):
         self.cm_iv.setMaximumSize(30, 50)
         self.cm_iv.setStyleSheet(self.font_style_subtitle)
         self.cm_iv.show()
-
 
     def entrys_quotation(self):
         self.entrys_style = '''
@@ -263,7 +265,6 @@ class Quotation(Clossed):
         self.diameter_get.setStyleSheet(self.entrys_style_ii)
         self.diameter_get.show()
 
-
     def radio_buttons(self):
         self.radio_button_style = '''
             QRadioButton:indicator{
@@ -271,11 +272,11 @@ class Quotation(Clossed):
                 height: 30px;
             }
             QRadioButton:indicator:unchecked{
-                image: url('Images/main_frames/quotation/unchecked.png');
+                image: url('../Images/main_frames/quotation/unchecked.png');
 
             }
             QRadioButton:indicator:checked{
-                image: url('Images/main_frames/quotation/checked.png');
+                image: url('../Images/main_frames/quotation/checked.png');
             }
         '''
 
@@ -289,7 +290,7 @@ class Quotation(Clossed):
         self.package_format_radio = QRadioButton(self.quotation_frame)
         self.package_format_radio.setMinimumSize(100, 50)
         self.package_format_radio.setMaximumSize(100, 50)
-        self.package_format_radio.setIcon(QIcon('Images/main_frames/quotation/package.png'))
+        self.package_format_radio.setIcon(QIcon('../Images/main_frames/quotation/package.png'))
         self.package_format_radio.setIconSize(QSize(40, 40))
         self.package_format_radio.setStyleSheet(self.radio_button_style)
         self.hboxi.addWidget(self.package_format_radio)
@@ -298,7 +299,7 @@ class Quotation(Clossed):
         self.cylinder_format_radio = QRadioButton(self.quotation_frame)
         self.cylinder_format_radio.setMinimumSize(100, 50)
         self.cylinder_format_radio.setMaximumSize(100, 50)
-        self.cylinder_format_radio.setIcon(QIcon('Images/main_frames/quotation/cylinder.png'))
+        self.cylinder_format_radio.setIcon(QIcon('../Images/main_frames/quotation/cylinder.png'))
         self.cylinder_format_radio.setIconSize(QSize(40, 40))
         self.cylinder_format_radio.setStyleSheet(self.radio_button_style)
         self.hboxi.addWidget(self.cylinder_format_radio)
@@ -307,7 +308,7 @@ class Quotation(Clossed):
         self.letter_format_radio = QRadioButton(self.quotation_frame)
         self.letter_format_radio.setMinimumSize(100, 50)
         self.letter_format_radio.setMaximumSize(100, 50)
-        self.letter_format_radio.setIcon(QIcon('Images/main_frames/quotation/letter.png'))
+        self.letter_format_radio.setIcon(QIcon('../Images/main_frames/quotation/letter.png'))
         self.letter_format_radio.setIconSize(QSize(40, 40))
         self.letter_format_radio.setStyleSheet(self.radio_button_style)
         self.hboxi.addWidget(self.letter_format_radio)
@@ -323,11 +324,11 @@ class Quotation(Clossed):
                 height: 30px;
             }
             QRadioButton:indicator:unchecked{
-                image: url('Images/main_frames/quotation/unchecked.png');
+                image: url('../Images/main_frames/quotation/unchecked.png');
 
             }
             QRadioButton:indicator:checked{
-                image: url('Images/main_frames/quotation/checked.png');
+                image: url('../Images/main_frames/quotation/checked.png');
             }
         '''
 
@@ -373,6 +374,7 @@ class Quotation(Clossed):
         self.hboxiii.addWidget(self.no_radio_buttonii)
         self.no_radio_buttonii.show()
 
+        self.handle_errors()
 
     def buttons_quotation(self):
         self.question_style_button = '''
@@ -388,7 +390,7 @@ class Quotation(Clossed):
         self.question_i = QToolButton(self.quotation_frame)
         self.question_i.setMinimumSize(30, 30)
         self.question_i.setMinimumSize(30, 30)
-        self.question_i.setIcon(QIcon('Images/main_frames/quotation/question.png'))
+        self.question_i.setIcon(QIcon('../Images/main_frames/quotation/question.png'))
         self.question_i.setIconSize(QSize(30, 30))
         self.question_i.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
         self.question_i.setStyleSheet(self.question_style_button)
@@ -397,7 +399,7 @@ class Quotation(Clossed):
         self.question_ii = QToolButton(self.quotation_frame)
         self.question_ii.setMinimumSize(30, 30)
         self.question_ii.setMinimumSize(30, 30)
-        self.question_ii.setIcon(QIcon('Images/main_frames/quotation/question.png'))
+        self.question_ii.setIcon(QIcon('../Images/main_frames/quotation/question.png'))
         self.question_ii.setIconSize(QSize(30, 30))
         self.question_ii.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
         self.question_ii.setStyleSheet(self.question_style_button)
@@ -423,8 +425,8 @@ class Quotation(Clossed):
                 }
             '''
         )
+        self.calculate.clicked.connect(self.receive_data)
         self.calculate.show()
-
 
     def combo_box_quotation(self):
         self.service_box = QComboBox(self.quotation_frame)
@@ -446,7 +448,6 @@ class Quotation(Clossed):
             '''
         )
         self.service_box.show()
-
 
     def position_widgets_quotation(self):
         self.labels_quotation()
@@ -491,8 +492,129 @@ class Quotation(Clossed):
         ###################      C O M B O  B O X     ####################
         self.service_box.setGeometry(450, 250, 200, 40)
 
+    def result_frame(self):
+        self.background = QFrame(self.quotation_frame)
+        self.background.setStyleSheet('''
+                    QFrame{
+                        background-color: rgba(255, 255, 255, 0.3);
+                    }
+                ''')
+        self.background.show()
+        self.background.setGeometry(0, 0, 1080, 670)
 
-class Deadline(Clossed):
+        self.result = QFrame(self.background)
+        self.result.setStyleSheet('''
+            QFrame{
+                background-color: #f8f8f8;
+                border: 2px solid #909090;
+                border-radius: 20px;
+            }
+        ''')
+        self.result.show()
+        self.result.setGeometry(290, 90, 500, 500)
+
+        self.text_title = QLabel('Cotação', self.result)
+        self.text_title.setStyleSheet('''
+                    QLabel{
+                        border: none;
+                        background: none;
+                        color: #000000;
+                        font: bold 'Helvetica Neue Leve';
+                        font-size: 25px;
+                    }
+                ''')
+        self.text_title.setGeometry(200, 20, 200, 40)
+        self.text_title.show()
+
+        self.text_result = QLabel(self.result)
+        self.text_result.setText(f'''
+            Valor do frete: {self.value}\n
+            Prazo de entrega: {self.deadline}\n
+            Valor sem adicionais: {self.no_additional}\n
+            Valor mão própria:{self.own_hand}\n
+            Valor aviso de recebimento: {self.early_warning}\n
+            Valor declarado: {self.declared_value}\n
+            Entrega domiciliar: {self.home_delivery}\n
+            Entrega no sábado: {self.weekend_delivery}\n
+        ''')
+        self.text_result.setStyleSheet('''
+            QLabel{
+                border: none;
+                background: none;
+                color: #000000;
+                font: 'Helvetica Neue Leve';
+                font-size: 20px;
+            }
+        ''')
+        self.text_result.setGeometry(10, 80, 480, 400)
+        self.text_result.show()
+
+        self.close = QToolButton(self.result)
+        self.close.setIcon(QIcon('../Images/main_frames/quotation/close.png'))
+        self.close.setIconSize(QSize(20, 20))
+        self.close.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
+        self.close.setStyleSheet(
+            '''
+                QToolButton{
+                    border: none;
+                    background-color: none;
+                    border-radius: 4px
+                }
+                QToolButton:hover{
+                    background-color: rgba(255, 255, 255, 0.5);
+                }
+            '''
+        )
+        self.close.clicked.connect(lambda: (self.result.deleteLater(),
+                                            self.background.deleteLater()))
+        self.close.setGeometry(450, 20, 22, 20)
+        self.close.show()
+
+    def error_frame(self):
+        self.frame_error = QFrame(self.quotation_frame)
+        self.frame_error.setMaximumSize(QSize(450, 35))
+        self.frame_error.setStyleSheet('''
+            QFrame{
+                background-color: #cd6600; 
+                border-radius: 5px;
+            }
+        ''')
+        self.frame_error.setFrameShape(QFrame.StyledPanel)
+        self.frame_error.setFrameShadow(QFrame.Raised)
+        self.frame_error.setGeometry(330, 15, 450, 40)
+        self.frame_error.show()
+
+        self.horizontalLayout_3 = QHBoxLayout(self.frame_error)
+        self.horizontalLayout_3.setContentsMargins(10, 3, 10, 3)
+
+        self.label_error = QLabel('Dados incorretos', self.frame_error)
+        self.label_error.setStyleSheet('''
+            QLabel{
+                color: #ffffff; 
+                font-size: 17px; 
+                font: bold 'Verdana';
+            }
+        ''')
+        self.label_error.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_3.addWidget(self.label_error)
+
+        self.pushButton_close_popup = QPushButton(self.frame_error)
+        self.pushButton_close_popup.setMaximumSize(QSize(20, 20))
+        self.pushButton_close_popup.setStyleSheet('''
+            QPushButton{
+                border-radius: 4px;
+                background-image: url('../Images/main_frames/quotation/quit.png');
+                background-position: center;
+                background-color: none;
+                background-color: #363636;
+            }
+        ''')
+        self.pushButton_close_popup.clicked.connect(lambda: self.frame_error.deleteLater())
+        self.horizontalLayout_3.addWidget(self.pushButton_close_popup)
+
+
+class Deadline(Clossed, CalculateDeadline):
     def frame_deadline(self):
         self.closed_main_frames()
         self.frame_shipping.hide()
@@ -510,8 +632,7 @@ class Deadline(Clossed):
         self.deadline_frame.show()
 
         self.positions_widgets_deadline()
-        
-    
+
     def labels_deadline(self):
         self.font_style_title = '''
             QLabel{
@@ -549,11 +670,11 @@ class Deadline(Clossed):
         self.cep_destiny.setStyleSheet(self.font_style_subtitle)
         self.cep_destiny.show()
 
-        self.post_date = QLabel('Data de postagem', self.deadline_frame)
+        """self.post_date = QLabel('Data de postagem', self.deadline_frame)
         self.post_date.setMinimumSize(210, 50)
         self.post_date.setMaximumSize(210, 50)
         self.post_date.setStyleSheet(self.font_style_subtitle)
-        self.post_date.show()
+        self.post_date.show()"""
 
         self.title_cep = QLabel('Buscar CEP', self.deadline_frame)
         self.title_cep.setStyleSheet(self.font_style_title)
@@ -569,7 +690,6 @@ class Deadline(Clossed):
         self.line.setFrameShape(QFrame.Shape.VLine)
         self.line.setFrameShadow(QFrame.Shadow.Sunken)
         self.line.show()
-
 
     def entrys_deadline(self):
         self.entrys_style = '''
@@ -602,13 +722,13 @@ class Deadline(Clossed):
         self.cep_destiny_get.setStyleSheet(self.entrys_style)
         self.cep_destiny_get.show()
 
-        self.post_date_get = QLineEdit(self.deadline_frame)
+        """self.post_date_get = QLineEdit(self.deadline_frame)
         self.post_date_get.setMinimumSize(200, 40)
         self.post_date_get.setMaximumSize(200, 40)
         self.post_date_get.setPlaceholderText('          /          /          ')
         self.post_date_get.setMaxLength(8)
         self.post_date_get.setStyleSheet(self.entrys_style)
-        self.post_date_get.show()
+        self.post_date_get.show()"""
 
         self.cep_get = QLineEdit(self.deadline_frame)
         self.cep_get.setMinimumSize(200, 40)
@@ -617,7 +737,6 @@ class Deadline(Clossed):
         self.cep_get.setMaxLength(8)
         self.cep_get.setStyleSheet(self.entrys_style)
         self.cep_get.show()
-
 
     def buttons_deadline(self):
         self.question_style_button = '''
@@ -646,27 +765,28 @@ class Deadline(Clossed):
             }
         '''
         
-        self.question_i = QToolButton(self.deadline_frame)
+        """self.question_i = QToolButton(self.deadline_frame)
         self.question_i.setMinimumSize(30, 30)
         self.question_i.setMinimumSize(30, 30)
-        self.question_i.setIcon(QIcon('Images/main_frames/deadline/question.png'))
+        self.question_i.setIcon(QIcon('../Images/main_frames/deadline/question.png'))
         self.question_i.setIconSize(QSize(30, 30))
         self.question_i.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
         self.question_i.setStyleSheet(self.question_style_button)
-        self.question_i.show()
+        self.question_i.show()"""
 
         self.calculate = QPushButton('CALCULAR', self.deadline_frame)
         self.calculate.setMinimumSize(150, 50)
         self.calculate.setMaximumSize(150, 50)
         self.calculate.setStyleSheet(self.style_buttons)
+        self.calculate.clicked.connect(self.requests_deadline)
         self.calculate.show()
 
         self.cep_search = QPushButton('BUSCAR', self.deadline_frame)
         self.cep_search.setMinimumSize(150, 50)
         self.cep_search.setMaximumSize(150, 50)
         self.cep_search.setStyleSheet(self.style_buttons)
+        self.cep_search.clicked.connect(self.requests_cep)
         self.cep_search.show()
-
 
     def positions_widgets_deadline(self):
         self.labels_deadline()
@@ -674,24 +794,211 @@ class Deadline(Clossed):
         self.buttons_deadline()
 
         ####################  L A B E L S  ####################
-        self.title_frame.setGeometry(540, 150, 420, 50)
-        self.cep_source.setGeometry(450, 220, 210, 50)
-        self.cep_destiny.setGeometry(865, 220, 210, 50)
-        self.post_date.setGeometry(638, 350, 210, 50)
-        self.title_cep.setGeometry(100, 150, 200, 50)
-        self.cep.setGeometry(80, 255, 150, 30)
-        self.line.setGeometry(350, 130, 2, 470)
+        self.title_frame.setGeometry(590, 150, 420, 50)
+        self.cep_source.setGeometry(570, 220, 210, 50)
+        self.cep_destiny.setGeometry(835, 220, 210, 50)
+        """self.post_date.setGeometry(638, 350, 210, 50)"""
+        self.title_cep.setGeometry(160, 200, 200, 50)
+        self.cep.setGeometry(70, 305, 150, 30)
+        self.line.setGeometry(470, 130, 2, 470)
 
         ####################  E N T R Y S  ####################
-        self.cep_source_get.setGeometry(420, 270, 200, 40)
-        self.cep_destiny_get.setGeometry(835, 270, 200, 40)
-        self.post_date_get.setGeometry(623, 400, 200, 40)
-        self.cep_get.setGeometry(80, 300, 100, 30)
+        self.cep_source_get.setGeometry(550, 270, 200, 40)
+        self.cep_destiny_get.setGeometry(805, 270, 200, 40)
+        """self.post_date_get.setGeometry(623, 400, 200, 40)"""
+        self.cep_get.setGeometry(210, 300, 100, 30)
 
         #################### B U T T O N S ####################
-        self.question_i.setGeometry(823, 400, 40, 40)
-        self.calculate.setGeometry(645, 500, 150, 50)
-        self.cep_search.setGeometry(105, 400, 100, 30)
+        """self.question_i.setGeometry(823, 400, 40, 40)"""
+        self.calculate.setGeometry(695, 400, 150, 50)
+        self.cep_search.setGeometry(155, 400, 100, 30)
+
+    def error_frameii(self):
+        self.frame_error = QFrame(self.deadline_frame)
+        self.frame_error.setMaximumSize(QSize(450, 35))
+        self.frame_error.setStyleSheet('''
+            QFrame{
+                background-color: #cd6600; 
+                border-radius: 5px;
+            }
+        ''')
+        self.frame_error.setFrameShape(QFrame.StyledPanel)
+        self.frame_error.setFrameShadow(QFrame.Raised)
+        self.frame_error.setGeometry(330, 15, 450, 40)
+        self.frame_error.show()
+
+        self.horizontalLayout_3 = QHBoxLayout(self.frame_error)
+        self.horizontalLayout_3.setContentsMargins(10, 3, 10, 3)
+
+        self.label_error = QLabel('Dados incorretos', self.frame_error)
+        self.label_error.setStyleSheet('''
+            QLabel{
+                color: #ffffff; 
+                font-size: 17px; 
+                font: bold 'Verdana';
+            }
+        ''')
+        self.label_error.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_3.addWidget(self.label_error)
+
+        self.pushButton_close_popup = QPushButton(self.frame_error)
+        self.pushButton_close_popup.setMaximumSize(QSize(20, 20))
+        self.pushButton_close_popup.setStyleSheet('''
+            QPushButton{
+                border-radius: 4px;
+                background-image: url('../Images/main_frames/quotation/quit.png');
+                background-position: center;
+                background-color: none;
+                background-color: #363636;
+            }
+        ''')
+        self.pushButton_close_popup.clicked.connect(lambda: self.frame_error.deleteLater())
+        self.horizontalLayout_3.addWidget(self.pushButton_close_popup)
+
+    def result_frameii(self):
+        self.background = QFrame(self.deadline_frame)
+        self.background.setStyleSheet('''
+            QFrame{
+                background-color: rgba(255, 255, 255, 0.3);
+            }
+        ''')
+        self.background.show()
+        self.background.setGeometry(0, 0, 1080, 670)
+
+        self.result = QFrame(self.background)
+        self.result.setStyleSheet('''
+            QFrame{
+                background-color: #f8f8f8;
+                border: 2px solid #909090;
+                border-radius: 20px;
+            }
+        ''')
+        self.result.show()
+        self.result.setGeometry(380, 235, 320, 250)
+
+        self.text_title = QLabel('Cotação', self.result)
+        self.text_title.setStyleSheet('''
+            QLabel{
+                border: none;
+                background: none;
+                color: #000000;
+                font: bold 'Helvetica Neue Leve';
+                font-size: 25px;
+            }
+        ''')
+        self.text_title.setGeometry(100, 20, 200, 30)
+        self.text_title.show()
+
+        self.text_result = QLabel(self.result)
+        self.text_result.setText(f'''
+ CEP: {self.cep}
+ Estado: {self.state}
+ Cidade: {self.city}
+ Logradouro: {self.road}
+ Complemento: {self.complement}
+        ''')
+        self.text_result.setStyleSheet('''
+            QLabel{
+                border: none;
+                background: none;
+                color: #000000;
+                font: 'Helvetica Neue Leve';
+                font-size: 20px;
+            }
+        ''')
+        self.text_result.setGeometry(10, 10, 280, 280)
+        self.text_result.show()
+
+        self.close = QToolButton(self.result)
+        self.close.setIcon(QIcon('../Images/main_frames/quotation/close.png'))
+        self.close.setIconSize(QSize(17, 17))
+        self.close.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
+        self.close.setStyleSheet(
+            '''
+                QToolButton{
+                    border: none;
+                    background-color: none;
+                    border-radius: 4px
+                }
+                QToolButton:hover{
+                    background-color: rgba(255, 255, 255, 0.5);
+                }
+            '''
+        )
+        self.close.clicked.connect(lambda: (self.result.deleteLater(),
+                                            self.background.deleteLater()))
+        self.close.setGeometry(270, 27, 20, 20)
+        self.close.show()
+
+    def result_frameiii(self):
+        self.background = QFrame(self.deadline_frame)
+        self.background.setStyleSheet('''
+            QFrame{
+                background-color: rgba(255, 255, 255, 0.3);
+            }
+        ''')
+        self.background.show()
+        self.background.setGeometry(0, 0, 1080, 670)
+
+        self.result = QFrame(self.background)
+        self.result.setStyleSheet('''
+            QFrame{
+                background-color: #f8f8f8;
+                border: 2px solid #909090;
+                border-radius: 20px;
+            }
+        ''')
+        self.result.show()
+        self.result.setGeometry(235, 275, 610, 120)
+
+        self.text_title = QLabel('Cotação', self.result)
+        self.text_title.setStyleSheet('''
+            QLabel{
+                border: none;
+                background: none;
+                color: #000000;
+                font: bold 'Helvetica Neue Leve';
+                font-size: 25px;
+            }
+        ''')
+        self.text_title.setGeometry(265, 25, 100, 30)
+        self.text_title.show()
+
+        self.text_result = QLabel(self.result)
+        self.text_result.setText(f'Sua encomenda chegará em {self.deadline} a partir da data de postagem')
+        self.text_result.setStyleSheet('''
+            QLabel{
+                border: none;
+                background: none;
+                color: #000000;
+                font: 'Helvetica Neue Leve';
+                font-size: 20px;
+            }
+        ''')
+        self.text_result.setGeometry(10, 50, 600, 60)
+        self.text_result.show()
+
+        self.close = QToolButton(self.result)
+        self.close.setIcon(QIcon('../Images/main_frames/quotation/close.png'))
+        self.close.setIconSize(QSize(17, 17))
+        self.close.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
+        self.close.setStyleSheet(
+            '''
+                QToolButton{
+                    border: none;
+                    background-color: none;
+                    border-radius: 4px
+                }
+                QToolButton:hover{
+                    background-color: rgba(255, 255, 255, 0.5);
+                }
+            '''
+        )
+        self.close.clicked.connect(lambda: (self.result.deleteLater(),
+                                            self.background.deleteLater()))
+        self.close.setGeometry(550, 27, 20, 20)
+        self.close.show()
 
 
 class Order(Clossed):
@@ -713,7 +1020,6 @@ class Order(Clossed):
 
         self.positions_widgets_order()
 
-    
     def labels_order(self):
         self.style_results = (
             '''
@@ -740,7 +1046,7 @@ class Order(Clossed):
         self.title.show()
 
         self.logo_title = QLabel(self.order_frame)
-        self.image_logo_title = QPixmap('Images/main_frames/order/logo_title.png')
+        self.image_logo_title = QPixmap('../Images/main_frames/order/logo_title.png')
         self.logo_title.setStyleSheet(
             '''
                 QLabel{
@@ -770,7 +1076,6 @@ class Order(Clossed):
         self.stock_value.setStyleSheet(self.style_results)
         self.stock_value.show()
 
-
     def entrys_order(self):
         self.search = QLineEdit(self.order_frame)
         self.search.setPlaceholderText('Buscar                    🔍')
@@ -791,10 +1096,9 @@ class Order(Clossed):
         )
         self.search.show()
 
-
     def buttons_order(self):
         self.new_order = QPushButton(' Novo', self.order_frame)
-        self.new_order.setIcon(QIcon('Images/main_frames/order/new.png'))
+        self.new_order.setIcon(QIcon('../Images/main_frames/order/new.png'))
         self.new_order.setIconSize(QSize(18, 18))
         self.new_order.setStyleSheet(
             '''
@@ -816,7 +1120,6 @@ class Order(Clossed):
         self.new_order.clicked.connect(self.frame_new_order)
         self.new_order.show()
 
-
     def tables_order(self):
         self.table_order = QTableWidget(self.order_frame)
         self.table_order.setRowCount(1)
@@ -837,7 +1140,6 @@ class Order(Clossed):
             '''
         )
         self.table_order.show()
-
 
     def positions_widgets_order(self):
         self.labels_order()
@@ -861,7 +1163,6 @@ class Order(Clossed):
         ####################   T A B L E   #################### 
         self.table_order.setGeometry(10, 80, 1061, 480)
 
-
     def frame_new_order(self):
         self.add = QFrame(self.order_frame)
         self.add.setStyleSheet(
@@ -878,7 +1179,6 @@ class Order(Clossed):
         self.add.show()
 
         self.positions_widgets_add()
-
 
     def labels_add(self):
         self.style_subtitles = '''
@@ -929,7 +1229,6 @@ class Order(Clossed):
         self.unitary.setStyleSheet(self.style_subtitles)
         self.unitary.show()
 
-
     def entrys_add(self):
         self.style_entrys = '''
             QLineEdit{
@@ -969,7 +1268,6 @@ class Order(Clossed):
         self.unitary_get.setStyleSheet(self.style_entrys)
         self.unitary_get.show()
 
-
     def button_add(self):
         self.add_button = QPushButton('ADICIONAR', self.add)
         self.add_button.setStyleSheet(
@@ -1002,7 +1300,7 @@ class Order(Clossed):
         '''
         
         self.close = QToolButton(self.add)
-        self.close.setIcon(QIcon('Images/main_frames/order/close.png'))
+        self.close.setIcon(QIcon('../Images/main_frames/order/close.png'))
         self.close.setIconSize(QSize(20, 20))
         self.close.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
         self.close.setStyleSheet(
@@ -1018,7 +1316,6 @@ class Order(Clossed):
         )
         self.close.clicked.connect(lambda: self.add.deleteLater())
         self.close.show()
-
 
     def positions_widgets_add(self):
         self.labels_add()
@@ -1047,7 +1344,7 @@ class Order(Clossed):
         self.close.setGeometry(750, 20, 30, 30)
 
 
-class Localization(Clossed):
+class Localization(Clossed, TrackBack):
     def frame_localization(self):
         self.closed_main_frames()
         self.frame_screening.hide()
@@ -1117,6 +1414,29 @@ class Localization(Clossed):
         )
         self.tracking_code.show()
 
+    def button_localization(self):
+        self.calculate = QPushButton('CALCULAR', self.localization_frame)
+        self.calculate.setMinimumSize(150, 50)
+        self.calculate.setMaximumSize(150, 50)
+        self.calculate.setStyleSheet(
+            '''
+                QPushButton{
+                    background-color: #cd6600;
+                    color: #ffffff;
+                    border-radius: 14px;
+                    font: bold 'Verdana';
+                    font-size: 19px;
+                }
+                QPushButton:hover{
+                    background-color: #8B4500;
+                }
+                QPushButton:pressed{
+                    background-color: #EE7600;
+                }
+            '''
+        )
+        self.calculate.clicked.connect(self.request_localization)
+        self.calculate.show()
 
     def results_localization(self):
         self.background = QFrame(self.localization_frame)
@@ -1150,13 +1470,17 @@ class Localization(Clossed):
         self.labels_localization()
         self.entrys_localization()
         self.results_localization()
+        self.button_localization()
 
         ####################  L A B E L S  ####################
         self.title_track.setGeometry(310, 20, 460, 50)
-        self.subtitle_question.setGeometry(380, 100, 400, 50)
+        self.subtitle_question.setGeometry(380, 80, 400, 50)
 
         ####################  E N T R Y S  ####################
-        self.tracking_code.setGeometry(360, 160, 340, 40)
+        self.tracking_code.setGeometry(360, 125, 340, 40)
+
+        #################### B U T T O N S ####################
+        self.calculate.setGeometry(450, 175, 200, 40)
 
         #################### R E S U L T S ####################
         self.background.setGeometry(50, 240, 980, 400)
@@ -1240,7 +1564,7 @@ class User(Clossed):
         self.image.setStyleSheet(
             '''
                 QLabel{
-                    background-image: url('Images/main_frames/user/profile.png');
+                    background-image: url('../Images/main_frames/user/profile.png');
                     background-repeat: no-repeat;
                     background-position: center center;
                     border: 4px solid #cd6600;
@@ -1304,7 +1628,7 @@ class Employee(Clossed):
         self.title_frame.show()
 
         self.logo_title = QLabel(self.employee_frame)
-        self.image_logo_title = QPixmap('Images/main_frames/empoyee/empoyee.png')
+        self.image_logo_title = QPixmap('../Images/main_frames/empoyee/empoyee.png')
         self.logo_title.setStyleSheet(
             '''
                 QLabel{
@@ -1445,7 +1769,7 @@ class Settings(Clossed):
         self.logo.setStyleSheet(
             '''
                 QLabel{
-                    background-image: url('Images/main_frames/system/logo.png');
+                    background-image: url('../Images/main_frames/system/logo.png');
                     background-repeat: no-repeat;
                     background-position: center center;
                 }

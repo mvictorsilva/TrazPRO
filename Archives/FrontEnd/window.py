@@ -2,7 +2,7 @@ from PySide2.QtGui import *
 from PySide2.QtCore import *
 from PySide2.QtWidgets import *
 
-from initial_frames import FrameHome
+from FrontEnd.initial_frames import FrameHome
 
 
 class Window(QMainWindow, FrameHome):
@@ -41,7 +41,7 @@ class Window(QMainWindow, FrameHome):
         self.setMinimumSize(1080, 720)
         self.setMaximumSize(1080, 720)
         self.setWindowTitle('TrazPRO')
-        self.setWindowIcon(QIcon('Images/home_page/icon.png'))
+        self.setWindowIcon(QIcon('../Images/home_page/icon.png'))
         self.setStyleSheet(
             '''
                 QMainWindow{

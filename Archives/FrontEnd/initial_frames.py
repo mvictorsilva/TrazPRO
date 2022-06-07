@@ -2,7 +2,7 @@ from PySide2.QtGui import *
 from PySide2.QtCore import *
 from PySide2.QtWidgets import *
 
-from navegation_menus import FramesNavegationBar
+from FrontEnd.navegation_menus import FramesNavegationBar
 
 
 class RegisterFrame():
@@ -62,7 +62,7 @@ class RegisterFrame():
             '''
                 QLabel{
                     background: none;
-                    background-image: url(Images/register_page/logo_white.png);
+                    background-image: url(../Images/register_page/logo_white.png);
                     background-repeat: no-repeat;
                     background-position: center;
                 }
@@ -128,7 +128,7 @@ class RegisterFrame():
         self.register_frame.setStyleSheet(
             '''
                 QFrame{
-                    background-image: url(Images/login_page/background_login.png);
+                    background-image: url(../Images/login_page/background_login.png);
                     background-position: center center;
                 }
             '''
@@ -363,7 +363,7 @@ class LoginFrame():
             '''
                 QLabel{
                     background: none;
-                    background-image: url(Images/login_page/logo_white.png);
+                    background-image: url(../Images/login_page/logo_white.png);
                     background-repeat: no-repeat;
                     background-position: center;
                 }
@@ -429,7 +429,7 @@ class LoginFrame():
         self.main_frame.setStyleSheet(
             '''
                 QFrame{
-                    background-image: url(Images/login_page/background_login.png);
+                    background-image: url(../Images/login_page/background_login.png);
                     background-position: center center;
                 }
             '''
@@ -615,7 +615,7 @@ class FrameHome(LoginFrame, RegisterFrame, FramesNavegationBar):
             '''
                 QLabel{
                     background-color: none;
-                    background-image: url(Images/home_page/logo_white.png);
+                    background-image: url(../Images/home_page/logo_white.png);
                     background-repeat: no-repeat;
                     background-position: center;
                 }    
@@ -688,7 +688,7 @@ class FrameHome(LoginFrame, RegisterFrame, FramesNavegationBar):
         self.body_frame.setStyleSheet(
             '''
                 QFrame{
-                    background-image: url(Images/home_page/background_frame_one.png);
+                    background-image: url(../Images/home_page/background_frame_one.png);
                     background-position: center center;
                 }
             '''

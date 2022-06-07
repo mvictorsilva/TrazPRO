@@ -1,7 +1,7 @@
 import sys
 from PySide2.QtWidgets import *
 
-from window import Window
+from FrontEnd.window import Window
 
 
 if __name__ == '__main__':
