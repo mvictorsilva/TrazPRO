@@ -8,4 +8,5 @@ if __name__ == '__main__':
     mainwindow = QApplication()
     window = Window()
     window.show()
-    sys.exit(mainwindow.exec_())
+    if sys.exit(mainwindow.exec_()):
+        print('saindo...')

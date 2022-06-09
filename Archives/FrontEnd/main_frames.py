@@ -272,11 +272,11 @@ class Quotation(Clossed, CalculateValue):
                 height: 30px;
             }
             QRadioButton:indicator:unchecked{
-                image: url('../Images/main_frames/quotation/unchecked.png');
+                image: url('Images/main_frames/quotation/unchecked.png');
 
             }
             QRadioButton:indicator:checked{
-                image: url('../Images/main_frames/quotation/checked.png');
+                image: url('Images/main_frames/quotation/checked.png');
             }
         '''
 
@@ -290,7 +290,7 @@ class Quotation(Clossed, CalculateValue):
         self.package_format_radio = QRadioButton(self.quotation_frame)
         self.package_format_radio.setMinimumSize(100, 50)
         self.package_format_radio.setMaximumSize(100, 50)
-        self.package_format_radio.setIcon(QIcon('../Images/main_frames/quotation/package.png'))
+        self.package_format_radio.setIcon(QIcon('Images/main_frames/quotation/package.png'))
         self.package_format_radio.setIconSize(QSize(40, 40))
         self.package_format_radio.setStyleSheet(self.radio_button_style)
         self.hboxi.addWidget(self.package_format_radio)
@@ -299,7 +299,7 @@ class Quotation(Clossed, CalculateValue):
         self.cylinder_format_radio = QRadioButton(self.quotation_frame)
         self.cylinder_format_radio.setMinimumSize(100, 50)
         self.cylinder_format_radio.setMaximumSize(100, 50)
-        self.cylinder_format_radio.setIcon(QIcon('../Images/main_frames/quotation/cylinder.png'))
+        self.cylinder_format_radio.setIcon(QIcon('Images/main_frames/quotation/cylinder.png'))
         self.cylinder_format_radio.setIconSize(QSize(40, 40))
         self.cylinder_format_radio.setStyleSheet(self.radio_button_style)
         self.hboxi.addWidget(self.cylinder_format_radio)
@@ -308,7 +308,7 @@ class Quotation(Clossed, CalculateValue):
         self.letter_format_radio = QRadioButton(self.quotation_frame)
         self.letter_format_radio.setMinimumSize(100, 50)
         self.letter_format_radio.setMaximumSize(100, 50)
-        self.letter_format_radio.setIcon(QIcon('../Images/main_frames/quotation/letter.png'))
+        self.letter_format_radio.setIcon(QIcon('Images/main_frames/quotation/letter.png'))
         self.letter_format_radio.setIconSize(QSize(40, 40))
         self.letter_format_radio.setStyleSheet(self.radio_button_style)
         self.hboxi.addWidget(self.letter_format_radio)
@@ -324,11 +324,11 @@ class Quotation(Clossed, CalculateValue):
                 height: 30px;
             }
             QRadioButton:indicator:unchecked{
-                image: url('../Images/main_frames/quotation/unchecked.png');
+                image: url('Images/main_frames/quotation/unchecked.png');
 
             }
             QRadioButton:indicator:checked{
-                image: url('../Images/main_frames/quotation/checked.png');
+                image: url('Images/main_frames/quotation/checked.png');
             }
         '''
 
@@ -390,7 +390,7 @@ class Quotation(Clossed, CalculateValue):
         self.question_i = QToolButton(self.quotation_frame)
         self.question_i.setMinimumSize(30, 30)
         self.question_i.setMinimumSize(30, 30)
-        self.question_i.setIcon(QIcon('../Images/main_frames/quotation/question.png'))
+        self.question_i.setIcon(QIcon('Images/main_frames/quotation/question.png'))
         self.question_i.setIconSize(QSize(30, 30))
         self.question_i.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
         self.question_i.setStyleSheet(self.question_style_button)
@@ -399,7 +399,7 @@ class Quotation(Clossed, CalculateValue):
         self.question_ii = QToolButton(self.quotation_frame)
         self.question_ii.setMinimumSize(30, 30)
         self.question_ii.setMinimumSize(30, 30)
-        self.question_ii.setIcon(QIcon('../Images/main_frames/quotation/question.png'))
+        self.question_ii.setIcon(QIcon('Images/main_frames/quotation/question.png'))
         self.question_ii.setIconSize(QSize(30, 30))
         self.question_ii.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
         self.question_ii.setStyleSheet(self.question_style_button)
@@ -550,7 +550,7 @@ class Quotation(Clossed, CalculateValue):
         self.text_result.show()
 
         self.close = QToolButton(self.result)
-        self.close.setIcon(QIcon('../Images/main_frames/quotation/close.png'))
+        self.close.setIcon(QIcon('Images/main_frames/quotation/close.png'))
         self.close.setIconSize(QSize(20, 20))
         self.close.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
         self.close.setStyleSheet(
@@ -604,7 +604,7 @@ class Quotation(Clossed, CalculateValue):
         self.pushButton_close_popup.setStyleSheet('''
             QPushButton{
                 border-radius: 4px;
-                background-image: url('../Images/main_frames/quotation/quit.png');
+                background-image: url('Images/main_frames/quotation/quit.png');
                 background-position: center;
                 background-color: none;
                 background-color: #363636;
@@ -847,7 +847,7 @@ class Deadline(Clossed, CalculateDeadline):
         self.pushButton_close_popup.setStyleSheet('''
             QPushButton{
                 border-radius: 4px;
-                background-image: url('../Images/main_frames/quotation/quit.png');
+                background-image: url('Images/main_frames/quotation/quit.png');
                 background-position: center;
                 background-color: none;
                 background-color: #363636;
@@ -911,7 +911,7 @@ class Deadline(Clossed, CalculateDeadline):
         self.text_result.show()
 
         self.close = QToolButton(self.result)
-        self.close.setIcon(QIcon('../Images/main_frames/quotation/close.png'))
+        self.close.setIcon(QIcon('Images/main_frames/quotation/close.png'))
         self.close.setIconSize(QSize(17, 17))
         self.close.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
         self.close.setStyleSheet(
@@ -980,7 +980,7 @@ class Deadline(Clossed, CalculateDeadline):
         self.text_result.show()
 
         self.close = QToolButton(self.result)
-        self.close.setIcon(QIcon('../Images/main_frames/quotation/close.png'))
+        self.close.setIcon(QIcon('Images/main_frames/quotation/close.png'))
         self.close.setIconSize(QSize(17, 17))
         self.close.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
         self.close.setStyleSheet(
@@ -1046,7 +1046,7 @@ class Order(Clossed):
         self.title.show()
 
         self.logo_title = QLabel(self.order_frame)
-        self.image_logo_title = QPixmap('../Images/main_frames/order/logo_title.png')
+        self.image_logo_title = QPixmap('Images/main_frames/order/logo_title.png')
         self.logo_title.setStyleSheet(
             '''
                 QLabel{
@@ -1098,7 +1098,7 @@ class Order(Clossed):
 
     def buttons_order(self):
         self.new_order = QPushButton(' Novo', self.order_frame)
-        self.new_order.setIcon(QIcon('../Images/main_frames/order/new.png'))
+        self.new_order.setIcon(QIcon('Images/main_frames/order/new.png'))
         self.new_order.setIconSize(QSize(18, 18))
         self.new_order.setStyleSheet(
             '''
@@ -1130,12 +1130,36 @@ class Order(Clossed):
         self.titles = ['ID', 'QUANTIDADE', 'DESCRIÇÃO', 'PESO EM KG', 'VALOR UNITÁRIO', 'DATA DE CHEGADA', 'CATEGORIA', 'TOTAL']
         self.table_order.setHorizontalHeaderLabels(list(self.titles))
 
+        # self.table_order.setStyleSheet(
+        #     '''
+        #         QTableWidget{
+        #             border: 1px solid #cd6600;
+        #             border-radius: 10px;
+        #             selection-background-color: #cd6600;
+        #         }
+        #     '''
+        # )
         self.table_order.setStyleSheet(
             '''
                 QTableWidget{
-                    border: 1px solid #cd6600;
+                    gridline-color: #cd6600;
+                    background-color: transparent;
+                    outline: 0;
                     border-radius: 10px;
-                    selection-background-color: #cd6600;
+                    border: 1px solid #cd6600;
+                    border-top: 0px
+                }
+                QTableWidget::item:selected{
+                    background-color:#cd6600;;
+                }
+                QTableWidget::horizontalHeader{    
+                    background-color: #cd6600;
+                }
+                QHeaderView::section:horizontal{
+                    border: 1px solid #cd6600;
+                    background-color: transparent;
+                    border-left: 0px;
+                    color: black;
                 }
             '''
         )
@@ -1300,7 +1324,7 @@ class Order(Clossed):
         '''
         
         self.close = QToolButton(self.add)
-        self.close.setIcon(QIcon('../Images/main_frames/order/close.png'))
+        self.close.setIcon(QIcon('Images/main_frames/order/close.png'))
         self.close.setIconSize(QSize(20, 20))
         self.close.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
         self.close.setStyleSheet(
@@ -1559,7 +1583,7 @@ class User(Clossed):
         self.image.setStyleSheet(
             '''
                 QLabel{
-                    background-image: url('../Images/main_frames/user/profile.png');
+                    background-image: url('Images/main_frames/user/profile.png');
                     background-repeat: no-repeat;
                     background-position: center center;
                     border: 4px solid #cd6600;
@@ -1621,7 +1645,7 @@ class Employee(Clossed):
         self.title_frame.show()
 
         self.logo_title = QLabel(self.employee_frame)
-        self.image_logo_title = QPixmap('../Images/main_frames/empoyee/empoyee.png')
+        self.image_logo_title = QPixmap('Images/main_frames/empoyee/empoyee.png')
         self.logo_title.setStyleSheet(
             '''
                 QLabel{
@@ -1693,9 +1717,23 @@ class Employee(Clossed):
         self.employee_table.setStyleSheet(
             '''
                 QTableWidget{
+                    gridline-color: #cd6600;
+                    background-color: transparent;
+                    outline: 0;
                     border: 1px solid #cd6600;
-                    border-radius: 10px;
-                    selection-background-color: #cd6600;
+                    border-top: 1px
+                }
+                QTableWidget::item:selected{
+                    background-color:#cd6600;;
+                }
+                QTableWidget::horizontalHeader{    
+                    background-color: #cd6600;
+                }
+                QHeaderView::section:horizontal{
+                    border: 1px solid #cd6600;
+                    background-color: transparent;
+                    border-left: 0px;
+                    color: black;
                 }
             '''
         )
@@ -1758,7 +1796,7 @@ class Settings(Clossed):
         self.logo.setStyleSheet(
             '''
                 QLabel{
-                    background-image: url('../Images/main_frames/system/logo.png');
+                    background-image: url('Images/main_frames/system/logo.png');
                     background-repeat: no-repeat;
                     background-position: center center;
                 }

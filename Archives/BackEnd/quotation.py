@@ -12,7 +12,9 @@ class CalculateValue:
         self.width_get.clear()
         self.diameter_get.clear()
 
-        """self.package_format_radio.isChecked(False)
+    def clear_radio_buttons(self):
+
+        self.package_format_radio.isChecked(False)
         self.cylinder_format_radio.setCheckable(False)
         self.letter_format_radio.setCheckable(False)
 
@@ -20,7 +22,7 @@ class CalculateValue:
         self.no_radio_button.setCheckable(False)
 
         self.yes_radio_buttonii.setCheckable(False)
-        self.no_radio_buttonii.setCheckable(False)"""
+        self.no_radio_buttonii.setCheckable(False)
 
     def handle_errors(self):
         self.entrys_style_ative = '''
@@ -90,6 +92,9 @@ class CalculateValue:
 
             self.diameter_get.setDisabled(True)
             self.diameter_get.setStyleSheet(self.entrys_style_ii_desative)
+
+            self.width_get.setDisabled(False)
+            self.width_get.setStyleSheet(self.entrys_style_ii_ative)
 
         def cylinder():
             self.order_weight_get.setDisabled(False)
@@ -243,29 +248,25 @@ class CalculateValue:
 
             self.find_start_early_warning = '<ValorAvisoRecebimento>'
             self.find_end_early_warning = '</ValorAvisoRecebimento>'
-            self.position_start = int(
-                self.values.index(self.find_start_early_warning) + len(self.find_start_early_warning))
+            self.position_start = int(self.values.index(self.find_start_early_warning) + len(self.find_start_early_warning))
             self.position_end = int(self.values.index(self.find_end_early_warning))
             self.early_warning = self.values[self.position_start: self.position_end]
 
             self.find_start_declared_value = '<ValorValorDeclarado>'
             self.find_end_declared_value = '</ValorValorDeclarado>'
-            self.position_start = int(
-                self.values.index(self.find_start_declared_value) + len(self.find_start_declared_value))
+            self.position_start = int(self.values.index(self.find_start_declared_value) + len(self.find_start_declared_value))
             self.position_end = int(self.values.index(self.find_end_declared_value))
             self.declared_value = self.values[self.position_start: self.position_end]
 
             self.find_start_home_delivery = '<EntregaDomiciliar>'
             self.find_end_home_delivery = '</EntregaDomiciliar>'
-            self.position_start = int(
-                self.values.index(self.find_start_home_delivery) + len(self.find_start_home_delivery))
+            self.position_start = int(self.values.index(self.find_start_home_delivery) + len(self.find_start_home_delivery))
             self.position_end = int(self.values.index(self.find_end_home_delivery))
             self.home_delivery = self.values[self.position_start: self.position_end]
 
             self.find_start_weekend_delivery = '<EntregaSabado>'
             self.find_end_weekend_delivery = '</EntregaSabado>'
-            self.position_start = int(
-                self.values.index(self.find_start_weekend_delivery) + len(self.find_start_weekend_delivery))
+            self.position_start = int(self.values.index(self.find_start_weekend_delivery) + len(self.find_start_weekend_delivery))
             self.position_end = int(self.values.index(self.find_end_weekend_delivery))
             self.weekend_delivery = self.values[self.position_start: self.position_end]
 

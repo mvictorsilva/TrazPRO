@@ -22,7 +22,6 @@ class CalculateDeadline:
         except:
             self.error_frameii()
 
-
     def requests_deadline(self):
         try:
             self.cep_source = self.cep_source_get.text()
