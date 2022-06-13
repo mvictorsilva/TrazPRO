@@ -1,0 +1,35 @@
+ -- Criar Banco
+create database db_trazpro;
+use db_trazpro;
+
+ -- Criar tabelas
+create table cargo (
+    id_cargo integer identity(1, 1) primary key,
+    nome varchar(100) not null,
+    data_nascimento date not null,
+    departamento varchar(15) not null,
+    email varchar(100) not null,
+    telefone varchar(15) not null,
+    data_admissao date not null,
+    imagem_perfil longblob not null
+);
+
+create table cargo_pacote (
+    constraint fk_id_cargo foreign key (id_cargo) references cargo (id_cargo),
+    constraint fk_id_pacote foreign key (id_pacote) references pacote (id_pacote)
+);
+
+create table pacote (
+    id_pacote integer identity(1, 1) primary key,
+    descricao varchar(100) not null,
+    quantidade integer(4) not null,
+    peso decimal(5, 2),
+    valor_unitario decimal(6, 2),
+    data_chegada date(8) not null,
+    constraint fk_id_categoria foreign key (id_categoria) references categoria (id_categoria)
+);
+
+create table categoria (
+    id_categoria integer identity(1, 1) primary key,
+    nome_categoria varchar(30) not null
+);

@@ -39,7 +39,7 @@ class Window(QMainWindow, FrameHome):
         self.setMinimumSize(1080, 720)
         self.setMaximumSize(1080, 720)
         self.setWindowTitle('TrazPRO')
-        self.setWindowIcon(QIcon('../Images/home_page/icon.png'))
+        self.setWindowIcon(QIcon('Images/home_page/icon.png'))
         self.setStyleSheet(
             '''
                 QMainWindow{

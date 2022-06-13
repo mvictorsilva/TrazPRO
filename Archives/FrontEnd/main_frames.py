@@ -531,7 +531,7 @@ class Quotation(Clossed, CalculateValue):
             Valor do frete: {self.value}\n
             Prazo de entrega: {self.deadline}\n
             Valor sem adicionais: {self.no_additional}\n
-            Valor mão própria:{self.own_hand}\n
+            Valor mão própria: {self.own_hand}\n
             Valor aviso de recebimento: {self.early_warning}\n
             Valor declarado: {self.declared_value}\n
             Entrega domiciliar: {self.home_delivery}\n

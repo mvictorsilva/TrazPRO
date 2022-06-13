@@ -1,0 +1,5 @@
+{
+    "dataworkspace.excludedProjects": [
+        "db_trazpro/db_trazpro.sqlproj"
+    ]
+}
