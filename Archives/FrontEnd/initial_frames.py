@@ -2,6 +2,8 @@ from PySide2.QtGui import *
 from PySide2.QtCore import *
 from PySide2.QtWidgets import *
 
+import webbrowser
+
 from FrontEnd.navegation_menus import FramesNavegationBar
 
 
@@ -716,6 +718,7 @@ class FrameHome(LoginFrame, RegisterFrame, FramesNavegationBar):
         self.apresentation_text.show()
 
     def information_buttons_home(self):
+        url = "http://127.0.0.1:5500/Archives/Website/index.html"
         self.register_home = QPushButton('SAIBA MAIS', self.body_frame)
         self.register_home.setStyleSheet(
             '''
@@ -736,4 +739,5 @@ class FrameHome(LoginFrame, RegisterFrame, FramesNavegationBar):
         )
         self.register_home.setGeometry(180, 420, 225, 60)
         self.register_home.clicked.connect(self.execute_navegation_bar)
+        # self.register_home.clicked.connect(lambda: webbrowser.open(url, new=new))
         self.register_home.show()

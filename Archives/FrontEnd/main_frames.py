@@ -5,6 +5,7 @@ from PySide2.QtWidgets import *
 from BackEnd.quotation import CalculateValue
 from BackEnd.deadline import CalculateDeadline
 from BackEnd.track_back import TrackBack
+from BackEnd.employee import ImagePerfil
 
 
 class Clossed:
@@ -613,6 +614,8 @@ class Quotation(Clossed, CalculateValue):
         self.pushButton_close_popup.clicked.connect(lambda: self.frame_error.deleteLater())
         self.horizontalLayout_3.addWidget(self.pushButton_close_popup)
 
+        QTimer.singleShot(3000, self.frame_error.deleteLater)
+
 
 class Deadline(Clossed, CalculateDeadline):
     def frame_deadline(self):
@@ -855,6 +858,8 @@ class Deadline(Clossed, CalculateDeadline):
         ''')
         self.pushButton_close_popup.clicked.connect(lambda: self.frame_errorii.deleteLater())
         self.horizontalLayout_3.addWidget(self.pushButton_close_popup)
+
+        QTimer.singleShot(3000, self.frame_errorii.deleteLater)
 
     def result_frameii(self):
         self.background = QFrame(self.deadline_frame)
@@ -1508,7 +1513,7 @@ class Localization(Clossed, TrackBack):
         self.subtitle_result.setGeometry(430, 20, 120, 40)
 
 
-class User(Clossed):
+class User(Clossed, ImagePerfil):
     def frame_user(self):
         self.closed_main_frames()
         self.frame_options.hide()
@@ -1579,18 +1584,20 @@ class User(Clossed):
         self.admission.show()
 
     def image_perfil(self):
-        self.image = QLabel(self.user_frame)
+        self.image = QToolButton(self.user_frame)
+        self.image.setToolTip('Mudar foto de perfil')
         self.image.setStyleSheet(
             '''
-                QLabel{
-                    background-image: url('Images/main_frames/user/profile.png');
+               QToolButton{
+                    background-image: url(Images/main_frames/user/adicionar.png);
                     background-repeat: no-repeat;
                     background-position: center center;
-                    border: 4px solid #cd6600;
+                    border: 1px solid #f7f7f7;
                     border-radius: 100px;
                 }
             '''
         )
+        self.image.clicked.connect(self.getImage)
         self.image.show()
 
     def position_widgets_user(self):

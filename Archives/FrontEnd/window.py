@@ -35,6 +35,14 @@ class Window(QMainWindow, FrameHome):
 
         return super().eventFilter(source, event)
 
+    def closeEvent(self, event):
+        reply = QMessageBox.question(self, 'Confirmação', 'Tem certeza que deseja fechar a janela?',
+        QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            event.accept()
+        else:
+            event.ignore()
+
     def definitions_window(self):
         self.setMinimumSize(1080, 720)
         self.setMaximumSize(1080, 720)
