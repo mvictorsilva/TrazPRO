@@ -106,7 +106,7 @@ class DataBase:
 
             subject = 'Mudança de senha TrazPRO'
             body = f'''
-    Olá!\nSua nova senha do aplicativo é: {new_password}
+Olá!\n \nSua nova senha do aplicativo é: {new_password}
             '''
 
             em = EmailMessage()
@@ -136,8 +136,10 @@ class DataBase:
                     email
                 )
             )
+            self.background.deleteLater()
+            self.question.deleteLater()
+            self.password_change_notice()
         except:
             print('error...')
 
         self.disconnect_db()
-        

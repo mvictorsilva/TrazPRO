@@ -679,6 +679,52 @@ class LoginFrame(DataBase):
         self.close.setGeometry(450, 20, 22, 20)
         self.close.show()
 
+    def password_change_notice(self):
+        self.frame_alert = QFrame(self.main_frame)
+        self.frame_alert.setMaximumSize(QSize(450, 35))
+        self.frame_alert.setFrameShape(QFrame.Shape.NoFrame)
+        self.frame_alert.setFrameShadow(QFrame.Shadow.Raised)
+        self.frame_alert.setStyleSheet('''
+            QFrame{
+                background-color: #cd6600; 
+                border-radius: 5px;
+            }
+        ''')
+        self.frame_alert.setFrameShape(QFrame.StyledPanel)
+        self.frame_alert.setFrameShadow(QFrame.Raised)
+        self.frame_alert.setGeometry(330, 15, 450, 40)
+        self.frame_alert.show()
+
+        self.horizontalLayout_3 = QHBoxLayout(self.frame_alert)
+        self.horizontalLayout_3.setContentsMargins(10, 3, 10, 3)
+
+        self.label_error = QLabel('Senha alterada! Verifique o seu E-mail', self.frame_alert)
+        self.label_error.setStyleSheet('''
+            QLabel{
+                color: #ffffff; 
+                font-size: 16px; 
+                font: bold 'Verdana';
+            }
+        ''')
+        self.label_error.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_3.addWidget(self.label_error)
+
+        self.pushButton_close_popup = QPushButton(self.frame_alert)
+        self.pushButton_close_popup.setMaximumSize(QSize(20, 20))
+        self.pushButton_close_popup.setStyleSheet('''
+            QPushButton{
+                border-radius: 4px;
+                background-image: url('Images/main_frames/quotation/quit.png');
+                background-position: center;
+                background-color: none;
+                background-color: #363636;
+            }
+        ''')
+        self.pushButton_close_popup.clicked.connect(lambda: self.frame_alert.deleteLater())
+        self.horizontalLayout_3.addWidget(self.pushButton_close_popup)
+
+        QTimer.singleShot(6000, self.frame_alert.deleteLater)
 
 
 class FrameHome(LoginFrame, RegisterFrame, FramesNavegationBar):
