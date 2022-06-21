@@ -7,8 +7,12 @@ from FrontEnd.main_frames import Quotation, Deadline, Order, Localization, User,
 
 class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Employee, Settings):
     def execute_navegation_bar(self):
-        self.home_menu_frame.deleteLater()
-        self.body_frame.deleteLater()
+        # self.home_menu_frame.deleteLater()
+        # self.body_frame.deleteLater()
+
+        self.login_menu_frame.deleteLater()
+        self.main_frame.deleteLater()
+        
         self.navegation_menu()
         self.label_navegation_menu()
         self.buttons_navegation_menu()

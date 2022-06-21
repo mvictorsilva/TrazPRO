@@ -1,7 +1,7 @@
 import requests
 
 
-class CalculateValue:
+class CalculateValue():
     def clear_entrys(self):
         self.cep_source_get.clear()
         self.cep_destiny_get.clear()
@@ -219,6 +219,7 @@ class CalculateValue:
 
     def receive_data(self):
         self.send_data()
+        self.startAnimation()
 
         try:
             self.find_start_value = '<Valor>'
@@ -291,7 +292,9 @@ class CalculateValue:
             self.home_delivery = f'{self.home_delivery}'
             self.weekend_delivery = f'{self.weekend_delivery}'
 
+            self.stopAnimation()
             self.result_frame()
 
         except:
+            self.stopAnimation()
             self.error_frame()

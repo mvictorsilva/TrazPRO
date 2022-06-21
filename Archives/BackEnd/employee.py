@@ -15,6 +15,8 @@ class ImagePerfil:
         self.image.setMinimumSize(200, 200)
         self.image.setMaximumSize(200, 200)
 
+        print(self.pixmap)
+
 
         self.image.setStyleSheet('''
             QToolButton{

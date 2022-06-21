@@ -1,0 +1,46 @@
+create database trazpro_db
+default character set utf8
+default collate utf8_general_ci;
+
+use trazpro_db;
+
+create table gerente(
+	id_gerente integer not null auto_increment,
+    nome varchar(100) not null,
+    email varchar(100) not null,
+    senha varchar(6) not null,
+    primary key (id_gerente)
+) default charset utf8;
+
+create table funcionario(
+	id_funcionario integer not null auto_increment,
+    nome varchar(100) not null,
+	data_nascimento date not null,
+	departamento varchar(100) not null,
+	email varchar(100) not null,
+	telefone varchar(100) not null,
+	data_admissao date not null,
+	senha integer(6) not null,
+    id_gerente int not null,
+    primary key (id_funcionario),
+    constraint fk_id_gerente foreign key (id_gerente) references gerente (id_gerente)
+) default charset utf8;
+
+create table pacote(
+	id_pacote integer not null auto_increment,
+    descrição varchar(100) not null, 
+    quantidade integer(4) not null,
+    peso decimal(5, 2) not null,
+    valor_unitario decimal(6, 2) not null,
+    data_chegada date not null,
+    nome_categoria varchar(100) not null,
+    primary key (id_pacote)
+) default charset utf8;
+
+create table funcionario_pacote (
+	id_funcionario integer not null,
+    id_pacote integer not null,
+    primary key (id_funcionario, id_pacote),
+	constraint fk_id_funcionario foreign key (id_funcionario) references funcionario (id_funcionario),
+    constraint fk_id_pacote foreign key (id_pacote) references pacote (id_pacote)
+);

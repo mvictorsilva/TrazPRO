@@ -1,3 +1,4 @@
+from hmac import new
 from PySide2.QtGui import *
 from PySide2.QtCore import *
 from PySide2.QtWidgets import *
@@ -5,9 +6,10 @@ from PySide2.QtWidgets import *
 import webbrowser
 
 from FrontEnd.navegation_menus import FramesNavegationBar
+from BackEnd.db import DataBase
 
 
-class RegisterFrame():
+class RegisterFrame(DataBase):
     def execute_register(self):
         self.closed_frames()
         self.menu_frame_register()
@@ -73,6 +75,8 @@ class RegisterFrame():
         self.horizontal_layout_register.addItem(self.spacer_widgets)
 
     def menu_buttons_register(self):
+        url = "http://127.0.0.1:5500/Archives/Website/index.html"
+
         self.information = QPushButton('Sobre', self.register_menu_frame)
         self.information.setMinimumSize(120, 30)
         self.information.setMaximumSize(120, 30)
@@ -88,6 +92,7 @@ class RegisterFrame():
             '''
         )
         self.horizontal_layout_register.addWidget(self.information)
+        self.information.clicked.connect(lambda: webbrowser.open(url, new=new))
         self.information.show()
         
         self.spacer_buttons = QSpacerItem(10, 30, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
@@ -269,6 +274,7 @@ class RegisterFrame():
             '''
         )
         self.grid_layout_register.addWidget(self.register_user, 7, 0, Qt.AlignCenter)
+        self.register_user.clicked.connect(self.create_new_user)
         self.register_user.show()
 
         # self.register_google = QPushButton('  Cadastre-se com o Google', self.register_frame)
@@ -299,7 +305,7 @@ class RegisterFrame():
         self.grid_layout_register.addItem(self.vertical_spacer_item2, 8, 0)
 
 
-class LoginFrame():
+class LoginFrame(DataBase):
     def execute_login(self):
         self.closed_frames()
         self.menu_frame_login()
@@ -365,6 +371,8 @@ class LoginFrame():
         self.horizontal_layout_login.addItem(self.spacer_widgets)
 
     def menu_buttons_login(self):
+        url = "Website/index.html+"
+
         self.information = QPushButton('Sobre', self.login_menu_frame)
         self.information.setMinimumSize(120, 30)
         self.information.setMaximumSize(120, 30)
@@ -380,6 +388,7 @@ class LoginFrame():
             '''
         )
         self.horizontal_layout_login.addWidget(self.information)
+        self.information.clicked.connect(lambda: webbrowser.open(url, new=new))
         self.information.show()
     
         self.spacer_buttons = QSpacerItem(10, 30, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
@@ -480,7 +489,7 @@ class LoginFrame():
         self.password_login.setMaximumSize(350, 50)
         self.password_login.setPlaceholderText('Senha')
         self.password_login.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.password_login.setEchoMode(QLineEdit.EchoMode.Password)
+        # self.password_login.setEchoMode(QLineEdit.EchoMode.Password)
         self.password_login.setMaxLength(8)
         self.password_login.setStyleSheet(
             '''
@@ -502,6 +511,13 @@ class LoginFrame():
         self.password_login.show()
 
     def main_frame_buttons(self):
+        def click():
+            if (self.remenber_user.isChecked()):
+                self.password_login.setEchoMode(QLineEdit.Normal)
+            else:
+                self.password_login.setEchoMode(QLineEdit.EchoMode.Password)
+
+
         self.remenber_user = QCheckBox('Mostrar caracteres', self.main_frame)
         self.remenber_user.setMinimumSize(300, 40)
         self.remenber_user.setMaximumSize(300, 40)
@@ -516,6 +532,7 @@ class LoginFrame():
             '''
         )
         self.grid_layout_login.addWidget(self.remenber_user, 5, 0, Qt.AlignCenter)
+        self.remenber_user.clicked.connect(click)
         self.remenber_user.show()
 
         self.login = QPushButton('Fazer login', self.remenber_user)
@@ -539,6 +556,7 @@ class LoginFrame():
             '''
         )
         self.grid_layout_login.addWidget(self.login, 6, 0, Qt.AlignCenter)
+        self.login.clicked.connect(self.authorized_login_user)
         self.login.show()
 
         self.forgot_password = QPushButton('Esqueceu a senha?', self.main_frame)
@@ -557,10 +575,110 @@ class LoginFrame():
             '''
         )
         self.grid_layout_login.addWidget(self.forgot_password, 7, 0, Qt.AlignCenter)
+        self.forgot_password.clicked.connect(self.update_password)
         self.forgot_password.show()
 
         self.vertical_spacer_item2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
         self.grid_layout_login.addItem(self.vertical_spacer_item2, 8, 0)
+
+    def update_password(self):
+        self.background = QFrame(self.main_frame)
+        self.background.setStyleSheet(
+            '''
+                QFrame{
+                    background-color: rgba(255, 255, 255, 0.3);
+                }
+            '''
+        )
+        self.background.show()
+        self.background.setGeometry(0, 0, 1080, 670)
+
+        self.question = QFrame(self.background)
+        self.question.setStyleSheet(
+            '''
+                QFrame{
+                    background-color: #f8f8f8;
+                    border: 2px solid #f8f8f8;
+                    border-radius: 20px;
+                }
+            '''
+        )
+        self.question.show()
+        self.question.setGeometry(290, 170, 500, 300)
+
+        self.email_question = QLabel('Digite o seu E-mail:', self.question)
+        self.email_question.setStyleSheet('''
+            QLabel{
+                background: none;
+                border: none;
+                color: #ffffff;
+                font: Helvetica Neue Leve;
+                font-size: 25px;
+            }
+        ''')
+        self.email_question.setGeometry(140, 50, 270, 50)
+        self.email_question.show()
+
+        self.email_question_get = QLineEdit(self.question)
+        self.email_question_get.setPlaceholderText('@gmail.com')
+        self.email_question_get.setMaxLength(100)
+        self.email_question_get.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.email_question_get.setStyleSheet('''
+            QLineEdit{
+                background-color: rgba(0, 0, 0, 0);
+                color: #707070;
+                border: 2px solid #cd6600;
+                border-radius: 20px;
+                font: 'Helvetica';
+                font-size: 18px;
+            }
+            QLineEdit:pressed{
+                color: #ffffff;
+            }
+        ''')
+        self.email_question_get.setGeometry(100, 120, 280, 40)
+        self.email_question_get.show()
+
+        self.send_email = QPushButton('Mudar senha', self.question)
+        self.send_email.setStyleSheet(
+            '''
+                QPushButton{
+                    background-color: #cd6600;
+                    color: #ffffff;
+                    border-radius: 14px;
+                    font: bold 'Verdana';
+                    font-size: 19px;
+                }
+                QPushButton:hover{
+                    background-color: #8B4500;
+                }
+                QPushButton:pressed{
+                    background-color: #EE7600;
+                }
+            '''
+        )
+        self.send_email.setGeometry(165, 200, 170, 50)
+        self.send_email.clicked.connect(self.send_new_password)
+        self.send_email.show()
+
+        self.close = QToolButton(self.question)
+        self.close.setIcon(QIcon('Images/main_frames/quotation/close.png'))
+        self.close.setIconSize(QSize(20, 20))
+        self.close.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
+        self.close.setStyleSheet(
+            '''
+                QToolButton{
+                    border: none;
+                    background-color: none;
+                    border-radius: 4px
+                }
+            '''
+        )
+        self.close.clicked.connect(lambda: (self.question.deleteLater(),
+                                            self.background.deleteLater()))
+        self.close.setGeometry(450, 20, 22, 20)
+        self.close.show()
+
 
 
 class FrameHome(LoginFrame, RegisterFrame, FramesNavegationBar):

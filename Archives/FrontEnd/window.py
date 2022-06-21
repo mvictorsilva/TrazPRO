@@ -4,8 +4,33 @@ from PySide2.QtWidgets import *
 
 from FrontEnd.initial_frames import FrameHome
 
+class LoadingProcess():
+    def Animation(self):
+        self.animation = QWidget()
+        self.animation.setWindowFlag(Qt.WindowStaysOnTopHint)
+        self.animation.setWindowFlags(Qt.FramelessWindowHint)
+        self.animation.setAttribute(Qt.WA_TranslucentBackground)
 
-class Window(QMainWindow, FrameHome):
+        self.gif = QMovie('Images/home_page/loading.gif')
+
+        self.loading = QLabel(self)
+        self.loading.setMovie(self.gif)
+        self.loading.setGeometry(330, 250, 200, 200)
+        self.loading.setMinimumSize(QSize(300, 250)) 
+        self.loading.setMaximumSize(QSize(250, 250)) 
+        self.loading.setObjectName("lb1")
+
+        self.animation.show()
+
+    def startAnimation(self): 
+        self.Animation()
+        self.gif.start() 
+  
+    def stopAnimation(self):
+        self.gif.stop()
+        self.animation.close()
+
+class Window(QMainWindow, FrameHome, LoadingProcess):
     def __init__(self):
         super(Window, self).__init__()
         self.definitions_window()
