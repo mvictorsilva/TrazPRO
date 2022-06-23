@@ -237,6 +237,12 @@ class RegisterFrame(DataBase):
         self.password_register.show()
 
     def frame_register_buttons(self):
+        def click():
+            if (self.confirm_terms.isChecked()):
+                self.register_user.setDisabled(False)
+            else:
+                self.register_user.setEnabled(False)
+
         self.confirm_terms = QCheckBox('Concordo com os termos de uso', self.register_frame)
         self.confirm_terms.setMinimumSize(300, 40)
         self.confirm_terms.setMaximumSize(300, 40)
@@ -251,6 +257,7 @@ class RegisterFrame(DataBase):
             '''
         )
         self.grid_layout_register.addWidget(self.confirm_terms, 6, 0, Qt.AlignCenter)
+        self.confirm_terms.clicked.connect(click)
         self.confirm_terms.show()
 
         self.register_user = QPushButton('Cadastar', self.register_frame)
@@ -275,6 +282,7 @@ class RegisterFrame(DataBase):
         )
         self.grid_layout_register.addWidget(self.register_user, 7, 0, Qt.AlignCenter)
         self.register_user.clicked.connect(self.create_new_user)
+        self.register_user.setEnabled(False)
         self.register_user.show()
 
         # self.register_google = QPushButton('  Cadastre-se com o Google', self.register_frame)
@@ -303,6 +311,96 @@ class RegisterFrame(DataBase):
 
         self.vertical_spacer_item2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
         self.grid_layout_register.addItem(self.vertical_spacer_item2, 8, 0)
+
+    def confirmation_frame(self):
+        self.frame_confirmation = QFrame(self.register_frame)
+        self.frame_confirmation.setMaximumSize(QSize(450, 35))
+        self.frame_confirmation.setStyleSheet('''
+            QFrame{
+                background-color: #cd6600; 
+                border-radius: 5px;
+            }
+        ''')
+        self.frame_confirmation.setFrameShape(QFrame.StyledPanel)
+        self.frame_confirmation.setFrameShadow(QFrame.Raised)
+        self.frame_confirmation.setGeometry(330, 15, 450, 40)
+        self.frame_confirmation.show()
+
+        self.horizontalLayout_3 = QHBoxLayout(self.frame_confirmation)
+        self.horizontalLayout_3.setContentsMargins(10, 3, 10, 3)
+
+        self.label_confirmation = QLabel('Cadastro concluído', self.frame_confirmation)
+        self.label_confirmation.setStyleSheet('''
+            QLabel{
+                color: #ffffff; 
+                font-size: 17px; 
+                font: bold 'Verdana';
+            }
+        ''')
+        self.label_confirmation.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_3.addWidget(self.label_confirmation)
+
+        self.pushButton_close_popup = QPushButton(self.frame_confirmation)
+        self.pushButton_close_popup.setMaximumSize(QSize(20, 20))
+        self.pushButton_close_popup.setStyleSheet('''
+            QPushButton{
+                border-radius: 4px;
+                background-image: url('Images/main_frames/quotation/quit.png');
+                background-position: center;
+                background-color: none;
+                background-color: #363636;
+            }
+        ''')
+        self.pushButton_close_popup.clicked.connect(lambda: self.frame_confirmation.deleteLater())
+        self.horizontalLayout_3.addWidget(self.pushButton_close_popup)
+
+        QTimer.singleShot(3000, self.frame_confirmation.deleteLater)
+
+    def error_frame(self):
+        self.frame_error = QFrame(self.register_frame)
+        self.frame_error.setMaximumSize(QSize(450, 35))
+        self.frame_error.setStyleSheet('''
+            QFrame{
+                background-color: #cd6600; 
+                border-radius: 5px;
+            }
+        ''')
+        self.frame_error.setFrameShape(QFrame.StyledPanel)
+        self.frame_error.setFrameShadow(QFrame.Raised)
+        self.frame_error.setGeometry(330, 15, 450, 40)
+        self.frame_error.show()
+
+        self.horizontalLayout_3 = QHBoxLayout(self.frame_error)
+        self.horizontalLayout_3.setContentsMargins(10, 3, 10, 3)
+
+        self.label_error = QLabel('Dados incorretos', self.frame_error)
+        self.label_error.setStyleSheet('''
+            QLabel{
+                color: #ffffff; 
+                font-size: 17px; 
+                font: bold 'Verdana';
+            }
+        ''')
+        self.label_error.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_3.addWidget(self.label_error)
+
+        self.pushButton_close_popup = QPushButton(self.frame_error)
+        self.pushButton_close_popup.setMaximumSize(QSize(20, 20))
+        self.pushButton_close_popup.setStyleSheet('''
+            QPushButton{
+                border-radius: 4px;
+                background-image: url('Images/main_frames/quotation/quit.png');
+                background-position: center;
+                background-color: none;
+                background-color: #363636;
+            }
+        ''')
+        self.pushButton_close_popup.clicked.connect(lambda: self.frame_error.deleteLater())
+        self.horizontalLayout_3.addWidget(self.pushButton_close_popup)
+
+        QTimer.singleShot(3000, self.frame_error.deleteLater)
 
 
 class LoginFrame(DataBase):
@@ -489,8 +587,8 @@ class LoginFrame(DataBase):
         self.password_login.setMaximumSize(350, 50)
         self.password_login.setPlaceholderText('Senha')
         self.password_login.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        # self.password_login.setEchoMode(QLineEdit.EchoMode.Password)
-        self.password_login.setMaxLength(8)
+        self.password_login.setEchoMode(QLineEdit.EchoMode.Password)
+        self.password_login.setMaxLength(6)
         self.password_login.setStyleSheet(
             '''
                 QLineEdit{
@@ -725,6 +823,96 @@ class LoginFrame(DataBase):
         self.horizontalLayout_3.addWidget(self.pushButton_close_popup)
 
         QTimer.singleShot(6000, self.frame_alert.deleteLater)
+
+    def confirmation_frame(self):
+        self.frame_confirmation = QFrame(self.main_frame)
+        self.frame_confirmation.setMaximumSize(QSize(450, 35))
+        self.frame_confirmation.setStyleSheet('''
+            QFrame{
+                background-color: #cd6600; 
+                border-radius: 5px;
+            }
+        ''')
+        self.frame_confirmation.setFrameShape(QFrame.StyledPanel)
+        self.frame_confirmation.setFrameShadow(QFrame.Raised)
+        self.frame_confirmation.setGeometry(330, 15, 450, 40)
+        self.frame_confirmation.show()
+
+        self.horizontalLayout_3 = QHBoxLayout(self.frame_confirmation)
+        self.horizontalLayout_3.setContentsMargins(10, 3, 10, 3)
+
+        self.label_confirmation = QLabel('Cadastro concluído', self.frame_confirmation)
+        self.label_confirmation.setStyleSheet('''
+            QLabel{
+                color: #ffffff; 
+                font-size: 17px; 
+                font: bold 'Verdana';
+            }
+        ''')
+        self.label_confirmation.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_3.addWidget(self.label_confirmation)
+
+        self.pushButton_close_popup = QPushButton(self.frame_confirmation)
+        self.pushButton_close_popup.setMaximumSize(QSize(20, 20))
+        self.pushButton_close_popup.setStyleSheet('''
+            QPushButton{
+                border-radius: 4px;
+                background-image: url('Images/main_frames/quotation/quit.png');
+                background-position: center;
+                background-color: none;
+                background-color: #363636;
+            }
+        ''')
+        self.pushButton_close_popup.clicked.connect(lambda: self.frame_confirmation.deleteLater())
+        self.horizontalLayout_3.addWidget(self.pushButton_close_popup)
+
+        QTimer.singleShot(3000, self.frame_confirmation.deleteLater)
+
+    def error_frame(self):
+        self.frame_error = QFrame(self.main_frame)
+        self.frame_error.setMaximumSize(QSize(450, 35))
+        self.frame_error.setStyleSheet('''
+            QFrame{
+                background-color: #cd6600; 
+                border-radius: 5px;
+            }
+        ''')
+        self.frame_error.setFrameShape(QFrame.StyledPanel)
+        self.frame_error.setFrameShadow(QFrame.Raised)
+        self.frame_error.setGeometry(330, 15, 450, 40)
+        self.frame_error.show()
+
+        self.horizontalLayout_3 = QHBoxLayout(self.frame_error)
+        self.horizontalLayout_3.setContentsMargins(10, 3, 10, 3)
+
+        self.label_error = QLabel('Dados incorretos', self.frame_error)
+        self.label_error.setStyleSheet('''
+            QLabel{
+                color: #ffffff; 
+                font-size: 17px; 
+                font: bold 'Verdana';
+            }
+        ''')
+        self.label_error.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_3.addWidget(self.label_error)
+
+        self.pushButton_close_popup = QPushButton(self.frame_error)
+        self.pushButton_close_popup.setMaximumSize(QSize(20, 20))
+        self.pushButton_close_popup.setStyleSheet('''
+            QPushButton{
+                border-radius: 4px;
+                background-image: url('Images/main_frames/quotation/quit.png');
+                background-position: center;
+                background-color: none;
+                background-color: #363636;
+            }
+        ''')
+        self.pushButton_close_popup.clicked.connect(lambda: self.frame_error.deleteLater())
+        self.horizontalLayout_3.addWidget(self.pushButton_close_popup)
+
+        QTimer.singleShot(3000, self.frame_error.deleteLater)
 
 
 class FrameHome(LoginFrame, RegisterFrame, FramesNavegationBar):

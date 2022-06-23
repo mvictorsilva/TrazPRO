@@ -7,11 +7,12 @@ from FrontEnd.main_frames import Quotation, Deadline, Order, Localization, User,
 
 class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Employee, Settings):
     def execute_navegation_bar(self):
-        # self.home_menu_frame.deleteLater()
-        # self.body_frame.deleteLater()
-
-        self.login_menu_frame.deleteLater()
-        self.main_frame.deleteLater()
+        try:
+            self.home_menu_frame.deleteLater()
+            self.body_frame.deleteLater()
+        except:
+            self.login_menu_frame.hide()
+            self.main_frame.hide()
         
         self.navegation_menu()
         self.label_navegation_menu()
@@ -226,7 +227,7 @@ class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Employ
         self.order.setIconSize(QSize(50, 50))
         self.order.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         self.order.setStyleSheet(self.button_style)
-        self.order.clicked.connect(self.frame_order)
+        self.order.clicked.connect(lambda: (self.frame_order(), self.fill_table_packages()))
         self.layout_packeges.addWidget(self.order)
         self.order.show()
 

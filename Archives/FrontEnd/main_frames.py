@@ -1,3 +1,4 @@
+from calendar import day_abbr
 from PySide2.QtGui import *
 from PySide2.QtCore import *
 from PySide2.QtWidgets import *
@@ -6,6 +7,8 @@ from BackEnd.quotation import CalculateValue
 from BackEnd.deadline import CalculateDeadline
 from BackEnd.track_back import TrackBack
 from BackEnd.employee import ImagePerfil
+
+from BackEnd.db import DataBase
 
 
 class Clossed:
@@ -1006,7 +1009,7 @@ class Deadline(Clossed, CalculateDeadline):
         self.close.show()
 
 
-class Order(Clossed):
+class Order(Clossed, DataBase):
     def frame_order(self):
         self.closed_main_frames()
         self.frame_packeges.hide()
@@ -1073,11 +1076,13 @@ class Order(Clossed):
         )
         self.background.show()
 
-        self.quantity_products = QLabel('Quantidade de produtos no estoque:', self.background)
+        self.quantity_products = QLabel(self.background)
+        self.quantity_products.setText('Quantidade de produtos no estoque:')
         self.quantity_products.setStyleSheet(self.style_results)
         self.quantity_products.show()
 
-        self.stock_value = QLabel('Valor em estoque:', self.background)
+        self.stock_value = QLabel(self.background)
+        self.stock_value.setText('Valor em estoque: R$')
         self.stock_value.setStyleSheet(self.style_results)
         self.stock_value.show()
 
@@ -1132,7 +1137,7 @@ class Order(Clossed):
         self.table_order.verticalHeader().setDefaultSectionSize(50)
         self.table_order.horizontalHeader().setDefaultSectionSize(130)
 
-        self.titles = ['ID', 'QUANTIDADE', 'DESCRIÇÃO', 'PESO EM KG', 'VALOR UNITÁRIO', 'DATA DE CHEGADA', 'CATEGORIA', 'TOTAL']
+        self.titles = ['ID', 'DESCRIÇÃO', 'QUANTIDADE', 'PESO EM KG', 'VALOR UNITÁRIO', 'DATA DE CHEGADA', 'CATEGORIA', 'ID GERENTE']
         self.table_order.setHorizontalHeaderLabels(list(self.titles))
 
         # self.table_order.setStyleSheet(
@@ -1172,7 +1177,6 @@ class Order(Clossed):
 
     def positions_widgets_order(self):
         self.labels_order()
-        self.entrys_order()
         self.buttons_order()
         self.tables_order()
 
@@ -1184,7 +1188,7 @@ class Order(Clossed):
         self.stock_value.setGeometry(650, 30, 200, 30)
 
         ####################  E N T R Y S  ####################
-        self.search.setGeometry(700, 25, 210, 40)
+        # self.search.setGeometry(700, 25, 210, 40)
 
         #################### B U T T O N S ####################
         self.new_order.setGeometry(930, 25, 130, 40)
@@ -1316,6 +1320,7 @@ class Order(Clossed):
                 }
             '''
         )
+        self.add_button.clicked.connect(self.insert_values_table_order)
         self.add_button.show()
 
         self.question_style_button = '''
@@ -1371,6 +1376,96 @@ class Order(Clossed):
         #################### B U T T O N ####################
         self.add_button.setGeometry(310, 400, 180, 40)
         self.close.setGeometry(750, 20, 30, 30)
+
+    def error_frame(self):
+        self.frame_error = QFrame(self.order_frame)
+        self.frame_error.setMaximumSize(QSize(450, 35))
+        self.frame_error.setStyleSheet('''
+            QFrame{
+                background-color: #cd6600; 
+                border-radius: 5px;
+            }
+        ''')
+        self.frame_error.setFrameShape(QFrame.StyledPanel)
+        self.frame_error.setFrameShadow(QFrame.Raised)
+        self.frame_error.setGeometry(330, 15, 450, 40)
+        self.frame_error.show()
+
+        self.horizontalLayout_3 = QHBoxLayout(self.frame_error)
+        self.horizontalLayout_3.setContentsMargins(10, 3, 10, 3)
+
+        self.label_error = QLabel('Dados incorretos', self.frame_error)
+        self.label_error.setStyleSheet('''
+            QLabel{
+                color: #ffffff; 
+                font-size: 17px; 
+                font: bold 'Verdana';
+            }
+        ''')
+        self.label_error.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_3.addWidget(self.label_error)
+
+        self.pushButton_close_popup = QPushButton(self.frame_error)
+        self.pushButton_close_popup.setMaximumSize(QSize(20, 20))
+        self.pushButton_close_popup.setStyleSheet('''
+            QPushButton{
+                border-radius: 4px;
+                background-image: url('Images/main_frames/quotation/quit.png');
+                background-position: center;
+                background-color: none;
+                background-color: #363636;
+            }
+        ''')
+        self.pushButton_close_popup.clicked.connect(lambda: self.frame_error.deleteLater())
+        self.horizontalLayout_3.addWidget(self.pushButton_close_popup)
+
+        QTimer.singleShot(3000, self.frame_error.deleteLater)
+
+    def confirmation_frame(self):
+        self.frame_confirmation = QFrame(self.order_frame)
+        self.frame_confirmation.setMaximumSize(QSize(450, 35))
+        self.frame_confirmation.setStyleSheet('''
+            QFrame{
+                background-color: #cd6600; 
+                border-radius: 5px;
+            }
+        ''')
+        self.frame_confirmation.setFrameShape(QFrame.StyledPanel)
+        self.frame_confirmation.setFrameShadow(QFrame.Raised)
+        self.frame_confirmation.setGeometry(330, 15, 450, 40)
+        self.frame_confirmation.show()
+
+        self.horizontalLayout_3 = QHBoxLayout(self.frame_confirmation)
+        self.horizontalLayout_3.setContentsMargins(10, 3, 10, 3)
+
+        self.label_confirmation = QLabel('Cadastro concluído', self.frame_confirmation)
+        self.label_confirmation.setStyleSheet('''
+            QLabel{
+                color: #ffffff; 
+                font-size: 17px; 
+                font: bold 'Verdana';
+            }
+        ''')
+        self.label_confirmation.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_3.addWidget(self.label_confirmation)
+
+        self.pushButton_close_popup = QPushButton(self.frame_confirmation)
+        self.pushButton_close_popup.setMaximumSize(QSize(20, 20))
+        self.pushButton_close_popup.setStyleSheet('''
+            QPushButton{
+                border-radius: 4px;
+                background-image: url('Images/main_frames/quotation/quit.png');
+                background-position: center;
+                background-color: none;
+                background-color: #363636;
+            }
+        ''')
+        self.pushButton_close_popup.clicked.connect(lambda: self.frame_confirmation.deleteLater())
+        self.horizontalLayout_3.addWidget(self.pushButton_close_popup)
+
+        QTimer.singleShot(3000, self.frame_confirmation.deleteLater)
 
 
 class Localization(Clossed, TrackBack):
