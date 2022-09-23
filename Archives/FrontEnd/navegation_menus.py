@@ -107,6 +107,7 @@ class FramesNavegationBar(Quotation, Deadline, Order, Localization, User, Employ
         self.screening_menu.setStyleSheet(self.style_button_bar)
         self.layout_menu_navegation.addWidget(self.screening_menu)
 
+        # Corretion error
         self.options_menu = QPushButton('Opções', self.menu_bar)
         self.options_menu.setMinimumSize(100 ,30)
         self.options_menu.setMaximumSize(100, 30)

@@ -260,7 +260,7 @@ class RegisterFrame(DataBase):
         self.confirm_terms.clicked.connect(click)
         self.confirm_terms.show()
 
-        self.register_user = QPushButton('Cadastar', self.register_frame)
+        self.register_user = QPushButton('Cadastrar', self.register_frame)
         self.register_user.setMinimumSize(350, 50)
         self.register_user.setMaximumSize(350, 50)
         self.register_user.setStyleSheet(
@@ -312,24 +312,24 @@ class RegisterFrame(DataBase):
         self.vertical_spacer_item2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
         self.grid_layout_register.addItem(self.vertical_spacer_item2, 8, 0)
 
-    def confirmation_frame(self):
-        self.frame_confirmation = QFrame(self.register_frame)
-        self.frame_confirmation.setMaximumSize(QSize(450, 35))
-        self.frame_confirmation.setStyleSheet('''
+    def confirmation_frame_ii(self):
+        self.frame_confirmation_ii = QFrame(self.register_frame)
+        self.frame_confirmation_ii.setMaximumSize(QSize(450, 35))
+        self.frame_confirmation_ii.setStyleSheet('''
             QFrame{
                 background-color: #cd6600; 
                 border-radius: 5px;
             }
         ''')
-        self.frame_confirmation.setFrameShape(QFrame.StyledPanel)
-        self.frame_confirmation.setFrameShadow(QFrame.Raised)
-        self.frame_confirmation.setGeometry(330, 15, 450, 40)
-        self.frame_confirmation.show()
+        self.frame_confirmation_ii.setFrameShape(QFrame.StyledPanel)
+        self.frame_confirmation_ii.setFrameShadow(QFrame.Raised)
+        self.frame_confirmation_ii.setGeometry(330, 15, 450, 40)
+        self.frame_confirmation_ii.show()
 
-        self.horizontalLayout_3 = QHBoxLayout(self.frame_confirmation)
+        self.horizontalLayout_3 = QHBoxLayout(self.frame_confirmation_ii)
         self.horizontalLayout_3.setContentsMargins(10, 3, 10, 3)
 
-        self.label_confirmation = QLabel('Cadastro concluído', self.frame_confirmation)
+        self.label_confirmation = QLabel('Cadastro concluído', self.frame_confirmation_ii)
         self.label_confirmation.setStyleSheet('''
             QLabel{
                 color: #ffffff; 
@@ -341,7 +341,7 @@ class RegisterFrame(DataBase):
 
         self.horizontalLayout_3.addWidget(self.label_confirmation)
 
-        self.pushButton_close_popup = QPushButton(self.frame_confirmation)
+        self.pushButton_close_popup = QPushButton(self.frame_confirmation_ii)
         self.pushButton_close_popup.setMaximumSize(QSize(20, 20))
         self.pushButton_close_popup.setStyleSheet('''
             QPushButton{
@@ -352,12 +352,12 @@ class RegisterFrame(DataBase):
                 background-color: #363636;
             }
         ''')
-        self.pushButton_close_popup.clicked.connect(lambda: self.frame_confirmation.deleteLater())
+        self.pushButton_close_popup.clicked.connect(lambda: self.frame_confirmation_ii.deleteLater())
         self.horizontalLayout_3.addWidget(self.pushButton_close_popup)
 
-        QTimer.singleShot(3000, self.frame_confirmation.deleteLater)
+        QTimer.singleShot(3000, self.frame_confirmation_ii.deleteLater)
 
-    def error_frame(self):
+    def error_frame_ii(self):
         self.frame_error = QFrame(self.register_frame)
         self.frame_error.setMaximumSize(QSize(450, 35))
         self.frame_error.setStyleSheet('''
@@ -469,7 +469,7 @@ class LoginFrame(DataBase):
         self.horizontal_layout_login.addItem(self.spacer_widgets)
 
     def menu_buttons_login(self):
-        url = "Website/index.html+"
+        url = "http://127.0.0.1:5500/Archives/Website/index.html"
 
         self.information = QPushButton('Sobre', self.login_menu_frame)
         self.information.setMinimumSize(120, 30)
@@ -1090,6 +1090,6 @@ class FrameHome(LoginFrame, RegisterFrame, FramesNavegationBar):
             '''
         )
         self.register_home.setGeometry(180, 420, 225, 60)
-        self.register_home.clicked.connect(self.execute_navegation_bar)
-        # self.register_home.clicked.connect(lambda: webbrowser.open(url, new=new))
+        # self.register_home.clicked.connect(self.execute_navegation_bar)
+        self.register_home.clicked.connect(lambda: webbrowser.open(url, new=new))
         self.register_home.show()

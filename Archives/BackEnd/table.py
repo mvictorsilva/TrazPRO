@@ -59,3 +59,6 @@ app.setStyleSheet('QPushButton{font-size: 20px; width: 200px; height: 50px}')
 demo = AppDemo()
 demo.show()
 sys.exit(app.exec_())
+
+
+

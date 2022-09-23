@@ -66,11 +66,12 @@ class DataBase:
                 )
 
                 self.connect.commit()
-                self.confirmation_frame()
+                self.clear_entrys_register()
+                self.confirmation_frame_ii()
         except Error:
-            self.error_frame()
+            self.clear_entrys_register()
+            self.error_frame_ii()
 
-        self.clear_entrys_register()
         self.disconnect_db()
 
 
@@ -110,7 +111,7 @@ class DataBase:
                     self.id = self.id_gerente_db[0][0]
                     self.execute_navegation_bar()
                 else:
-                    print('user incorrect')
+                    self.error_frame()
         except:
             pass
 
@@ -142,12 +143,7 @@ Olá!\n \nSua nova senha do aplicativo é: {new_password}
             with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
                 smtp.login(email_sender, email_password)
                 smtp.sendmail(email_sender, email_receiver, em.as_string())
-        except:
-            print('error...')
 
-        self.connect_db()
-
-        try:
             self.cursor.execute(
                 '''
                     update gerente set senha = (%s) where email = (%s)
@@ -160,6 +156,7 @@ Olá!\n \nSua nova senha do aplicativo é: {new_password}
             )
             self.background.deleteLater()
             self.question.deleteLater()
+            
             self.password_change_notice()
         except:
             print('error...')
@@ -252,15 +249,19 @@ Olá!\n \nSua nova senha do aplicativo é: {new_password}
                 self.table_order.setItem(i, j, QTableWidgetItem(str(self.packages[i][j])))
 
         self.cursor.execute(
-            '''
-                select sum(quantidade) as total from pacote;
+            f'''
+                select sum(quantidade) from pacote as p
+                join funcionario_pacote as f on p.id_pacote = f.id_pacote
+                where f.id_funcionario = '{self.id}';
             '''
         )
         self.amount = self.cursor.fetchall()
 
         self.cursor.execute(
-            '''
-                select sum(valor_unitario) as total from pacote;
+            f'''
+                select sum(valor_unitario) from pacote as p
+                join funcionario_pacote as f on p.id_pacote = f.id_pacote
+                where f.id_funcionario = '{self.id}';
             '''
         )
         self.value = self.cursor.fetchall()
@@ -268,7 +269,7 @@ Olá!\n \nSua nova senha do aplicativo é: {new_password}
         self.style_results = (
             '''
                 QLabel{
-                    background: none;
+                    background: #f7f7f7;
                     color: #000000;
                     font: Helvetica Neue Leve;
                     font-size: 20px;

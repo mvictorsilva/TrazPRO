@@ -27,11 +27,14 @@ class CalculateDeadline:
             self.cep_source = self.cep_source_get.text()
             self.cep_destiny = self.cep_destiny_get.text()
 
-            self.request = requests.post("https://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?" \
-                                         f"nCdEmpresa=&sDsSenha=&sCepOrigem={self.cep_source}&" \
-                                         f"sCepDestino={self.cep_destiny}&" \
-                                         "nVlPeso=1&nCdFormato=10&nVlComprimento=10&nVlAltura=10&nVlLargura=10&sCdMaoPropria=n&" \
-                                         "nVlValorDeclarado=0&sCdAvisoRecebimento=n&nCdServico=04510&nVlDiametro=0&StrRetorno=xml&nIndicaCalculo=3")
+            url = f'http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?nCdEmpresa=08082650&sDsSenha=564321&sCepOrigem={self.cep_source}&sCepDestino={self.cep_destiny}&nVlPeso=1&nCdFormato=1&nVlComprimento=20&nVlAltura=20&nVlLargura=20&sCdMaoPropria=n&nVlValorDeclarado=0&sCdAvisoRecebimento=n&nCdServico=04510&nVlDiametro=0&StrRetorno=xml&nIndicaCalculo=3'
+
+            # self.request = requests.post("https://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?" \
+            #                              f"nCdEmpresa=&sDsSenha=&sCepOrigem={self.cep_source}&" \
+            #                              f"sCepDestino={self.cep_destiny}&" \
+            #                              "nVlPeso=1&nCdFormato=10&nVlComprimento=10&nVlAltura=10&nVlLargura=10&sCdMaoPropria=n&" \
+            #                              "nVlValorDeclarado=0&sCdAvisoRecebimento=n&nCdServico=04510&nVlDiametro=0&StrRetorno=xml&nIndicaCalculo=3")
+            self.request = requests.post(url)
             self.values = self.request.text
 
             self.find_start_deadline = '<PrazoEntrega>'

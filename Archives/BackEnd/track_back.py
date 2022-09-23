@@ -17,4 +17,4 @@ class TrackBack:
 
         for pontos in reque:
             for valores in pontos:
-                print(pontos[valores])    
+                self.label_result.setText(f'{pontos[valores]}') 

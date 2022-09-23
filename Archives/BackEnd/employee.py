@@ -6,6 +6,7 @@ class ImagePerfil:
     def getImage(self):
         self.fname = QFileDialog.getOpenFileName(self.user_frame, 'Open file',
                                             'c:/', "Image files (*.png *.jpg *.jpeg)")
+        print(self.fname[0])
         self.imagePath = self.fname[0]
         self.pixmap = QPixmap(self.imagePath)
 
@@ -15,13 +16,13 @@ class ImagePerfil:
         self.image.setMinimumSize(200, 200)
         self.image.setMaximumSize(200, 200)
 
-        print(self.pixmap)
+        
 
-
-        self.image.setStyleSheet('''
-            QToolButton{
-                border: none;
-                border-radius: 50px;
-            }
-        ''')
-    
+        self.image.setStyleSheet(
+            '''
+                QToolButton{
+                    border: none;
+                    border-radius: 50px;
+                }
+            '''
+        )

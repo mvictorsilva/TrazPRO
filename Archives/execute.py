@@ -12,4 +12,4 @@ if __name__ == '__main__':
     try:
         sys.exit(mainwindow.exec_())
     except SystemExit:
-        print('Saindo...')
+        print('')

@@ -1587,6 +1587,24 @@ class Localization(Clossed, TrackBack):
         )
         self.subtitle_result.show()
 
+        self.scroll_area = QScrollArea(self.background)
+        self.horizontal_layout = QHBoxLayout(self.background)
+        self.scroll_area.setGeometry(10, 70, 960, 320)
+
+        self.label_result = QLabel(self.scroll_area)
+        self.label_result.setMinimumSize(960, 320)
+        self.label_result.setStyleSheet(
+            '''
+                QLabel{
+                    border: none;
+                    background: none;
+                    color: #000000;
+                    font: Helvetica Neue Leve;
+                    font-size: 20px;
+                }
+            ''')
+        self.horizontal_layout.addWidget(self.label_result)
+
     def position_widgets_localization(self):
         self.labels_localization()
         self.entrys_localization()
